@@ -1,5 +1,4 @@
 "use client"
-
 import type React from "react"
 
 import { useState } from "react"
@@ -131,7 +130,16 @@ export function ContactForm() {
           onCheckedChange={(checked) => setFormData({ ...formData, consent: checked as boolean })}
         />
         <Label htmlFor="consent" className="text-sm text-muted-foreground cursor-pointer">
-          Я согласен с политикой обработки персональных данных и даю согласие на их обработку
+          Я согласен с{" "}
+          <a
+            href="https://fts24.ru/files/docs/personal-politics.docx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            политикой обработки персональных данных
+          </a>{" "}
+          и даю согласие на их обработку
         </Label>
       </div>
 
