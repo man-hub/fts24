@@ -123,23 +123,22 @@ export function ContactForm() {
         />
       </div>
 
-      <div className="flex items-start gap-2">
+      <div className="flex items-start gap-3">
         <Checkbox
           id="consent"
           checked={formData.consent}
           onCheckedChange={(checked) => setFormData({ ...formData, consent: checked as boolean })}
+          className="mt-1 shrink-0"
         />
-        <Label htmlFor="consent" className="text-sm text-muted-foreground cursor-pointer">
-          Я согласен с{" "}
+        <Label htmlFor="consent" className="text-sm text-muted-foreground cursor-pointer leading-relaxed flex-1">
           <a
             href="https://fts24.ru/files/docs/personal-politics.docx"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary hover:underline"
+            className="text-primary hover:underline inline"
           >
-            политикой обработки персональных данных
-          </a>{" "}
-          и даю согласие на их обработку
+            Я согласен с политикой обработки персональных данных и даю согласие на их обработку
+          </a>
         </Label>
       </div>
 
