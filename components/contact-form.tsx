@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useToast } from "@/hooks/use-toast"
+import { sendContactEmail } from "@/app/actions/send-email"
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -35,25 +36,44 @@ export function ContactForm() {
 
     setIsSubmitting(true)
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    try {
+      const result = await sendContactEmail({
+        name: formData.name,
+        company: formData.company,
+        contact: formData.contact,
+        message: formData.message,
+      })
 
-    console.log("Form submitted:", formData)
+      if (result.success) {
+        toast({
+          title: "Заявка отправлена",
+          description: "Мы свяжемся с вами в ближайшее время",
+        })
 
-    toast({
-      title: "Заявка отправлена",
-      description: "Мы свяжемся с вами в ближайшее время",
-    })
-
-    setFormData({
-      name: "",
-      company: "",
-      contact: "",
-      message: "",
-      consent: false,
-    })
-
-    setIsSubmitting(false)
+        setFormData({
+          name: "",
+          company: "",
+          contact: "",
+          message: "",
+          consent: false,
+        })
+      } else {
+        toast({
+          title: "Ошибка отправки",
+          description: "Попробуйте позже или свяжитесь с нами по телефону",
+          variant: "destructive",
+        })
+      }
+    } catch (error) {
+      console.error("[v0] Form submission error:", error)
+      toast({
+        title: "Ошибка отправки",
+        description: "Попробуйте позже или свяжитесь с нами по телефону",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
