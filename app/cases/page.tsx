@@ -197,7 +197,7 @@ export default function CasesPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl lg:text-5xl font-bold text-primary mb-2">18+</div>
+              <div className="text-4xl lg:text-5xl font-bold text-primary mb-2">20+</div>
               <div className="text-muted-foreground">Лет на рынке</div>
             </div>
             <div>
@@ -205,7 +205,7 @@ export default function CasesPage() {
               <div className="text-muted-foreground">Реализованных проектов</div>
             </div>
             <div>
-              <div className="text-4xl lg:text-5xl font-bold text-primary mb-2">50+</div>
+              <div className="text-4xl lg:text-5xl font-bold text-primary mb-2">180+</div>
               <div className="text-muted-foreground">Специалистов в команде</div>
             </div>
             <div>
