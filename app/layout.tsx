@@ -16,21 +16,7 @@ export const metadata: Metadata = {
     "Разработка программных решений enterprise-уровня, биллинговые системы, виртуальная АТС, AI-решения и системная интеграция для операторов связи и бизнеса",
   generator: "",
   icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
+    icon: "https://fts24.ru/favicon.ico",
   },
 }
 
