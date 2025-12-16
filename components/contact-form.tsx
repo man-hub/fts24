@@ -141,16 +141,14 @@ export function ContactForm({ variant = "default" }: { variant?: "default" | "li
             variant === "light" ? "text-foreground/80" : "text-muted-foreground"
           }`}
         >
-          Я согласен с{" "}
           <a
             href="https://fts24.ru/files/docs/personal-politics.docx"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary hover:underline whitespace-nowrap"
+            className="text-primary hover:underline"
           >
-            политикой обработки персональных данных
-          </a>{" "}
-          и даю согласие на их обработку
+            Я согласен с политикой обработки персональных данных и даю согласие на их обработку
+          </a>
         </Label>
       </div>
 
