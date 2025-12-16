@@ -76,7 +76,7 @@ export default function ContactsPage() {
       </section>
 
       {/* Contact Form */}
-      <section className="border-b border-border bg-muted/30 py-16 md:py-20">
+      <section id="request-form" className="border-b border-border bg-muted/30 py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl">
             <div className="mb-8 text-center">

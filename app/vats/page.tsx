@@ -15,6 +15,15 @@ import {
   Check,
   PhoneCall,
   Bot,
+  Clock,
+  TrendingUp,
+  Globe,
+  Target,
+  Activity,
+  BarChart,
+  Database,
+  MousePointerClick,
+  Building2,
 } from "lucide-react"
 import Link from "next/link"
 
@@ -65,6 +74,49 @@ export default function VATSPage() {
       icon: Cloud,
       title: "Облачное решение",
       description: "Без покупки оборудования, работает через интернет из любой точки",
+    },
+  ]
+
+  const successBenefits = [
+    {
+      icon: Clock,
+      title: "Экономия времени",
+      description: "Включение в работу всех сотрудников, вовлечённых в обслуживание клиентов",
+    },
+    {
+      icon: TrendingUp,
+      title: "Увеличение потока клиентов",
+      description: "Ни один звонок не остаётся без ответа, каждое обращение под контролем",
+    },
+    {
+      icon: Globe,
+      title: "Мобильность офиса",
+      description: "Работа из любого города, распределённые команды, единое рабочее пространство",
+    },
+    {
+      icon: Target,
+      title: "Эффективность сотрудников",
+      description: "Равномерное распределение звонков и нагрузки между операторами",
+    },
+    {
+      icon: Activity,
+      title: "Контроль каждого этапа",
+      description: "Оценка скриптов и качества общения, рост лояльности клиентов",
+    },
+    {
+      icon: BarChart,
+      title: "Результативность рекламы",
+      description: "Отслеживание количества звонков и конверсии по каждому источнику",
+    },
+    {
+      icon: MousePointerClick,
+      title: "Простота использования",
+      description: "Быстрая настройка через интуитивный личный кабинет",
+    },
+    {
+      icon: Building2,
+      title: "Доступность для всех",
+      description: "Для малого, среднего и крупного бизнеса, ИП, самозанятых, юр. и физлиц",
     },
   ]
 
@@ -155,13 +207,13 @@ export default function VATSPage() {
             </p>
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Button size="lg" asChild>
-                <Link href="/contacts">
+                <Link href="/contacts#request-form">
                   Попробовать бесплатно
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="#pricing">Посмотреть тарифы</Link>
+                <Link href="/vats#pricing">Посмотреть тарифы</Link>
               </Button>
             </div>
           </div>
@@ -189,6 +241,83 @@ export default function VATSPage() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Business Success Benefits */}
+      <section className="border-b border-border bg-gradient-to-b from-background to-muted/30 py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Успешный бизнес с Виртуальной АТС</h2>
+            <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+              Как наша платформа помогает развивать ваш бизнес
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {successBenefits.map((benefit, index) => (
+              <Card key={index}>
+                <CardContent className="flex flex-col items-start gap-3 p-6">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                    <benefit.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-lg">{benefit.title}</h3>
+                  <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Integrations Ecosystem */}
+      <section className="border-b border-border py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Интеграции и экосистема</h2>
+            <p className="mb-8 text-lg text-muted-foreground">
+              Более 1000 интеграций с CRM, онлайн-сервисами, коллтрекингом и аналитикой
+            </p>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              <Card>
+                <CardContent className="flex flex-col items-center gap-3 p-6">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                    <Database className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-center">CRM-системы</h3>
+                  <p className="text-sm text-muted-foreground text-center">Bitrix24, amoCRM и другие популярные CRM</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="flex flex-col items-center gap-3 p-6">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                    <BarChart3 className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-center">Коллтрекинг</h3>
+                  <p className="text-sm text-muted-foreground text-center">Сервисы отслеживания и аналитики звонков</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="flex flex-col items-center gap-3 p-6">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                    <TrendingUp className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-center">Маркетинг</h3>
+                  <p className="text-sm text-muted-foreground text-center">
+                    Платформы аналитики и виджеты обратного звонка
+                  </p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="flex flex-col items-center gap-3 p-6">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                    <Cloud className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-center">Облачные сервисы</h3>
+                  <p className="text-sm text-muted-foreground text-center">Платёжные системы и бизнес-приложения</p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -241,8 +370,48 @@ export default function VATSPage() {
         </div>
       </section>
 
-      {/* Pricing */}
+      {/* Partners */}
       <section id="pricing" className="border-b border-border bg-muted/30 py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Подключение Виртуальной АТС</h2>
+            <p className="mb-8 text-lg text-muted-foreground">
+              Ознакомиться с тарифами и подключить Виртуальную АТС от ФТС вы можете на сайтах наших партнёров
+            </p>
+            <div className="grid gap-6 md:grid-cols-2">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">Алло Инкогнито</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Полный спектр тарифов и услуг виртуальной АТС, огромный выбор номеров всей России и специальное предложение: номер 8-800 с безлимитными звонками!
+                  </p>
+                  <Button variant="outline" className="w-full bg-transparent" asChild>
+                    <Link href="https://www.alloincognito.ru/goodnumbers">Подробнее</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-xl">СанСим</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Наша самая продвинутая Виртуальная АТС с интеграциями, выгодные тарифы, звонки в Личном кабинете, легкое онлайн-подключение через Госуслуги! 
+                  </p>
+                  <Button variant="outline" className="w-full bg-transparent" asChild>
+                    <Link href="https://www.sunsim.ru/virtual-ats">Подробнее</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing 
+      <section id="pricing2" className="border-b border-border bg-muted/30 py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-3xl font-bold md:text-4xl">Тарифы</h2>
@@ -275,7 +444,7 @@ export default function VATSPage() {
                     ))}
                   </ul>
                   <Button className="w-full" variant={plan.popular ? "default" : "outline"} asChild>
-                    <Link href="/contacts">Оставить заявку</Link>
+                    <Link href="/contacts#request-form">Оставить заявку</Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -283,6 +452,7 @@ export default function VATSPage() {
           </div>
         </div>
       </section>
+      */}
 
       {/* CTA */}
       <section className="bg-primary py-16 text-primary-foreground md:py-20">
@@ -294,7 +464,7 @@ export default function VATSPage() {
             </p>
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Button size="lg" variant="secondary" asChild>
-                <Link href="/contacts">Попробовать бесплатно</Link>
+                <Link href="/contacts#request-form">Попробовать бесплатно</Link>
               </Button>
               <Button
                 size="lg"

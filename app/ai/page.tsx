@@ -165,7 +165,7 @@ export default function AIPage() {
             </p>
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Button size="lg" asChild>
-                <Link href="/contacts">
+                <Link href="/contacts#request-form">
                   Получить демо
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -294,7 +294,7 @@ export default function AIPage() {
             </p>
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Button size="lg" variant="secondary" asChild>
-                <Link href="/contacts">Заказать демо</Link>
+                <Link href="/contacts#request-form">Заказать демо</Link>
               </Button>
               <Button
                 size="lg"

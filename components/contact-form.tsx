@@ -10,7 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { useToast } from "@/hooks/use-toast"
 import { sendContactEmail } from "@/app/actions/send-email"
 
-export function ContactForm() {
+export function ContactForm({ variant = "default" }: { variant?: "default" | "light" }) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast } = useToast()
   const [formData, setFormData] = useState({
@@ -76,7 +76,12 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 bg-card p-8 rounded-lg border border-border">
+    <form
+      onSubmit={handleSubmit}
+      className={`space-y-6 rounded-lg border p-8 ${
+        variant === "light" ? "bg-primary-foreground/95 border-primary-foreground/20" : "bg-card border-border"
+      }`}
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <Label htmlFor="name">Ваше имя *</Label>
@@ -130,15 +135,22 @@ export function ContactForm() {
           onCheckedChange={(checked) => setFormData({ ...formData, consent: checked as boolean })}
           className="mt-1 shrink-0"
         />
-        <Label htmlFor="consent" className="text-sm text-muted-foreground cursor-pointer leading-relaxed flex-1">
+        <Label
+          htmlFor="consent"
+          className={`text-sm cursor-pointer leading-relaxed flex-1 ${
+            variant === "light" ? "text-foreground/80" : "text-muted-foreground"
+          }`}
+        >
+          Я согласен с{" "}
           <a
             href="https://fts24.ru/files/docs/personal-politics.docx"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary hover:underline inline"
+            className="text-primary hover:underline whitespace-nowrap"
           >
-            Я согласен с политикой обработки персональных данных и даю согласие на их обработку
-          </a>
+            политикой обработки персональных данных
+          </a>{" "}
+          и даю согласие на их обработку
         </Label>
       </div>
 

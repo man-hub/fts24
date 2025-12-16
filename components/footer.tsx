@@ -65,8 +65,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/integration" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Интеграция
+                <Link href="/billing-mvno" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Биллинг и MVNO
                 </Link>
               </li>
               <li>
@@ -107,7 +107,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} ООО «ФТС». Все права защищены.</p>
-{/*
+            {/*
             <div className="flex gap-6 text-sm">
               <Link href="/docs" className="text-muted-foreground hover:text-foreground transition-colors">
                 Политика конфиденциальности

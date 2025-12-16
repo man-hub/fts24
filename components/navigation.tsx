@@ -40,7 +40,7 @@ export function Navigation() {
               </Link>
             ))}
             <Button asChild>
-              <Link href="/contacts">Обсудить проект</Link>
+              <Link href="/contacts#request-form">Обсудить проект</Link>
             </Button>
           </div>
 
@@ -65,7 +65,7 @@ export function Navigation() {
                 </Link>
               ))}
               <Button asChild className="w-full">
-                <Link href="/contacts" onClick={() => setIsOpen(false)}>
+                <Link href="/contacts#request-form" onClick={() => setIsOpen(false)}>
                   Обсудить проект
                 </Link>
               </Button>
