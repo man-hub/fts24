@@ -270,9 +270,9 @@ export default function HomePage() {
                   Разработка полного BSS/OSS-комплекса, биллинга, IN-платформы и системы работы с дилерами
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-xs px-2 py-1 bg-primary/10 text-primary rounded">Биллинг</span>
-                  <span className="text-xs px-2 py-1 bg-primary/10 text-primary rounded">MVNO</span>
-                  <span className="text-xs px-2 py-1 bg-primary/10 text-primary rounded">IN-платформа</span>
+                  <span className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded">Биллинг</span>
+                  <span className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded">MVNO</span>
+                  <span className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded">IN-платформа</span>
                 </div>
               </CardContent>
             </Card>
@@ -285,8 +285,8 @@ export default function HomePage() {
                   Разработка продуктов, личных кабинетов и совместные интеграции с крупными операторами
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-xs px-2 py-1 bg-primary/10 text-primary rounded">Интеграция</span>
-                  <span className="text-xs px-2 py-1 bg-primary/10 text-primary rounded">Личный кабинет</span>
+                  <span className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded">Интеграция</span>
+                  <span className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded">Личный кабинет</span>
                 </div>
               </CardContent>
             </Card>
@@ -299,9 +299,9 @@ export default function HomePage() {
                   Облачная телефония с коллтрекингом, записью разговоров и интеграцией с CRM
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="text-xs px-2 py-1 bg-primary/10 text-primary rounded">ВАТС</span>
-                  <span className="text-xs px-2 py-1 bg-primary/10 text-primary rounded">CRM</span>
-                  <span className="text-xs px-2 py-1 bg-primary/10 text-primary rounded">Аналитика</span>
+                  <span className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded">ВАТС</span>
+                  <span className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded">CRM</span>
+                  <span className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded">Аналитика</span>
                 </div>
               </CardContent>
             </Card>

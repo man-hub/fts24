@@ -195,7 +195,8 @@
     @apply bg-background text-foreground;
   }
 
-  /* Added explicit CSS rules for Chrome 109 compatibility */
+  /* Added comprehensive fallback styles for Chrome 109 compatibility */
+
   /* Fix for badge/chip on hero section */
   .hero-badge {
     background-color: rgba(196, 30, 30, 0.1);
@@ -209,8 +210,8 @@
   }
 
   .service-icon-container:hover {
-    background-color: #c41e1e;
-    color: #fcfcfc;
+    background-color: #c41e1e !important;
+    color: #fcfcfc !important;
   }
 
   /* Fix for circular icons in advantages section */
@@ -221,12 +222,25 @@
 
   /* Fix for outline button on dark background */
   .hero-outline-button {
-    background-color: rgba(252, 252, 252, 0.1);
-    border-color: rgba(252, 252, 252, 0.2);
+    background-color: rgba(252, 252, 252, 0.1) !important;
+    border-color: rgba(252, 252, 252, 0.2) !important;
+    color: #fcfcfc !important;
   }
 
   .hero-outline-button:hover {
-    background-color: rgba(252, 252, 252, 0.2);
+    background-color: rgba(252, 252, 252, 0.2) !important;
+  }
+
+  /* Fix for case/tag badges */
+  .case-tag {
+    background-color: rgba(196, 30, 30, 0.1);
+    color: #c41e1e;
+  }
+
+  /* Fix for circular icons in "For Whom" section */
+  .circular-icon-primary {
+    background-color: #c41e1e;
+    color: #fcfcfc;
   }
 
   /* Support for browsers with OKLCH */
@@ -242,8 +256,8 @@
     }
 
     .service-icon-container:hover {
-      background-color: var(--primary);
-      color: var(--primary-foreground);
+      background-color: var(--primary) !important;
+      color: var(--primary-foreground) !important;
     }
 
     .advantage-icon-container {
@@ -252,12 +266,23 @@
     }
 
     .hero-outline-button {
-      background-color: color-mix(in oklch, var(--secondary-foreground) 10%, transparent);
-      border-color: color-mix(in oklch, var(--secondary-foreground) 20%, transparent);
+      background-color: color-mix(in oklch, var(--secondary-foreground) 10%, transparent) !important;
+      border-color: color-mix(in oklch, var(--secondary-foreground) 20%, transparent) !important;
+      color: var(--secondary-foreground) !important;
     }
 
     .hero-outline-button:hover {
-      background-color: color-mix(in oklch, var(--secondary-foreground) 20%, transparent);
+      background-color: color-mix(in oklch, var(--secondary-foreground) 20%, transparent) !important;
+    }
+
+    .case-tag {
+      background-color: color-mix(in oklch, var(--primary) 10%, transparent);
+      color: var(--primary);
+    }
+
+    .circular-icon-primary {
+      background-color: var(--primary);
+      color: var(--primary-foreground);
     }
   }
 }
