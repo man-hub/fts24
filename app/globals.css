@@ -205,14 +205,14 @@
 
   /* Fix for icon containers in service cards - higher specificity */
   .service-icon-container {
-    background-color: rgba(196, 30, 30, 0.1) !important;
-    color: #c41e1e !important;
+    transition: all 0.3s ease;
   }
 
-  .group:hover .service-icon-container,
-  .service-icon-container:hover {
-    background-color: #c41e1e !important;
-    color: #fcfcfc !important;
+  @media (hover: hover) {
+    .group:hover .service-icon-container {
+      background-color: #c41e1e !important;
+      color: #fcfcfc !important;
+    }
   }
 
   /* Fix for circular icons in "For Whom" and advantages sections */
@@ -247,20 +247,16 @@
 
   /* Support for browsers with OKLCH */
   @supports (background: oklch(0 0 0)) {
+    @media (hover: hover) {
+      .group:hover .service-icon-container {
+        background-color: var(--primary) !important;
+        color: var(--primary-foreground) !important;
+      }
+    }
+
     .hero-badge {
       background-color: color-mix(in oklch, var(--primary) 10%, transparent) !important;
       color: var(--primary) !important;
-    }
-
-    .service-icon-container {
-      background-color: color-mix(in oklch, var(--primary) 10%, transparent) !important;
-      color: var(--primary) !important;
-    }
-
-    .group:hover .service-icon-container,
-    .service-icon-container:hover {
-      background-color: var(--primary) !important;
-      color: var(--primary-foreground) !important;
     }
 
     .advantage-icon-container,
@@ -285,6 +281,10 @@
     }
 
     .case-tag {
+      background-color: color-mix(in oklch, var(--primary) 10%, transparent) !important;
+      color: var(--primary) !important;
+    }
+    .service-icon-container {
       background-color: color-mix(in oklch, var(--primary) 10%, transparent) !important;
       color: var(--primary) !important;
     }

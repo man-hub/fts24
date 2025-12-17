@@ -11,7 +11,13 @@ export default function HomePage() {
       <section className="relative bg-secondary text-secondary-foreground py-20 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="hero-badge inline-block mb-4 px-4 py-1.5 rounded-full text-sm font-medium">
+            <div
+              className="hero-badge inline-block mb-4 px-4 py-1.5 rounded-full text-sm font-medium"
+              style={{
+                backgroundColor: "rgba(196, 30, 30, 0.1)",
+                color: "#c41e1e",
+              }}
+            >
               Enterprise-решения для вашего бизнеса
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-balance">
@@ -31,6 +37,11 @@ export default function HomePage() {
                 variant="outline"
                 asChild
                 className="hero-outline-button bg-secondary-foreground/10 hover:bg-secondary-foreground/20 border-secondary-foreground/20"
+                style={{
+                  backgroundColor: "rgba(252, 252, 252, 0.1)",
+                  borderColor: "rgba(252, 252, 252, 0.2)",
+                  color: "#fcfcfc",
+                }}
               >
                 <Link href="/cases">Смотреть кейсы</Link>
               </Button>
@@ -52,7 +63,13 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card className="group hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div
+                  className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                  style={{
+                    backgroundColor: "rgba(196, 30, 30, 0.1)",
+                    color: "#c41e1e",
+                  }}
+                >
                   <Server className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Кастомная разработка</h3>
@@ -70,7 +87,13 @@ export default function HomePage() {
 
             <Card className="group hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div
+                  className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                  style={{
+                    backgroundColor: "rgba(196, 30, 30, 0.1)",
+                    color: "#c41e1e",
+                  }}
+                >
                   <Phone className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Виртуальная АТС</h3>
@@ -88,7 +111,13 @@ export default function HomePage() {
 
             <Card className="group hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div
+                  className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                  style={{
+                    backgroundColor: "rgba(196, 30, 30, 0.1)",
+                    color: "#c41e1e",
+                  }}
+                >
                   <Brain className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">AI-решения</h3>
@@ -107,7 +136,13 @@ export default function HomePage() {
 
             <Card className="group hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div
+                  className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                  style={{
+                    backgroundColor: "rgba(196, 30, 30, 0.1)",
+                    color: "#c41e1e",
+                  }}
+                >
                   <Network className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Системная интеграция</h3>
@@ -126,7 +161,13 @@ export default function HomePage() {
 
             <Card className="group hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div
+                  className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                  style={{
+                    backgroundColor: "rgba(196, 30, 30, 0.1)",
+                    color: "#c41e1e",
+                  }}
+                >
                   <Users className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">MVNO/MVNE платформы</h3>
@@ -144,7 +185,13 @@ export default function HomePage() {
 
             <Card className="group hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div
+                  className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                  style={{
+                    backgroundColor: "rgba(196, 30, 30, 0.1)",
+                    color: "#c41e1e",
+                  }}
+                >
                   <Shield className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Инфраструктура и поддержка</h3>
@@ -175,7 +222,13 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="text-center">
-              <div className="circular-icon-primary flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground mx-auto mb-4">
+              <div
+                className="circular-icon-primary flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground mx-auto mb-4"
+                style={{
+                  backgroundColor: "#c41e1e",
+                  color: "#fcfcfc",
+                }}
+              >
                 <Phone className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Операторы связи</h3>
@@ -185,7 +238,13 @@ export default function HomePage() {
             </div>
 
             <div className="text-center">
-              <div className="circular-icon-primary flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground mx-auto mb-4">
+              <div
+                className="circular-icon-primary flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground mx-auto mb-4"
+                style={{
+                  backgroundColor: "#c41e1e",
+                  color: "#fcfcfc",
+                }}
+              >
                 <Users className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Крупный и средний бизнес</h3>
@@ -193,7 +252,13 @@ export default function HomePage() {
             </div>
 
             <div className="text-center">
-              <div className="circular-icon-primary flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground mx-auto mb-4">
+              <div
+                className="circular-icon-primary flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground mx-auto mb-4"
+                style={{
+                  backgroundColor: "#c41e1e",
+                  color: "#fcfcfc",
+                }}
+              >
                 <Brain className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Малый и микро бизнес</h3>
@@ -215,7 +280,13 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="flex flex-col items-center text-center">
-              <div className="advantage-icon-container flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+              <div
+                className="advantage-icon-container flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4"
+                style={{
+                  backgroundColor: "rgba(196, 30, 30, 0.1)",
+                  color: "#c41e1e",
+                }}
+              >
                 <Clock className="h-7 w-7" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Работаем с 2005 года</h3>
@@ -223,7 +294,13 @@ export default function HomePage() {
             </div>
 
             <div className="flex flex-col items-center text-center">
-              <div className="advantage-icon-container flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+              <div
+                className="advantage-icon-container flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4"
+                style={{
+                  backgroundColor: "rgba(196, 30, 30, 0.1)",
+                  color: "#c41e1e",
+                }}
+              >
                 <Server className="h-7 w-7" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Свой BSS/OSS и ВАТС</h3>
@@ -231,7 +308,13 @@ export default function HomePage() {
             </div>
 
             <div className="flex flex-col items-center text-center">
-              <div className="advantage-icon-container flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+              <div
+                className="advantage-icon-container flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4"
+                style={{
+                  backgroundColor: "rgba(196, 30, 30, 0.1)",
+                  color: "#c41e1e",
+                }}
+              >
                 <Award className="h-7 w-7" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Входим в Реестр российского ПО</h3>
@@ -239,7 +322,13 @@ export default function HomePage() {
             </div>
 
             <div className="flex flex-col items-center text-center">
-              <div className="advantage-icon-container flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+              <div
+                className="advantage-icon-container flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4"
+                style={{
+                  backgroundColor: "rgba(196, 30, 30, 0.1)",
+                  color: "#c41e1e",
+                }}
+              >
                 <CheckCircle className="h-7 w-7" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Полная интеграция</h3>
@@ -270,9 +359,33 @@ export default function HomePage() {
                   Разработка полного BSS/OSS-комплекса, биллинга, IN-платформы и системы работы с дилерами
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded">Биллинг</span>
-                  <span className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded">MVNO</span>
-                  <span className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded">IN-платформа</span>
+                  <span
+                    className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded"
+                    style={{
+                      backgroundColor: "rgba(196, 30, 30, 0.1)",
+                      color: "#c41e1e",
+                    }}
+                  >
+                    Биллинг
+                  </span>
+                  <span
+                    className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded"
+                    style={{
+                      backgroundColor: "rgba(196, 30, 30, 0.1)",
+                      color: "#c41e1e",
+                    }}
+                  >
+                    MVNO
+                  </span>
+                  <span
+                    className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded"
+                    style={{
+                      backgroundColor: "rgba(196, 30, 30, 0.1)",
+                      color: "#c41e1e",
+                    }}
+                  >
+                    IN-платформа
+                  </span>
                 </div>
               </CardContent>
             </Card>
@@ -285,8 +398,24 @@ export default function HomePage() {
                   Разработка продуктов, личных кабинетов и совместные интеграции с крупными операторами
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded">Интеграция</span>
-                  <span className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded">Личный кабинет</span>
+                  <span
+                    className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded"
+                    style={{
+                      backgroundColor: "rgba(196, 30, 30, 0.1)",
+                      color: "#c41e1e",
+                    }}
+                  >
+                    Интеграция
+                  </span>
+                  <span
+                    className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded"
+                    style={{
+                      backgroundColor: "rgba(196, 30, 30, 0.1)",
+                      color: "#c41e1e",
+                    }}
+                  >
+                    Личный кабинет
+                  </span>
                 </div>
               </CardContent>
             </Card>
@@ -299,9 +428,33 @@ export default function HomePage() {
                   Облачная телефония с коллтрекингом, записью разговоров и интеграцией с CRM
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <span className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded">ВАТС</span>
-                  <span className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded">CRM</span>
-                  <span className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded">Аналитика</span>
+                  <span
+                    className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded"
+                    style={{
+                      backgroundColor: "rgba(196, 30, 30, 0.1)",
+                      color: "#c41e1e",
+                    }}
+                  >
+                    ВАТС
+                  </span>
+                  <span
+                    className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded"
+                    style={{
+                      backgroundColor: "rgba(196, 30, 30, 0.1)",
+                      color: "#c41e1e",
+                    }}
+                  >
+                    CRM
+                  </span>
+                  <span
+                    className="case-tag text-xs px-2 py-1 bg-primary/10 text-primary rounded"
+                    style={{
+                      backgroundColor: "rgba(196, 30, 30, 0.1)",
+                      color: "#c41e1e",
+                    }}
+                  >
+                    Аналитика
+                  </span>
                 </div>
               </CardContent>
             </Card>
