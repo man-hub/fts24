@@ -3,7 +3,44 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Added fallback RGB colors for browsers that don't support OKLCH (Chrome <111) */
 :root {
+  /* Fallback colors using RGB */
+  --background: #ffffff;
+  --foreground: #2e2e2e;
+  --card: #fcfcfc;
+  --card-foreground: #2e2e2e;
+  --popover: #ffffff;
+  --popover-foreground: #2e2e2e;
+  --primary: #c41e1e;
+  --primary-foreground: #fcfcfc;
+  --secondary: #404040;
+  --secondary-foreground: #fcfcfc;
+  --muted: #f5f5f5;
+  --muted-foreground: #808080;
+  --accent: #d94545;
+  --accent-foreground: #fcfcfc;
+  --destructive: #e74c3c;
+  --destructive-foreground: #fcfcfc;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #c41e1e;
+  --chart-1: #c41e1e;
+  --chart-2: #d94545;
+  --chart-3: #404040;
+  --chart-4: #cc6666;
+  --chart-5: #808080;
+  --radius: 0.5rem;
+  --sidebar: #fcfcfc;
+  --sidebar-foreground: #2e2e2e;
+  --sidebar-primary: #c41e1e;
+  --sidebar-primary-foreground: #fcfcfc;
+  --sidebar-accent: #f5f5f5;
+  --sidebar-accent-foreground: #2e2e2e;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #c41e1e;
+
+  /* Modern OKLCH colors for browsers that support it */
   --background: oklch(1 0 0);
   --foreground: oklch(0.18 0 0);
   --card: oklch(0.99 0 0);
@@ -28,7 +65,6 @@
   --chart-3: oklch(0.25 0 0);
   --chart-4: oklch(0.6 0.1 20);
   --chart-5: oklch(0.5 0 0);
-  --radius: 0.5rem;
   --sidebar: oklch(0.99 0 0);
   --sidebar-foreground: oklch(0.18 0 0);
   --sidebar-primary: oklch(0.45 0.22 25);
@@ -39,7 +75,43 @@
   --sidebar-ring: oklch(0.45 0.22 25);
 }
 
+/* Added fallback RGB colors for dark mode */
 .dark {
+  /* Fallback colors using RGB */
+  --background: #262626;
+  --foreground: #f5f5f5;
+  --card: #2e2e2e;
+  --card-foreground: #f5f5f5;
+  --popover: #2e2e2e;
+  --popover-foreground: #f5f5f5;
+  --primary: #e64545;
+  --primary-foreground: #fcfcfc;
+  --secondary: #d9d9d9;
+  --secondary-foreground: #262626;
+  --muted: #404040;
+  --muted-foreground: #a6a6a6;
+  --accent: #eb6b6b;
+  --accent-foreground: #fcfcfc;
+  --destructive: #e74c3c;
+  --destructive-foreground: #fcfcfc;
+  --border: #404040;
+  --input: #404040;
+  --ring: #e64545;
+  --chart-1: #e64545;
+  --chart-2: #eb6b6b;
+  --chart-3: #d9d9d9;
+  --chart-4: #cc8080;
+  --chart-5: #b3b3b3;
+  --sidebar: #2e2e2e;
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-primary: #e64545;
+  --sidebar-primary-foreground: #fcfcfc;
+  --sidebar-accent: #404040;
+  --sidebar-accent-foreground: #f5f5f5;
+  --sidebar-border: #404040;
+  --sidebar-ring: #e64545;
+
+  /* Modern OKLCH colors for browsers that support it */
   --background: oklch(0.15 0 0);
   --foreground: oklch(0.96 0 0);
   --card: oklch(0.18 0 0);
