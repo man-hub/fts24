@@ -70,6 +70,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/integration" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Интеграции
+                </Link>
+              </li>
+              <li>
                 <Link href="/docs" className="text-muted-foreground hover:text-foreground transition-colors">
                   Документы
                 </Link>
