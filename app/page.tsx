@@ -11,14 +11,14 @@ export default function HomePage() {
       <section className="relative bg-secondary text-secondary-foreground py-20 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-block mb-4 px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium">
+            <div className="hero-badge inline-block mb-4 px-4 py-1.5 rounded-full text-sm font-medium">
               Enterprise-решения для вашего бизнеса
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-balance">
               Биллинг, ВАТС и AI-решения для операторов связи и бизнеса
             </h1>
             <p className="text-xl lg:text-2xl text-secondary-foreground/80 mb-8 text-balance">
-              Разработка под ключ, глубокие интеграции и AI-аналитика для любых компаний 
+              Разработка под ключ, глубокие интеграции и AI-аналитика для любых компаний
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
@@ -30,7 +30,7 @@ export default function HomePage() {
                 size="lg"
                 variant="outline"
                 asChild
-                className="bg-secondary-foreground/10 hover:bg-secondary-foreground/20 border-secondary-foreground/20"
+                className="hero-outline-button bg-secondary-foreground/10 hover:bg-secondary-foreground/20 border-secondary-foreground/20"
               >
                 <Link href="/cases">Смотреть кейсы</Link>
               </Button>
@@ -52,7 +52,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card className="group hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                   <Server className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Кастомная разработка</h3>
@@ -70,7 +70,7 @@ export default function HomePage() {
 
             <Card className="group hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                   <Phone className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Виртуальная АТС</h3>
@@ -88,12 +88,13 @@ export default function HomePage() {
 
             <Card className="group hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                   <Brain className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">AI-решения</h3>
                 <p className="text-muted-foreground mb-4">
-                  Речевая аналитика на базе AI: распознавание речи, транскрибация, оценка качества и рекомендации по улучшению качества обслуживания и росту продаж
+                  Речевая аналитика на базе AI: распознавание речи, транскрибация, оценка качества и рекомендации по
+                  улучшению качества обслуживания и росту продаж
                 </p>
                 <Link
                   href="/ai"
@@ -106,12 +107,13 @@ export default function HomePage() {
 
             <Card className="group hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                   <Network className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Системная интеграция</h3>
                 <p className="text-muted-foreground mb-4">
-                  Интеграции с CRM, ERP, операторами связи, платежными системами и государственными информационными системами (Госуслуги, СМЭВ, Госключ и др.)
+                  Интеграции с CRM, ERP, операторами связи, платежными системами и государственными информационными
+                  системами (Госуслуги, СМЭВ, Госключ и др.)
                 </p>
                 <Link
                   href="/integration"
@@ -124,7 +126,7 @@ export default function HomePage() {
 
             <Card className="group hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                   <Users className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">MVNO/MVNE платформы</h3>
@@ -142,7 +144,7 @@ export default function HomePage() {
 
             <Card className="group hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div className="service-icon-container flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                   <Shield className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Инфраструктура и поддержка</h3>
@@ -213,7 +215,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="flex flex-col items-center text-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+              <div className="advantage-icon-container flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
                 <Clock className="h-7 w-7" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Работаем с 2005 года</h3>
@@ -221,7 +223,7 @@ export default function HomePage() {
             </div>
 
             <div className="flex flex-col items-center text-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+              <div className="advantage-icon-container flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
                 <Server className="h-7 w-7" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Свой BSS/OSS и ВАТС</h3>
@@ -229,7 +231,7 @@ export default function HomePage() {
             </div>
 
             <div className="flex flex-col items-center text-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+              <div className="advantage-icon-container flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
                 <Award className="h-7 w-7" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Входим в Реестр российского ПО</h3>
@@ -237,11 +239,13 @@ export default function HomePage() {
             </div>
 
             <div className="flex flex-col items-center text-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+              <div className="advantage-icon-container flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
                 <CheckCircle className="h-7 w-7" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Полная интеграция</h3>
-              <p className="text-muted-foreground text-sm">Опыт работы с Мегафон, Билайн, Ростелеком и другими федеральными операторами</p>
+              <p className="text-muted-foreground text-sm">
+                Опыт работы с Мегафон, Билайн, Ростелеком и другими федеральными операторами
+              </p>
             </div>
           </div>
         </div>

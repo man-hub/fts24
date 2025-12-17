@@ -194,4 +194,70 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Added explicit CSS rules for Chrome 109 compatibility */
+  /* Fix for badge/chip on hero section */
+  .hero-badge {
+    background-color: rgba(196, 30, 30, 0.1);
+    color: #c41e1e;
+  }
+
+  /* Fix for icon containers in service cards */
+  .service-icon-container {
+    background-color: rgba(196, 30, 30, 0.1);
+    color: #c41e1e;
+  }
+
+  .service-icon-container:hover {
+    background-color: #c41e1e;
+    color: #fcfcfc;
+  }
+
+  /* Fix for circular icons in advantages section */
+  .advantage-icon-container {
+    background-color: rgba(196, 30, 30, 0.1);
+    color: #c41e1e;
+  }
+
+  /* Fix for outline button on dark background */
+  .hero-outline-button {
+    background-color: rgba(252, 252, 252, 0.1);
+    border-color: rgba(252, 252, 252, 0.2);
+  }
+
+  .hero-outline-button:hover {
+    background-color: rgba(252, 252, 252, 0.2);
+  }
+
+  /* Support for browsers with OKLCH */
+  @supports (background: oklch(0 0 0)) {
+    .hero-badge {
+      background-color: color-mix(in oklch, var(--primary) 10%, transparent);
+      color: var(--primary);
+    }
+
+    .service-icon-container {
+      background-color: color-mix(in oklch, var(--primary) 10%, transparent);
+      color: var(--primary);
+    }
+
+    .service-icon-container:hover {
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+    }
+
+    .advantage-icon-container {
+      background-color: color-mix(in oklch, var(--primary) 10%, transparent);
+      color: var(--primary);
+    }
+
+    .hero-outline-button {
+      background-color: color-mix(in oklch, var(--secondary-foreground) 10%, transparent);
+      border-color: color-mix(in oklch, var(--secondary-foreground) 20%, transparent);
+    }
+
+    .hero-outline-button:hover {
+      background-color: color-mix(in oklch, var(--secondary-foreground) 20%, transparent);
+    }
+  }
 }
