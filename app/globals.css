@@ -195,29 +195,37 @@
     @apply bg-background text-foreground;
   }
 
-  /* Added comprehensive fallback styles for Chrome 109 compatibility */
+  /* Comprehensive fallback styles for Chrome 109 with higher specificity and !important */
 
   /* Fix for badge/chip on hero section */
   .hero-badge {
-    background-color: rgba(196, 30, 30, 0.1);
-    color: #c41e1e;
+    background-color: rgba(196, 30, 30, 0.1) !important;
+    color: #c41e1e !important;
   }
 
-  /* Fix for icon containers in service cards */
+  /* Fix for icon containers in service cards - higher specificity */
   .service-icon-container {
-    background-color: rgba(196, 30, 30, 0.1);
-    color: #c41e1e;
+    background-color: rgba(196, 30, 30, 0.1) !important;
+    color: #c41e1e !important;
   }
 
+  .group:hover .service-icon-container,
   .service-icon-container:hover {
     background-color: #c41e1e !important;
     color: #fcfcfc !important;
   }
 
-  /* Fix for circular icons in advantages section */
-  .advantage-icon-container {
-    background-color: rgba(196, 30, 30, 0.1);
-    color: #c41e1e;
+  /* Fix for circular icons in "For Whom" and advantages sections */
+  .advantage-icon-container,
+  .for-whom-icon {
+    background-color: rgba(196, 30, 30, 0.1) !important;
+    color: #c41e1e !important;
+  }
+
+  /* Fix for fully colored circular icons */
+  .circular-icon-primary {
+    background-color: #c41e1e !important;
+    color: #fcfcfc !important;
   }
 
   /* Fix for outline button on dark background */
@@ -231,38 +239,39 @@
     background-color: rgba(252, 252, 252, 0.2) !important;
   }
 
-  /* Fix for case/tag badges */
+  /* Fix for case/tag badges with higher specificity */
   .case-tag {
-    background-color: rgba(196, 30, 30, 0.1);
-    color: #c41e1e;
-  }
-
-  /* Fix for circular icons in "For Whom" section */
-  .circular-icon-primary {
-    background-color: #c41e1e;
-    color: #fcfcfc;
+    background-color: rgba(196, 30, 30, 0.1) !important;
+    color: #c41e1e !important;
   }
 
   /* Support for browsers with OKLCH */
   @supports (background: oklch(0 0 0)) {
     .hero-badge {
-      background-color: color-mix(in oklch, var(--primary) 10%, transparent);
-      color: var(--primary);
+      background-color: color-mix(in oklch, var(--primary) 10%, transparent) !important;
+      color: var(--primary) !important;
     }
 
     .service-icon-container {
-      background-color: color-mix(in oklch, var(--primary) 10%, transparent);
-      color: var(--primary);
+      background-color: color-mix(in oklch, var(--primary) 10%, transparent) !important;
+      color: var(--primary) !important;
     }
 
+    .group:hover .service-icon-container,
     .service-icon-container:hover {
       background-color: var(--primary) !important;
       color: var(--primary-foreground) !important;
     }
 
-    .advantage-icon-container {
-      background-color: color-mix(in oklch, var(--primary) 10%, transparent);
-      color: var(--primary);
+    .advantage-icon-container,
+    .for-whom-icon {
+      background-color: color-mix(in oklch, var(--primary) 10%, transparent) !important;
+      color: var(--primary) !important;
+    }
+
+    .circular-icon-primary {
+      background-color: var(--primary) !important;
+      color: var(--primary-foreground) !important;
     }
 
     .hero-outline-button {
@@ -276,13 +285,8 @@
     }
 
     .case-tag {
-      background-color: color-mix(in oklch, var(--primary) 10%, transparent);
-      color: var(--primary);
-    }
-
-    .circular-icon-primary {
-      background-color: var(--primary);
-      color: var(--primary-foreground);
+      background-color: color-mix(in oklch, var(--primary) 10%, transparent) !important;
+      color: var(--primary) !important;
     }
   }
 }

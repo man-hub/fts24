@@ -175,7 +175,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="text-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground mx-auto mb-4">
+              <div className="circular-icon-primary flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground mx-auto mb-4">
                 <Phone className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Операторы связи</h3>
@@ -185,7 +185,7 @@ export default function HomePage() {
             </div>
 
             <div className="text-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground mx-auto mb-4">
+              <div className="circular-icon-primary flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground mx-auto mb-4">
                 <Users className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Крупный и средний бизнес</h3>
@@ -193,7 +193,7 @@ export default function HomePage() {
             </div>
 
             <div className="text-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground mx-auto mb-4">
+              <div className="circular-icon-primary flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground mx-auto mb-4">
                 <Brain className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Малый и микро бизнес</h3>
