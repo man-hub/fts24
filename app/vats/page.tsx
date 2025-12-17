@@ -233,8 +233,11 @@ export default function VATSPage() {
             {features.map((feature, index) => (
               <Card key={index}>
                 <CardContent className="flex flex-col items-start gap-3 p-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <feature.icon className="h-6 w-6 text-primary" />
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                    style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                  >
+                    <feature.icon className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                   </div>
                   <h3 className="font-semibold text-lg">{feature.title}</h3>
                   <p className="text-sm text-muted-foreground">{feature.description}</p>
@@ -258,8 +261,11 @@ export default function VATSPage() {
             {successBenefits.map((benefit, index) => (
               <Card key={index}>
                 <CardContent className="flex flex-col items-start gap-3 p-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <benefit.icon className="h-6 w-6 text-primary" />
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                    style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                  >
+                    <benefit.icon className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                   </div>
                   <h3 className="font-semibold text-lg">{benefit.title}</h3>
                   <p className="text-sm text-muted-foreground">{benefit.description}</p>
@@ -281,8 +287,11 @@ export default function VATSPage() {
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               <Card>
                 <CardContent className="flex flex-col items-center gap-3 p-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <Database className="h-6 w-6 text-primary" />
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                    style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                  >
+                    <Database className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                   </div>
                   <h3 className="font-semibold text-center">CRM-системы</h3>
                   <p className="text-sm text-muted-foreground text-center">Bitrix24, amoCRM и другие популярные CRM</p>
@@ -290,8 +299,11 @@ export default function VATSPage() {
               </Card>
               <Card>
                 <CardContent className="flex flex-col items-center gap-3 p-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <BarChart3 className="h-6 w-6 text-primary" />
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                    style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                  >
+                    <BarChart3 className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                   </div>
                   <h3 className="font-semibold text-center">Коллтрекинг</h3>
                   <p className="text-sm text-muted-foreground text-center">Сервисы отслеживания и аналитики звонков</p>
@@ -299,8 +311,11 @@ export default function VATSPage() {
               </Card>
               <Card>
                 <CardContent className="flex flex-col items-center gap-3 p-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <TrendingUp className="h-6 w-6 text-primary" />
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                    style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                  >
+                    <TrendingUp className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                   </div>
                   <h3 className="font-semibold text-center">Маркетинг</h3>
                   <p className="text-sm text-muted-foreground text-center">
@@ -310,8 +325,11 @@ export default function VATSPage() {
               </Card>
               <Card>
                 <CardContent className="flex flex-col items-center gap-3 p-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <Cloud className="h-6 w-6 text-primary" />
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                    style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                  >
+                    <Cloud className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                   </div>
                   <h3 className="font-semibold text-center">Облачные сервисы</h3>
                   <p className="text-sm text-muted-foreground text-center">Платёжные системы и бизнес-приложения</p>
@@ -335,8 +353,11 @@ export default function VATSPage() {
             {useCases.map((useCase, index) => (
               <Card key={index}>
                 <CardHeader>
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <useCase.icon className="h-6 w-6 text-primary" />
+                  <div
+                    className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                    style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                  >
+                    <useCase.icon className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                   </div>
                   <CardTitle className="text-xl">{useCase.title}</CardTitle>
                 </CardHeader>
@@ -385,7 +406,8 @@ export default function VATSPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">
-                    Полный спектр тарифов и услуг виртуальной АТС, огромный выбор номеров всей России и специальное предложение: номер 8-800 с безлимитными звонками!
+                    Полный спектр тарифов и услуг виртуальной АТС, огромный выбор номеров всей России и специальное
+                    предложение: номер 8-800 с безлимитными звонками!
                   </p>
                   <Button variant="outline" className="w-full bg-transparent" asChild>
                     <Link href="https://www.alloincognito.ru/goodnumbers">Подробнее</Link>
@@ -398,7 +420,8 @@ export default function VATSPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">
-                    Наша самая продвинутая Виртуальная АТС с интеграциями, выгодные тарифы, звонки в Личном кабинете, легкое онлайн-подключение через Госуслуги! 
+                    Наша самая продвинутая Виртуальная АТС с интеграциями, выгодные тарифы, звонки в Личном кабинете,
+                    легкое онлайн-подключение через Госуслуги!
                   </p>
                   <Button variant="outline" className="w-full bg-transparent" asChild>
                     <Link href="https://www.sunsim.ru/virtual-ats">Подробнее</Link>

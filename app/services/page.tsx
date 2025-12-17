@@ -30,7 +30,10 @@ export default function ServicesPage() {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-start gap-6 mb-12">
-            <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0">
+            <div
+              className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0"
+              style={{ background: "rgb(190, 18, 18)", color: "rgb(255, 255, 255)" }}
+            >
               <Server className="h-8 w-8" />
             </div>
             <div>
@@ -199,7 +202,10 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground mb-6">
+              <div
+                className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground mb-6"
+                style={{ background: "rgb(190, 18, 18)", color: "rgb(255, 255, 255)" }}
+              >
                 <Phone className="h-8 w-8" />
               </div>
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">Виртуальная АТС и IN-платформа</h2>
@@ -208,19 +214,28 @@ export default function ServicesPage() {
               </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-3">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0 mt-0.5">
+                  <div
+                    className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0 mt-0.5"
+                    style={{ background: "rgba(190, 18, 18, 0.1)", color: "rgb(190, 18, 18)" }}
+                  >
                     <span className="text-xs">✓</span>
                   </div>
                   <span>Включено в Единый реестр российского ПО</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0 mt-0.5">
+                  <div
+                    className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0 mt-0.5"
+                    style={{ background: "rgba(190, 18, 18, 0.1)", color: "rgb(190, 18, 18)" }}
+                  >
                     <span className="text-xs">✓</span>
                   </div>
                   <span>Интеграция с Битрикс24 и десятками других CRM</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0 mt-0.5">
+                  <div
+                    className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0 mt-0.5"
+                    style={{ background: "rgba(190, 18, 18, 0.1)", color: "rgb(190, 18, 18)" }}
+                  >
                     <span className="text-xs">✓</span>
                   </div>
                   <span>Коллтрекинг, запись разговоров, виджет обратного звонка</span>
@@ -287,7 +302,10 @@ export default function ServicesPage() {
               </CardContent>
             </Card>
             <div className="order-1 lg:order-2">
-              <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground mb-6">
+              <div
+                className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground mb-6"
+                style={{ background: "rgb(190, 18, 18)", color: "rgb(255, 255, 255)" }}
+              >
                 <Brain className="h-8 w-8" />
               </div>
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">AI-решения и речевая аналитика</h2>
@@ -296,19 +314,28 @@ export default function ServicesPage() {
               </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-3">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0 mt-0.5">
+                  <div
+                    className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0 mt-0.5"
+                    style={{ background: "rgba(190, 18, 18, 0.1)", color: "rgb(190, 18, 18)" }}
+                  >
                     <span className="text-xs">✓</span>
                   </div>
                   <span>Интеграция с ВАТС и контакт-центрами</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0 mt-0.5">
+                  <div
+                    className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0 mt-0.5"
+                    style={{ background: "rgba(190, 18, 18, 0.1)", color: "rgb(190, 18, 18)" }}
+                  >
                     <span className="text-xs">✓</span>
                   </div>
                   <span>Решения для малого и среднего бизнеса</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0 mt-0.5">
+                  <div
+                    className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary shrink-0 mt-0.5"
+                    style={{ background: "rgba(190, 18, 18, 0.1)", color: "rgb(190, 18, 18)" }}
+                  >
                     <span className="text-xs">✓</span>
                   </div>
                   <span>Перспектива развития: ИИ-агенты для обработки звонков</span>
@@ -328,7 +355,10 @@ export default function ServicesPage() {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-start gap-6 mb-12">
-            <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0">
+            <div
+              className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0"
+              style={{ background: "rgb(190, 18, 18)", color: "rgb(255, 255, 255)" }}
+            >
               <Network className="h-8 w-8" />
             </div>
             <div>
@@ -399,7 +429,10 @@ export default function ServicesPage() {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-start gap-6 mb-12">
-            <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0">
+            <div
+              className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0"
+              style={{ background: "rgb(190, 18, 18)", color: "rgb(255, 255, 255)" }}
+            >
               <Headphones className="h-8 w-8" />
             </div>
             <div>

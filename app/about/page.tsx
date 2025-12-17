@@ -62,8 +62,8 @@ export default function AboutPage() {
               О компании ООО «ФТС»
             </h1>
             <p className="text-lg text-muted-foreground md:text-xl text-pretty">
-              Мы создаем программные решения enterprise-уровня для телекоммуникационной отрасли и других видов бизнеса. Наша миссия — помогать
-              Вам развивать бизнес с помощью современных IT-технологий.
+              Мы создаем программные решения enterprise-уровня для телекоммуникационной отрасли и других видов бизнеса.
+              Наша миссия — помогать Вам развивать бизнес с помощью современных IT-технологий.
             </p>
           </div>
         </div>
@@ -127,8 +127,11 @@ export default function AboutPage() {
             {values.map((value, index) => (
               <Card key={index}>
                 <CardContent className="flex flex-col items-start gap-4 p-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <value.icon className="h-6 w-6 text-primary" />
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                    style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                  >
+                    <value.icon className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                   </div>
                   <div>
                     <h3 className="mb-2 font-semibold text-lg">{value.title}</h3>
@@ -152,8 +155,11 @@ export default function AboutPage() {
             <div className="grid gap-4 sm:grid-cols-2">
               {certifications.map((cert, index) => (
                 <div key={index} className="flex items-center gap-3 rounded-lg border border-border bg-card p-4">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                    <Award className="h-4 w-4 text-primary" />
+                  <div
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10"
+                    style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                  >
+                    <Award className="h-4 w-4 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                   </div>
                   <span className="text-sm font-medium">{cert}</span>
                 </div>

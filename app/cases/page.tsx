@@ -85,7 +85,8 @@ export default function CasesPage() {
       client: "Федеральная сеть ритейл",
       title: "Речевая аналитика (на базе ИИ)",
       description: "Речевая аналитика на базе AI для повышения качества работы сотрудников на точках",
-      solution: "Оффлайн-точки продаж и обслуживания, сбор записей и обработка, выявление инсайтов и лучших практик, интеграция с ERP порталом",
+      solution:
+        "Оффлайн-точки продаж и обслуживания, сбор записей и обработка, выявление инсайтов и лучших практик, интеграция с ERP порталом",
       result: "Успешно завершен пилотный проект, масштабирование на точки по всей России",
       tags: ["AI", "ИИ", "Речевая аналитика", "Скрипты", "Продажи"],
     },
@@ -156,7 +157,11 @@ export default function CasesPage() {
 
                   <div className="flex flex-wrap gap-2">
                     {caseItem.tags.map((tag, tagIndex) => (
-                      <span key={tagIndex} className="text-xs px-2 py-1 bg-primary/10 text-primary rounded">
+                      <span
+                        key={tagIndex}
+                        className="text-xs px-2 py-1 bg-primary/10 text-primary rounded"
+                        style={{ background: "rgba(190, 18, 18, 0.1)", color: "rgb(190, 18, 18)" }}
+                      >
                         {tag}
                       </span>
                     ))}

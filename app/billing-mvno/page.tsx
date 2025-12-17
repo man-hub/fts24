@@ -186,8 +186,11 @@ export default function BillingMVNOPage() {
             {targetAudience.map((item, index) => (
               <Card key={index}>
                 <CardContent className="flex flex-col items-start gap-3 p-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <item.icon className="h-6 w-6 text-primary" />
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                    style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                  >
+                    <item.icon className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                   </div>
                   <h3 className="font-semibold text-lg">{item.title}</h3>
                   <p className="text-sm text-muted-foreground">{item.description}</p>
@@ -211,8 +214,11 @@ export default function BillingMVNOPage() {
             {platformSolutions.map((solution, index) => (
               <Card key={index}>
                 <CardHeader>
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <solution.icon className="h-6 w-6 text-primary" />
+                  <div
+                    className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                    style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                  >
+                    <solution.icon className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                   </div>
                   <CardTitle className="text-xl">{solution.title}</CardTitle>
                 </CardHeader>
@@ -239,8 +245,11 @@ export default function BillingMVNOPage() {
             {/* Billing Core */}
             <Card>
               <CardHeader>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                  <Database className="h-6 w-6 text-primary" />
+                <div
+                  className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                  style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                >
+                  <Database className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                 </div>
                 <CardTitle className="text-2xl">Биллинговое ядро</CardTitle>
               </CardHeader>
@@ -259,8 +268,11 @@ export default function BillingMVNOPage() {
             {/* Subscribers */}
             <Card>
               <CardHeader>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                  <Users className="h-6 w-6 text-primary" />
+                <div
+                  className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                  style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                >
+                  <Users className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                 </div>
                 <CardTitle className="text-2xl">Работа с абонентами и продуктами</CardTitle>
               </CardHeader>
@@ -279,8 +291,11 @@ export default function BillingMVNOPage() {
             {/* Partners */}
             <Card>
               <CardHeader>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                  <UserCheck className="h-6 w-6 text-primary" />
+                <div
+                  className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                  style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                >
+                  <UserCheck className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                 </div>
                 <CardTitle className="text-2xl">Партнёры, дилеры, агенты</CardTitle>
               </CardHeader>
@@ -299,8 +314,11 @@ export default function BillingMVNOPage() {
             {/* MVNO */}
             <Card>
               <CardHeader>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                  <Network className="h-6 w-6 text-primary" />
+                <div
+                  className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                  style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                >
+                  <Network className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                 </div>
                 <CardTitle className="text-2xl">MVNO/MVNE-возможности</CardTitle>
               </CardHeader>
@@ -353,8 +371,11 @@ export default function BillingMVNOPage() {
             {advantages.map((advantage, index) => (
               <Card key={index}>
                 <CardHeader>
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <advantage.icon className="h-6 w-6 text-primary" />
+                  <div
+                    className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                    style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                  >
+                    <advantage.icon className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                   </div>
                   <CardTitle className="text-xl">{advantage.title}</CardTitle>
                 </CardHeader>

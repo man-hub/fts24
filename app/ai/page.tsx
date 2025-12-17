@@ -191,8 +191,11 @@ export default function AIPage() {
             {capabilities.map((capability, index) => (
               <Card key={index}>
                 <CardContent className="flex flex-col items-start gap-3 p-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <capability.icon className="h-6 w-6 text-primary" />
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                    style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                  >
+                    <capability.icon className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                   </div>
                   <h3 className="font-semibold text-lg">{capability.title}</h3>
                   <p className="text-sm text-muted-foreground">{capability.description}</p>
@@ -214,8 +217,11 @@ export default function AIPage() {
             {benefits.map((benefit, index) => (
               <Card key={index}>
                 <CardHeader>
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <benefit.icon className="h-6 w-6 text-primary" />
+                  <div
+                    className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                    style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                  >
+                    <benefit.icon className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                   </div>
                   <CardTitle className="text-xl">{benefit.title}</CardTitle>
                 </CardHeader>

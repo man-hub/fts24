@@ -30,7 +30,10 @@ export default function SolutionsPage() {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-start gap-6 mb-12">
-            <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0">
+            <div
+              className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0"
+              style={{ background: "rgb(190, 18, 18)", color: "rgb(255, 255, 255)" }}
+            >
               <Database className="h-8 w-8" />
             </div>
             <div>
@@ -159,7 +162,10 @@ export default function SolutionsPage() {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-start gap-6 mb-12">
-            <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0">
+            <div
+              className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0"
+              style={{ background: "rgb(190, 18, 18)", color: "rgb(255, 255, 255)" }}
+            >
               <Network className="h-8 w-8" />
             </div>
             <div>
@@ -242,7 +248,10 @@ export default function SolutionsPage() {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-start gap-6 mb-12">
-            <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0">
+            <div
+              className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0"
+              style={{ background: "rgb(190, 18, 18)", color: "rgb(255, 255, 255)" }}
+            >
               <ShoppingCart className="h-8 w-8" />
             </div>
             <div>
@@ -353,7 +362,10 @@ export default function SolutionsPage() {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-start gap-6 mb-12">
-            <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0">
+            <div
+              className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0"
+              style={{ background: "rgb(190, 18, 18)", color: "rgb(255, 255, 255)" }}
+            >
               <Users className="h-8 w-8" />
             </div>
             <div>
@@ -430,7 +442,10 @@ export default function SolutionsPage() {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-start gap-6 mb-12">
-            <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0">
+            <div
+              className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0"
+              style={{ background: "rgb(190, 18, 18)", color: "rgb(255, 255, 255)" }}
+            >
               <BarChart className="h-8 w-8" />
             </div>
             <div>
@@ -492,7 +507,10 @@ export default function SolutionsPage() {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-start gap-6 mb-12">
-            <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0">
+            <div
+              className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary text-primary-foreground shrink-0"
+              style={{ background: "rgb(190, 18, 18)", color: "rgb(255, 255, 255)" }}
+            >
               <Workflow className="h-8 w-8" />
             </div>
             <div>
