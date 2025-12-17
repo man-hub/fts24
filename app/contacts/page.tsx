@@ -56,8 +56,11 @@ export default function ContactsPage() {
               {contactInfo.map((item, index) => (
                 <Card key={index}>
                   <CardHeader>
-                    <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                      <item.icon className="h-6 w-6 text-primary" />
+                    <div
+                      className="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                      style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                    >
+                      <item.icon className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                     </div>
                     <CardTitle className="text-lg">{item.title}</CardTitle>
                   </CardHeader>

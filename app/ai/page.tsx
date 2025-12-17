@@ -227,8 +227,10 @@ export default function AIPage() {
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <p className="text-sm text-muted-foreground">{benefit.description}</p>
-                  <div className="rounded-lg bg-primary/10 px-3 py-2">
-                    <span className="font-semibold text-primary">{benefit.metric}</span>
+                  <div className="rounded-lg bg-primary/10 px-3 py-2" style={{ background: "rgba(190, 18, 18, 0.1)" }}>
+                    <span className="font-semibold text-primary" style={{ color: "rgb(190, 18, 18)" }}>
+                      {benefit.metric}
+                    </span>
                   </div>
                 </CardContent>
               </Card>

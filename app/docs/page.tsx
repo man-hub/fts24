@@ -64,7 +64,10 @@ export default function DocsPage() {
                   className="group flex items-start gap-4 rounded-lg border border-border bg-card p-6 transition-all hover:border-primary hover:shadow-lg"
                 >
                   <div className="flex-shrink-0">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <div
+                      className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary"
+                      style={{ background: "rgba(190, 18, 18, 0.1)", color: "rgb(190, 18, 18)" }}
+                    >
                       <FileText className="h-6 w-6" />
                     </div>
                   </div>
@@ -88,7 +91,10 @@ export default function DocsPage() {
             <div className="mt-12 rounded-lg border border-border bg-muted/30 p-6 md:p-8">
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary"
+                    style={{ background: "rgba(190, 18, 18, 0.1)", color: "rgb(190, 18, 18)" }}
+                  >
                     <FileText className="h-6 w-6" />
                   </div>
                 </div>
