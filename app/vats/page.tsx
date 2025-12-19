@@ -76,7 +76,7 @@ export default function VATSPage() {
     {
       icon: Shield,
       title: "Безопасность",
-      description: "Шифрование трафика, резервное копирование, защита от DDoS",
+      description: "Двухфакторная авторизация, черные и белые списки, разрешенные сети IP",
       link: "/vats/security",
     },
     {

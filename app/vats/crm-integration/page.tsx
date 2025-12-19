@@ -28,7 +28,7 @@ export default function CRMIntegrationPage() {
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="/integration">Системная интеграция</Link>
+                <Link href="/vats">Все функции ВАТС</Link>
               </Button>
             </div>
           </div>

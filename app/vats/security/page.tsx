@@ -18,7 +18,7 @@ export default function SecurityPage() {
             </div>
             <h1 className="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">Безопасность виртуальной АТС</h1>
             <p className="mb-8 text-lg text-muted-foreground md:text-xl">
-              Шифрование трафика, резервное копирование данных, защита от DDoS-атак и соответствие требованиям ФЗ-152
+              Двухфакторная авторизация, черные и белые списки номеров, разрешенные сети IP для совершения SIP звонков
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
@@ -28,7 +28,7 @@ export default function SecurityPage() {
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="/vats">О виртуальной АТС</Link>
+                <Link href="/vats">Все функции ВАТС</Link>
               </Button>
             </div>
           </div>
@@ -53,9 +53,9 @@ export default function SecurityPage() {
                 >
                   <Lock className="h-6 w-6" style={{ color: "rgb(190, 18, 18)" }} />
                 </div>
-                <h3 className="mb-2 font-semibold text-lg">Шифрование трафика</h3>
+                <h3 className="mb-2 font-semibold text-lg">Черные и белые списки</h3>
                 <p className="text-sm text-muted-foreground">
-                  TLS/SRTP шифрование голосового трафика и сигнализации. Защита от прослушивания.
+                  Ограничивайте список контактов, блокируйте дозвон с мошеннических номеров.
                 </p>
               </CardContent>
             </Card>
@@ -68,9 +68,9 @@ export default function SecurityPage() {
                 >
                   <AlertTriangle className="h-6 w-6" style={{ color: "rgb(190, 18, 18)" }} />
                 </div>
-                <h3 className="mb-2 font-semibold text-lg">Защита от DDoS</h3>
+                <h3 className="mb-2 font-semibold text-lg">Разрешенные IP сети</h3>
                 <p className="text-sm text-muted-foreground">
-                  Системы фильтрации трафика, защита от флуда и перегрузок. Гарантия доступности 99,9%.
+                  Блокируйте возможность совершения SIP звонков путем несанкционированного доступа к вашим SIP аккаунтам.
                 </p>
               </CardContent>
             </Card>
@@ -85,7 +85,7 @@ export default function SecurityPage() {
                 </div>
                 <h3 className="mb-2 font-semibold text-lg">Резервное копирование</h3>
                 <p className="text-sm text-muted-foreground">
-                  Ежедневные автоматические бэкапы данных. Хранение в географически распределенных ЦОД.
+                  Регулярные автоматические бэкапы данных. Хранение в географически распределенных ЦОД.
                 </p>
               </CardContent>
             </Card>

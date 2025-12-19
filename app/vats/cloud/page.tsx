@@ -28,7 +28,7 @@ export default function CloudPage() {
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="/vats">О виртуальной АТС</Link>
+                <Link href="/vats">Все функции ВАТС</Link>
               </Button>
             </div>
           </div>
