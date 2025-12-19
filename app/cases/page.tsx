@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { Card, CardContent } from "@/components/ui/card"
 import { ContactForm } from "@/components/contact-form"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Кейсы и проекты — ООО «ФТС»",
@@ -114,6 +116,17 @@ export default function CasesPage() {
       result: "Планируется запуск",
       tags: ["MVNO", "Платформа", "B2B"],
     },
+    {
+      client: 'Проект "Пойдём, выйдем!"',
+      title: "Бесплатная платформа для конфиденциальных конференций",
+      description:
+        "Сервис создания одноразовых виртуальных номеров для многопользовательских звонковых конференций без интернета и установки приложений",
+      solution:
+        "Виртуальная АТС с автоматическим созданием конференц-комнат, IVR-меню, управлением участниками и полной анонимностью",
+      result: "Запущена в промышленную эксплуатацию, доступна всем пользователям России бесплатно на vydem.ru",
+      tags: ["ВАТС", "Конференции", "Социальный проект", "IVR"],
+      link: "/cases/poidem-vyjdem",
+    },
   ]
 
   return (
@@ -155,7 +168,7 @@ export default function CasesPage() {
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {caseItem.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
@@ -166,6 +179,16 @@ export default function CasesPage() {
                       </span>
                     ))}
                   </div>
+
+                  {"link" in caseItem && caseItem.link && (
+                    <Link
+                      href={caseItem.link}
+                      className="text-sm font-medium text-primary hover:underline inline-flex items-center gap-1"
+                    >
+                      Подробнее
+                      <ArrowRight className="h-3 w-3" />
+                    </Link>
+                  )}
                 </CardContent>
               </Card>
             ))}

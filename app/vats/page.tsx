@@ -24,6 +24,8 @@ import {
   Database,
   MousePointerClick,
   Building2,
+  Voicemail,
+  Megaphone,
 } from "lucide-react"
 import Link from "next/link"
 
@@ -39,41 +41,73 @@ export default function VATSPage() {
       icon: Phone,
       title: "Многоканальные номера",
       description: "Неограниченное количество линий и одновременных звонков",
+      link: "/vats/multichannel-numbers",
     },
     {
       icon: Users,
       title: "Гибкое управление",
       description: "Простое добавление сотрудников, отделов и правил маршрутизации",
+      link: "/vats/management",
     },
     {
       icon: BarChart3,
       title: "Детальная аналитика",
       description: "Отчеты по звонкам, продуктивности операторов и качеству обслуживания",
+      link: "/vats/analytics",
     },
     {
       icon: PhoneCall,
       title: "Запись разговоров",
       description: "Автоматическая запись и хранение всех звонков с быстрым поиском",
+      link: "/vats/call-recording",
     },
     {
       icon: Network,
       title: "Интеграция с CRM",
       description: "API для интеграции с любыми CRM и бизнес-системами",
+      link: "/vats/crm-integration",
     },
     {
       icon: Bot,
       title: "Умный IVR",
       description: "Голосовое меню с распознаванием речи и интеллектуальной маршрутизацией",
+      link: "/vats/ivr",
     },
     {
       icon: Shield,
       title: "Безопасность",
       description: "Шифрование трафика, резервное копирование, защита от DDoS",
+      link: "/vats/security",
     },
     {
       icon: Cloud,
       title: "Облачное решение",
       description: "Без покупки оборудования, работает через интернет из любой точки",
+      link: "/vats/cloud",
+    },
+    {
+      icon: Voicemail,
+      title: "Голосовая почта",
+      description: "Прием голосовых сообщений от клиентов, уведомления на email",
+      link: "/vats/voice-mail",
+    },
+    {
+      icon: Megaphone,
+      title: "Аудио-оповещение",
+      description: "Массовые исходящие обзвоны с голосовыми сообщениями",
+      link: "/vats/audio-notify",
+    },
+    {
+      icon: MousePointerClick,
+      title: "Виджет обратного звонка",
+      description: "Кнопка на сайте для быстрой связи с клиентами",
+      link: "/vats/callback-widget",
+    },
+    {
+      icon: Headphones,
+      title: "Решения для контакт-центра",
+      description: "Очереди, распределение нагрузки, мониторинг качества",
+      link: "/vats/contact-center",
     },
   ]
 
@@ -220,27 +254,36 @@ export default function VATSPage() {
         </div>
       </section>
 
-      {/* Features */}
+      {/* Features Grid */}
       <section className="border-b border-border py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Возможности платформы</h2>
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Основные возможности</h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-              Все необходимое для профессиональной телефонии вашего бизнеса
+              Все что нужно для эффективной телефонии в одном решении
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => (
-              <Card key={index}>
-                <CardContent className="flex flex-col items-start gap-3 p-6">
+              <Card key={index} className={feature.link ? "hover:shadow-lg transition-shadow" : ""}>
+                <CardContent className="p-6">
                   <div
-                    className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+                    className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
                     style={{ background: "rgba(190, 18, 18, 0.1)" }}
                   >
                     <feature.icon className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                   </div>
-                  <h3 className="font-semibold text-lg">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
+                  <h3 className="mb-2 font-semibold text-lg">{feature.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-4">{feature.description}</p>
+                  {feature.link && (
+                    <Link
+                      href={feature.link}
+                      className="text-sm font-medium text-primary hover:underline inline-flex items-center gap-1"
+                    >
+                      Подробнее
+                      <ArrowRight className="h-3 w-3" />
+                    </Link>
+                  )}
                 </CardContent>
               </Card>
             ))}
