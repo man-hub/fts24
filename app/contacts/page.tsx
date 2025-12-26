@@ -13,8 +13,8 @@ export default function ContactsPage() {
   const contactInfo = [
     {
       icon: Phone,
-      title: "Телефон",
-      details: ["+7 (495) 308-04-55"],
+      title: "Телефоны",
+      details: ["8 (800) 10-10-350", "+7 (495) 10-10-350", "+7 (495) 308-04-55"],
     },
     {
       icon: Mail,

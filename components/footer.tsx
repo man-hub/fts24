@@ -92,6 +92,18 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-muted-foreground shrink-0" />
+                <a href="tel:88001010350" className="text-muted-foreground hover:text-foreground transition-colors">
+                  8 800 10 10 350
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone className="h-4 w-4 text-muted-foreground shrink-0" />
+                <a href="tel:+74951010350" className="text-muted-foreground hover:text-foreground transition-colors">
+                  +7 495 10 10 350
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone className="h-4 w-4 text-muted-foreground shrink-0" />
                 <a href="tel:+74953080455" className="text-muted-foreground hover:text-foreground transition-colors">
                   +7 495 308 04 55
                 </a>
