@@ -27,6 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
+      <head>
+        <meta name="robots" content="noindex, nofollow" />
+      </head>
       <body className={`${inter.className} antialiased`}>
         <Navigation />
         <main className="min-h-screen">{children}</main>
