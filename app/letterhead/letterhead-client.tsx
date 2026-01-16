@@ -1,6 +1,6 @@
 "use client"
 import { useState, useRef } from "react"
-import { FileText, Printer, Check, Download } from "lucide-react"
+import { FileText, Printer, Check, Download, Eye, EyeOff } from "lucide-react"
 
 type LetterheadVariant = "classic" | "minimal" | "modern" | "corporate" | "elegant" | "tech" | "gradient" | "wave"
 
@@ -17,6 +17,7 @@ const variants: { id: LetterheadVariant; name: string; description: string }[] =
 
 export default function LetterheadClient() {
   const [selectedVariant, setSelectedVariant] = useState<LetterheadVariant>("classic")
+  const [showContent, setShowContent] = useState(true)
   const printRef = useRef<HTMLDivElement>(null)
 
   const handlePrint = () => {
@@ -345,7 +346,6 @@ export default function LetterheadClient() {
   }
 
   const handleDownloadDocx = async () => {
-    // Dynamic import for docx library
     const {
       Document,
       Packer,
@@ -355,65 +355,157 @@ export default function LetterheadClient() {
       Footer,
       AlignmentType,
       BorderStyle,
-      ImageRun,
       Table,
       TableRow,
       TableCell,
       WidthType,
-      HeadingLevel,
+      VerticalAlign,
+      HeightRule,
+      TableLayoutType,
     } = await import("docx")
 
-    // Create document
+    // Helper to convert mm to twips (1mm = 56.7 twips)
+    const mmToTwips = (mm: number) => Math.round(mm * 56.7)
+
+    // Create document with styled header and footer
     const doc = new Document({
+      styles: {
+        default: {
+          document: {
+            run: {
+              font: "Arial",
+              size: 24, // 12pt
+            },
+          },
+        },
+      },
       sections: [
         {
           properties: {
             page: {
               margin: {
-                top: 567, // 1cm
-                right: 850, // 1.5cm
-                bottom: 567, // 1cm
-                left: 850, // 1.5cm
+                top: mmToTwips(15),
+                right: mmToTwips(20),
+                bottom: mmToTwips(20),
+                left: mmToTwips(20),
               },
             },
           },
           headers: {
             default: new Header({
               children: [
-                new Paragraph({
-                  children: [
-                    new TextRun({
-                      text: "ООО «ФТС»",
-                      bold: true,
-                      size: 28,
-                      color: "991b1b",
-                    }),
-                    new TextRun({
-                      text: "   •   fts24.ru   •   sales@fts24.ru   •   8 800 10 10 350",
-                      size: 20,
-                      color: "666666",
+                // Company header table
+                new Table({
+                  width: { size: 100, type: WidthType.PERCENTAGE },
+                  layout: TableLayoutType.FIXED,
+                  borders: {
+                    top: { style: BorderStyle.NONE },
+                    bottom: { style: BorderStyle.NONE },
+                    left: { style: BorderStyle.NONE },
+                    right: { style: BorderStyle.NONE },
+                    insideHorizontal: { style: BorderStyle.NONE },
+                    insideVertical: { style: BorderStyle.NONE },
+                  },
+                  rows: [
+                    new TableRow({
+                      children: [
+                        new TableCell({
+                          width: { size: 70, type: WidthType.PERCENTAGE },
+                          verticalAlign: VerticalAlign.CENTER,
+                          borders: {
+                            top: { style: BorderStyle.NONE },
+                            bottom: { style: BorderStyle.NONE },
+                            left: { style: BorderStyle.NONE },
+                            right: { style: BorderStyle.NONE },
+                          },
+                          children: [
+                            new Paragraph({
+                              children: [
+                                new TextRun({
+                                  text: "ООО «ФТС»",
+                                  bold: true,
+                                  size: 32, // 16pt
+                                  color: "991b1b",
+                                  font: "Arial",
+                                }),
+                              ],
+                            }),
+                            new Paragraph({
+                              children: [
+                                new TextRun({
+                                  text: "Разработка программного обеспечения и системная интеграция",
+                                  size: 20, // 10pt
+                                  color: "666666",
+                                  font: "Arial",
+                                }),
+                              ],
+                            }),
+                          ],
+                        }),
+                        new TableCell({
+                          width: { size: 30, type: WidthType.PERCENTAGE },
+                          verticalAlign: VerticalAlign.CENTER,
+                          borders: {
+                            top: { style: BorderStyle.NONE },
+                            bottom: { style: BorderStyle.NONE },
+                            left: { style: BorderStyle.SINGLE, size: 12, color: "991b1b" },
+                            right: { style: BorderStyle.NONE },
+                          },
+                          margins: {
+                            left: 150,
+                          },
+                          shading: { fill: "f8fafc" },
+                          children: [
+                            new Paragraph({
+                              alignment: AlignmentType.RIGHT,
+                              children: [
+                                new TextRun({
+                                  text: "Разработчик отечественного ПО",
+                                  size: 18,
+                                  color: "1e3a5f",
+                                  font: "Arial",
+                                }),
+                              ],
+                            }),
+                            new Paragraph({
+                              alignment: AlignmentType.RIGHT,
+                              children: [
+                                new TextRun({
+                                  text: "с 2005 года",
+                                  size: 18,
+                                  color: "1e3a5f",
+                                  font: "Arial",
+                                }),
+                              ],
+                            }),
+                            new Paragraph({
+                              alignment: AlignmentType.RIGHT,
+                              children: [
+                                new TextRun({
+                                  text: "Реестр Минцифры России",
+                                  size: 18,
+                                  color: "1e3a5f",
+                                  font: "Arial",
+                                }),
+                              ],
+                            }),
+                          ],
+                        }),
+                      ],
                     }),
                   ],
+                }),
+                // Gradient line simulation
+                new Paragraph({
                   border: {
                     bottom: {
                       color: "991b1b",
                       space: 1,
                       style: BorderStyle.SINGLE,
-                      size: 6,
+                      size: 18,
                     },
                   },
-                  spacing: { after: 200 },
-                }),
-                new Paragraph({
-                  children: [
-                    new TextRun({
-                      text: "Разработчик отечественного программного обеспечения с 2005 года",
-                      size: 18,
-                      italics: true,
-                      color: "888888",
-                    }),
-                  ],
-                  spacing: { after: 400 },
+                  spacing: { before: 200, after: 300 },
                 }),
               ],
             }),
@@ -422,19 +514,6 @@ export default function LetterheadClient() {
             default: new Footer({
               children: [
                 new Paragraph({
-                  children: [
-                    new TextRun({
-                      text: "ООО «ФТС»",
-                      bold: true,
-                      size: 18,
-                      color: "991b1b",
-                    }),
-                    new TextRun({
-                      text: "  •  5-й проезд Марьиной Рощи, д. 15А, Москва  •  ИНН: 7715563903  •  +7 (495) 10-10-350",
-                      size: 18,
-                      color: "888888",
-                    }),
-                  ],
                   border: {
                     top: {
                       color: "e5e7eb",
@@ -444,49 +523,268 @@ export default function LetterheadClient() {
                     },
                   },
                   spacing: { before: 200 },
+                  children: [],
+                }),
+                new Table({
+                  width: { size: 100, type: WidthType.PERCENTAGE },
+                  layout: TableLayoutType.FIXED,
+                  borders: {
+                    top: { style: BorderStyle.NONE },
+                    bottom: { style: BorderStyle.NONE },
+                    left: { style: BorderStyle.NONE },
+                    right: { style: BorderStyle.NONE },
+                    insideHorizontal: { style: BorderStyle.NONE },
+                    insideVertical: { style: BorderStyle.NONE },
+                  },
+                  rows: [
+                    new TableRow({
+                      children: [
+                        new TableCell({
+                          width: { size: 50, type: WidthType.PERCENTAGE },
+                          borders: {
+                            top: { style: BorderStyle.NONE },
+                            bottom: { style: BorderStyle.NONE },
+                            left: { style: BorderStyle.NONE },
+                            right: { style: BorderStyle.NONE },
+                          },
+                          children: [
+                            new Paragraph({
+                              children: [
+                                new TextRun({
+                                  text: "ООО «ФТС»",
+                                  bold: true,
+                                  size: 18,
+                                  color: "991b1b",
+                                  font: "Arial",
+                                }),
+                                new TextRun({ text: "  •  ", size: 18, color: "999999", font: "Arial" }),
+                                new TextRun({ text: "fts24.ru", size: 18, color: "1e3a5f", font: "Arial" }),
+                                new TextRun({ text: "  •  ", size: 18, color: "999999", font: "Arial" }),
+                                new TextRun({ text: "sales@fts24.ru", size: 18, color: "666666", font: "Arial" }),
+                              ],
+                            }),
+                          ],
+                        }),
+                        new TableCell({
+                          width: { size: 50, type: WidthType.PERCENTAGE },
+                          borders: {
+                            top: { style: BorderStyle.NONE },
+                            bottom: { style: BorderStyle.NONE },
+                            left: { style: BorderStyle.NONE },
+                            right: { style: BorderStyle.NONE },
+                          },
+                          children: [
+                            new Paragraph({
+                              alignment: AlignmentType.RIGHT,
+                              children: [
+                                new TextRun({ text: "8 800 10 10 350", size: 18, color: "666666", font: "Arial" }),
+                                new TextRun({ text: "  •  ", size: 18, color: "999999", font: "Arial" }),
+                                new TextRun({ text: "+7 (495) 10-10-350", size: 18, color: "666666", font: "Arial" }),
+                              ],
+                            }),
+                          ],
+                        }),
+                      ],
+                    }),
+                  ],
+                }),
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: "5-й проезд Марьиной Рощи, д. 15А, Москва  •  ИНН: 7715563903",
+                      size: 18,
+                      color: "999999",
+                      font: "Arial",
+                    }),
+                  ],
+                  spacing: { before: 50 },
                 }),
               ],
             }),
           },
-          children: [
-            new Paragraph({
-              children: [new TextRun({ text: "Исх. № ________________  от «____» ____________ 20__ г.", size: 22 })],
-              spacing: { after: 200 },
-            }),
-            new Paragraph({
-              children: [
-                new TextRun({ text: "Кому: ", color: "666666", size: 22 }),
-                new TextRun({ text: "_".repeat(60), size: 22 }),
-              ],
-              spacing: { after: 600 },
-            }),
-            new Paragraph({
-              children: [new TextRun({ text: "[Текст письма]", italics: true, color: "999999", size: 22 })],
-              spacing: { after: 2400 },
-            }),
-            new Paragraph({
-              children: [new TextRun({ text: "С уважением,", size: 22 })],
-              spacing: { after: 600 },
-            }),
-            new Paragraph({
-              children: [
-                new TextRun({
-                  text: "Должность: _________________________    Подпись: ___________    Ф.И.О.: _________________________",
-                  size: 20,
+          children: showContent
+            ? [
+                // Requisites row
+                new Table({
+                  width: { size: 100, type: WidthType.PERCENTAGE },
+                  layout: TableLayoutType.FIXED,
+                  borders: {
+                    top: { style: BorderStyle.NONE },
+                    bottom: { style: BorderStyle.NONE },
+                    left: { style: BorderStyle.NONE },
+                    right: { style: BorderStyle.NONE },
+                    insideHorizontal: { style: BorderStyle.NONE },
+                    insideVertical: { style: BorderStyle.NONE },
+                  },
+                  rows: [
+                    new TableRow({
+                      children: [
+                        new TableCell({
+                          width: { size: 40, type: WidthType.PERCENTAGE },
+                          borders: {
+                            top: { style: BorderStyle.NONE },
+                            bottom: { style: BorderStyle.NONE },
+                            left: { style: BorderStyle.NONE },
+                            right: { style: BorderStyle.NONE },
+                          },
+                          children: [
+                            new Paragraph({
+                              children: [
+                                new TextRun({ text: "Исх. № ", color: "666666", size: 22, font: "Arial" }),
+                                new TextRun({ text: "________________", size: 22, font: "Arial" }),
+                              ],
+                              spacing: { after: 100 },
+                            }),
+                            new Paragraph({
+                              children: [
+                                new TextRun({ text: "от ", color: "666666", size: 22, font: "Arial" }),
+                                new TextRun({ text: "«____» ____________ 20__ г.", size: 22, font: "Arial" }),
+                              ],
+                            }),
+                          ],
+                        }),
+                        new TableCell({
+                          width: { size: 60, type: WidthType.PERCENTAGE },
+                          borders: {
+                            top: { style: BorderStyle.NONE },
+                            bottom: { style: BorderStyle.NONE },
+                            left: { style: BorderStyle.NONE },
+                            right: { style: BorderStyle.NONE },
+                          },
+                          children: [
+                            new Paragraph({
+                              children: [new TextRun({ text: "Кому:", color: "666666", size: 22, font: "Arial" })],
+                              spacing: { after: 50 },
+                            }),
+                            new Paragraph({
+                              border: {
+                                bottom: { style: BorderStyle.SINGLE, size: 6, color: "d1d5db" },
+                              },
+                              children: [new TextRun({ text: " ", size: 22 })],
+                            }),
+                            new Paragraph({
+                              border: {
+                                bottom: { style: BorderStyle.SINGLE, size: 6, color: "d1d5db" },
+                              },
+                              children: [new TextRun({ text: " ", size: 22 })],
+                              spacing: { before: 100 },
+                            }),
+                          ],
+                        }),
+                      ],
+                    }),
+                  ],
                 }),
+                // Spacing
+                new Paragraph({ spacing: { after: 400 } }),
+                // Letter content placeholder
+                new Paragraph({
+                  children: [
+                    new TextRun({ text: "[Текст письма]", italics: true, color: "999999", size: 22, font: "Arial" }),
+                  ],
+                  spacing: { after: 4000 },
+                }),
+                // Signature block
+                new Paragraph({
+                  children: [new TextRun({ text: "С уважением,", size: 22, font: "Arial" })],
+                  spacing: { after: 600 },
+                }),
+                // Signature fields table
+                new Table({
+                  width: { size: 100, type: WidthType.PERCENTAGE },
+                  layout: TableLayoutType.FIXED,
+                  borders: {
+                    top: { style: BorderStyle.NONE },
+                    bottom: { style: BorderStyle.NONE },
+                    left: { style: BorderStyle.NONE },
+                    right: { style: BorderStyle.NONE },
+                    insideHorizontal: { style: BorderStyle.NONE },
+                    insideVertical: { style: BorderStyle.NONE },
+                  },
+                  rows: [
+                    new TableRow({
+                      children: [
+                        new TableCell({
+                          width: { size: 30, type: WidthType.PERCENTAGE },
+                          borders: {
+                            top: { style: BorderStyle.NONE },
+                            bottom: { style: BorderStyle.NONE },
+                            left: { style: BorderStyle.NONE },
+                            right: { style: BorderStyle.NONE },
+                          },
+                          children: [
+                            new Paragraph({
+                              children: [new TextRun({ text: "Должность", color: "666666", size: 18, font: "Arial" })],
+                            }),
+                            new Paragraph({
+                              border: { bottom: { style: BorderStyle.SINGLE, size: 6, color: "d1d5db" } },
+                              children: [new TextRun({ text: " ", size: 22 })],
+                            }),
+                          ],
+                        }),
+                        new TableCell({
+                          width: { size: 25, type: WidthType.PERCENTAGE },
+                          borders: {
+                            top: { style: BorderStyle.NONE },
+                            bottom: { style: BorderStyle.NONE },
+                            left: { style: BorderStyle.NONE },
+                            right: { style: BorderStyle.NONE },
+                          },
+                          margins: { left: 200 },
+                          children: [
+                            new Paragraph({
+                              children: [new TextRun({ text: "Подпись", color: "666666", size: 18, font: "Arial" })],
+                            }),
+                            new Paragraph({
+                              border: { bottom: { style: BorderStyle.SINGLE, size: 6, color: "d1d5db" } },
+                              children: [new TextRun({ text: " ", size: 22 })],
+                            }),
+                          ],
+                        }),
+                        new TableCell({
+                          width: { size: 30, type: WidthType.PERCENTAGE },
+                          borders: {
+                            top: { style: BorderStyle.NONE },
+                            bottom: { style: BorderStyle.NONE },
+                            left: { style: BorderStyle.NONE },
+                            right: { style: BorderStyle.NONE },
+                          },
+                          margins: { left: 200 },
+                          children: [
+                            new Paragraph({
+                              children: [new TextRun({ text: "Ф.И.О.", color: "666666", size: 18, font: "Arial" })],
+                            }),
+                            new Paragraph({
+                              border: { bottom: { style: BorderStyle.SINGLE, size: 6, color: "d1d5db" } },
+                              children: [new TextRun({ text: " ", size: 22 })],
+                            }),
+                          ],
+                        }),
+                        new TableCell({
+                          width: { size: 15, type: WidthType.PERCENTAGE },
+                          borders: {
+                            top: { style: BorderStyle.NONE },
+                            bottom: { style: BorderStyle.NONE },
+                            left: { style: BorderStyle.NONE },
+                            right: { style: BorderStyle.NONE },
+                          },
+                          verticalAlign: VerticalAlign.BOTTOM,
+                          children: [
+                            new Paragraph({
+                              alignment: AlignmentType.RIGHT,
+                              children: [new TextRun({ text: "М.П.", color: "999999", size: 18, font: "Arial" })],
+                            }),
+                          ],
+                        }),
+                      ],
+                    }),
+                  ],
+                }),
+              ]
+            : [
+                // Empty content - just header and footer
+                new Paragraph({ spacing: { after: 12000 } }),
               ],
-              spacing: { after: 200 },
-            }),
-            new Paragraph({
-              children: [],
-              spacing: { after: 200 },
-              alignment: AlignmentType.RIGHT,
-            }),
-            new Paragraph({
-              children: [new TextRun({ text: "М.П.", size: 18, color: "999999" })],
-              alignment: AlignmentType.RIGHT,
-            }),
-          ],
         },
       ],
     })
@@ -496,7 +794,7 @@ export default function LetterheadClient() {
     const url = URL.createObjectURL(blob)
     const a = document.createElement("a")
     a.href = url
-    a.download = `blank-fts-${selectedVariant}.docx`
+    a.download = `blank-fts-${selectedVariant}${showContent ? "" : "-empty"}.docx`
     document.body.appendChild(a)
     a.click()
     document.body.removeChild(a)
@@ -548,6 +846,33 @@ export default function LetterheadClient() {
                   <p className="text-xs text-muted-foreground ml-8">{variant.description}</p>
                 </button>
               ))}
+            </div>
+
+            <div className="mb-6 p-4 bg-card rounded-lg border">
+              <h3 className="font-medium mb-3">Содержимое бланка</h3>
+              <button
+                onClick={() => setShowContent(!showContent)}
+                className={`flex items-center gap-3 w-full p-3 rounded-md border-2 transition-all ${
+                  showContent ? "border-primary/50 bg-primary/5" : "border-border"
+                }`}
+                style={
+                  showContent
+                    ? { borderColor: "rgba(153, 27, 27, 0.5)", backgroundColor: "rgba(153, 27, 27, 0.05)" }
+                    : {}
+                }
+              >
+                {showContent ? (
+                  <Eye className="h-5 w-5" style={{ color: "#991b1b" }} />
+                ) : (
+                  <EyeOff className="h-5 w-5 text-muted-foreground" />
+                )}
+                <div className="text-left">
+                  <p className="font-medium text-sm">{showContent ? "Полный бланк" : "Только колонтитулы"}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {showContent ? "С реквизитами и подписью" : "Без текста письма"}
+                  </p>
+                </div>
+              </button>
             </div>
 
             {/* Кнопки действий */}
@@ -1053,64 +1378,84 @@ export default function LetterheadClient() {
                     </header>
                   )}
 
-                  {/* Реквизиты письма - общие для всех вариантов */}
-                  <div style={{ marginBottom: "25px", fontSize: "13px", color: "#374151" }}>
-                    <div style={{ display: "flex", gap: "50px" }}>
-                      <div>
-                        <p style={{ marginBottom: "8px" }}>
-                          <span style={{ color: "#6b7280" }}>Исх. №</span>{" "}
-                          <span
-                            style={{ borderBottom: "1px solid #d1d5db", display: "inline-block", minWidth: "120px" }}
-                          >
-                            ________________
-                          </span>
-                        </p>
-                        <p>
-                          <span style={{ color: "#6b7280" }}>от</span>{" "}
-                          <span
-                            style={{ borderBottom: "1px solid #d1d5db", display: "inline-block", minWidth: "120px" }}
-                          >
-                            «____» ____________ 20__ г.
-                          </span>
-                        </p>
-                      </div>
-                      <div style={{ flex: 1 }}>
-                        <p style={{ color: "#6b7280", marginBottom: "4px" }}>Кому:</p>
-                        <div style={{ borderBottom: "1px solid #d1d5db", minHeight: "45px" }}></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Основная область письма */}
-                  <div style={{ flex: 1, minHeight: "140mm" }}>
-                    <div style={{ fontSize: "13px", lineHeight: "1.6", color: "#1f2937" }}>
-                      <p style={{ color: "#9ca3af", fontStyle: "italic" }}>[Текст письма]</p>
-                    </div>
-                  </div>
-
-                  {/* Подпись */}
-                  <div style={{ marginTop: "40px", marginBottom: "50px", fontSize: "13px", color: "#374151" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
-                      <div>
-                        <p style={{ marginBottom: "30px" }}>С уважением,</p>
-                        <div style={{ display: "flex", gap: "30px" }}>
+                  {showContent && (
+                    <>
+                      {/* Реквизиты письма */}
+                      <div style={{ marginBottom: "25px", fontSize: "13px", color: "#374151" }}>
+                        <div style={{ display: "flex", gap: "50px" }}>
                           <div>
-                            <p style={{ color: "#6b7280", fontSize: "11px", marginBottom: "4px" }}>Должность</p>
-                            <div style={{ borderBottom: "1px solid #d1d5db", minWidth: "150px", height: "20px" }}></div>
+                            <p style={{ marginBottom: "8px" }}>
+                              <span style={{ color: "#6b7280" }}>Исх. №</span>{" "}
+                              <span
+                                style={{
+                                  borderBottom: "1px solid #d1d5db",
+                                  display: "inline-block",
+                                  minWidth: "120px",
+                                }}
+                              >
+                                ________________
+                              </span>
+                            </p>
+                            <p>
+                              <span style={{ color: "#6b7280" }}>от</span>{" "}
+                              <span
+                                style={{
+                                  borderBottom: "1px solid #d1d5db",
+                                  display: "inline-block",
+                                  minWidth: "120px",
+                                }}
+                              >
+                                «____» ____________ 20__ г.
+                              </span>
+                            </p>
                           </div>
-                          <div>
-                            <p style={{ color: "#6b7280", fontSize: "11px", marginBottom: "4px" }}>Подпись</p>
-                            <div style={{ borderBottom: "1px solid #d1d5db", minWidth: "100px", height: "20px" }}></div>
-                          </div>
-                          <div>
-                            <p style={{ color: "#6b7280", fontSize: "11px", marginBottom: "4px" }}>Ф.И.О.</p>
-                            <div style={{ borderBottom: "1px solid #d1d5db", minWidth: "150px", height: "20px" }}></div>
+                          <div style={{ flex: 1 }}>
+                            <p style={{ color: "#6b7280", marginBottom: "4px" }}>Кому:</p>
+                            <div style={{ borderBottom: "1px solid #d1d5db", minHeight: "45px" }}></div>
                           </div>
                         </div>
                       </div>
-                      <div style={{ textAlign: "right", fontSize: "11px", color: "#9ca3af" }}>М.П.</div>
-                    </div>
-                  </div>
+
+                      {/* Основная область письма */}
+                      <div style={{ flex: 1, minHeight: "140mm" }}>
+                        <div style={{ fontSize: "13px", lineHeight: "1.6", color: "#1f2937" }}>
+                          <p style={{ color: "#9ca3af", fontStyle: "italic" }}>[Текст письма]</p>
+                        </div>
+                      </div>
+
+                      {/* Подпись */}
+                      <div style={{ marginTop: "40px", marginBottom: "50px", fontSize: "13px", color: "#374151" }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+                          <div>
+                            <p style={{ marginBottom: "30px" }}>С уважением,</p>
+                            <div style={{ display: "flex", gap: "30px" }}>
+                              <div>
+                                <p style={{ color: "#6b7280", fontSize: "11px", marginBottom: "4px" }}>Должность</p>
+                                <div
+                                  style={{ borderBottom: "1px solid #d1d5db", minWidth: "150px", height: "20px" }}
+                                ></div>
+                              </div>
+                              <div>
+                                <p style={{ color: "#6b7280", fontSize: "11px", marginBottom: "4px" }}>Подпись</p>
+                                <div
+                                  style={{ borderBottom: "1px solid #d1d5db", minWidth: "100px", height: "20px" }}
+                                ></div>
+                              </div>
+                              <div>
+                                <p style={{ color: "#6b7280", fontSize: "11px", marginBottom: "4px" }}>Ф.И.О.</p>
+                                <div
+                                  style={{ borderBottom: "1px solid #d1d5db", minWidth: "150px", height: "20px" }}
+                                ></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div style={{ textAlign: "right", fontSize: "11px", color: "#9ca3af" }}>М.П.</div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {!showContent && <div style={{ flex: 1 }} />}
 
                   {/* Нижний колонтитул */}
                   <footer style={{ marginTop: "auto", paddingTop: "15px", borderTop: "1px solid #e5e7eb" }}>
