@@ -1,10 +1,10 @@
 import Link from "next/link"
-import { Mail, Phone, MapPin } from "lucide-react"
+import { Mail, Phone, MapPin, FileText } from "lucide-react"
 import Image from "next/image"
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-muted/30">
+    <footer className="border-t border-border bg-muted/30 site-footer">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -124,16 +124,18 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} ООО «ФТС». Все права защищены.</p>
-            {/*
             <div className="flex gap-6 text-sm">
-              <Link href="/docs" className="text-muted-foreground hover:text-foreground transition-colors">
-                Политика конфиденциальности
+              <Link
+                href="/letterhead"
+                className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
+              >
+                <FileText className="h-4 w-4" />
+                Фирменные бланки
               </Link>
               <Link href="/docs" className="text-muted-foreground hover:text-foreground transition-colors">
                 Документы
               </Link>
             </div>
-*/}
           </div>
         </div>
       </div>
