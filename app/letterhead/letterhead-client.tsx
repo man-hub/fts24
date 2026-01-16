@@ -1,10 +1,8 @@
 "use client"
+import { useState, useRef } from "react"
+import { FileText, Printer, Check, Download } from "lucide-react"
 
-import Image from "next/image"
-import { useState } from "react"
-import { FileText, Printer, Check } from "lucide-react"
-
-type LetterheadVariant = "classic" | "minimal" | "modern" | "corporate" | "elegant"
+type LetterheadVariant = "classic" | "minimal" | "modern" | "corporate" | "elegant" | "tech" | "gradient" | "wave"
 
 const variants: { id: LetterheadVariant; name: string; description: string }[] = [
   { id: "classic", name: "Классический", description: "Традиционный деловой стиль с градиентной полосой" },
@@ -12,22 +10,506 @@ const variants: { id: LetterheadVariant; name: string; description: string }[] =
   { id: "modern", name: "Современный", description: "Геометрические акценты и современная типографика" },
   { id: "corporate", name: "Корпоративный", description: "Строгий официальный стиль" },
   { id: "elegant", name: "Элегантный", description: "Утончённый дизайн с тонкими линиями" },
+  { id: "tech", name: "Технологичный", description: "С изображением цифровых технологий" },
+  { id: "gradient", name: "Градиентный", description: "С абстрактным градиентным изображением" },
+  { id: "wave", name: "Волновой", description: "С динамичным волновым паттерном" },
 ]
 
 export default function LetterheadClient() {
   const [selectedVariant, setSelectedVariant] = useState<LetterheadVariant>("classic")
+  const printRef = useRef<HTMLDivElement>(null)
 
   const handlePrint = () => {
-    window.print()
+    const printContent = printRef.current
+    if (!printContent) return
+
+    const printWindow = window.open("", "_blank")
+    if (!printWindow) return
+
+    const htmlContent = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Бланк ООО ФТС</title>
+        <style>
+          @page {
+            size: A4;
+            margin: 0;
+          }
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+          body {
+            font-family: Arial, sans-serif;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+          .letterhead {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm 20mm 20mm 20mm;
+            background: white;
+          }
+          .header-image {
+            width: 100%;
+            height: 25mm;
+            object-fit: cover;
+            margin-bottom: 5mm;
+          }
+          .header-gradient {
+            height: 4px;
+            background: linear-gradient(90deg, #991b1b 0%, #991b1b 40%, #1e3a5f 100%);
+            margin-bottom: 15px;
+          }
+          .header-line {
+            height: 2px;
+            background: #991b1b;
+            margin-bottom: 15px;
+          }
+          .header-thin {
+            height: 1px;
+            background: #e5e7eb;
+            margin-top: 15px;
+          }
+          .logo-section {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 20px;
+          }
+          .logo-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+          }
+          .logo-img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+          }
+          .logo-img-sm {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+          }
+          .logo-img-lg {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+          }
+          .company-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #991b1b;
+          }
+          .company-name-dark {
+            color: #1e3a5f;
+          }
+          .company-name-black {
+            color: #111827;
+          }
+          .company-desc {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 4px;
+          }
+          .status-box {
+            text-align: right;
+            font-size: 11px;
+            color: #1e3a5f;
+            background: #f8fafc;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border-left: 2px solid #991b1b;
+          }
+          .status-box p {
+            margin: 2px 0;
+          }
+          .status-box .font-medium {
+            font-weight: 500;
+          }
+          .contact-right {
+            text-align: right;
+            font-size: 12px;
+          }
+          .contact-right p {
+            margin: 2px 0;
+          }
+          .contact-right .phone {
+            font-weight: 500;
+            color: #1e3a5f;
+          }
+          .contact-right .highlight {
+            color: #991b1b;
+            font-weight: 500;
+          }
+          .minimal-contact {
+            font-size: 11px;
+            color: #6b7280;
+          }
+          .modern-subtitle {
+            font-size: 12px;
+            font-weight: 500;
+            color: #991b1b;
+          }
+          .modern-divider {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+          }
+          .modern-divider-red {
+            height: 4px;
+            width: 48px;
+            background: #991b1b;
+          }
+          .modern-divider-gray {
+            height: 4px;
+            flex: 1;
+            background: #e5e7eb;
+          }
+          .elegant-header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #d1d5db;
+          }
+          .elegant-name {
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #374151;
+          }
+          .elegant-contacts {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 8px;
+            font-size: 11px;
+            color: #6b7280;
+          }
+          .elegant-dot {
+            color: #991b1b;
+          }
+          .elegant-tagline {
+            font-size: 11px;
+            color: #9ca3af;
+            font-style: italic;
+            margin-top: 8px;
+          }
+          .corporate-bar {
+            height: 8px;
+            background: #991b1b;
+            margin: -15mm -20mm 15px -20mm;
+            width: calc(100% + 40mm);
+          }
+          .corporate-border {
+            border-bottom: 2px solid #1e3a5f;
+            padding-bottom: 15px;
+          }
+          .corporate-registry {
+            font-size: 11px;
+            color: #991b1b;
+            margin-top: 8px;
+          }
+          .requisites {
+            margin-bottom: 25px;
+            font-size: 13px;
+            color: #374151;
+          }
+          .requisites-row {
+            display: flex;
+            gap: 50px;
+          }
+          .requisites-label {
+            color: #6b7280;
+          }
+          .requisites-line {
+            border-bottom: 1px solid #d1d5db;
+            display: inline-block;
+            min-width: 120px;
+          }
+          .requisites-to {
+            flex: 1;
+          }
+          .requisites-to-label {
+            color: #6b7280;
+            margin-bottom: 4px;
+          }
+          .requisites-to-box {
+            border-bottom: 1px solid #d1d5db;
+            min-height: 45px;
+          }
+          .main-content {
+            min-height: 140mm;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #1f2937;
+          }
+          .placeholder-text {
+            color: #9ca3af;
+            font-style: italic;
+          }
+          .signature {
+            margin-top: 40px;
+            margin-bottom: 50px;
+            font-size: 13px;
+            color: #374151;
+          }
+          .signature-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+          }
+          .signature-regards {
+            margin-bottom: 30px;
+          }
+          .signature-fields {
+            display: flex;
+            gap: 30px;
+          }
+          .signature-field label {
+            display: block;
+            font-size: 11px;
+            color: #6b7280;
+            margin-bottom: 4px;
+          }
+          .signature-field-line {
+            border-bottom: 1px solid #d1d5db;
+            min-width: 100px;
+            height: 20px;
+          }
+          .signature-field-line-wide {
+            min-width: 150px;
+          }
+          .signature-stamp {
+            font-size: 11px;
+            color: #9ca3af;
+            text-align: right;
+          }
+          .footer {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #e5e7eb;
+          }
+          .footer-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #6b7280;
+          }
+          .footer-company {
+            color: #991b1b;
+            font-weight: 600;
+          }
+          .footer-site {
+            color: #1e3a5f;
+          }
+          .footer-address {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-top: 4px;
+          }
+          .geometric-bg {
+            position: relative;
+          }
+          .geometric-square {
+            position: absolute;
+            left: -12px;
+            top: -12px;
+            width: 80px;
+            height: 80px;
+            background: rgba(153, 27, 27, 0.1);
+            border-radius: 8px;
+          }
+        </style>
+      </head>
+      <body>
+        ${printContent.innerHTML}
+      </body>
+      </html>
+    `
+
+    printWindow.document.write(htmlContent)
+    printWindow.document.close()
+
+    // Wait for images to load before printing
+    printWindow.onload = () => {
+      setTimeout(() => {
+        printWindow.print()
+        printWindow.close()
+      }, 500)
+    }
+  }
+
+  const handleDownloadDocx = async () => {
+    // Dynamic import for docx library
+    const {
+      Document,
+      Packer,
+      Paragraph,
+      TextRun,
+      Header,
+      Footer,
+      AlignmentType,
+      BorderStyle,
+      ImageRun,
+      Table,
+      TableRow,
+      TableCell,
+      WidthType,
+      HeadingLevel,
+    } = await import("docx")
+
+    // Create document
+    const doc = new Document({
+      sections: [
+        {
+          properties: {
+            page: {
+              margin: {
+                top: 567, // 1cm
+                right: 850, // 1.5cm
+                bottom: 567, // 1cm
+                left: 850, // 1.5cm
+              },
+            },
+          },
+          headers: {
+            default: new Header({
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: "ООО «ФТС»",
+                      bold: true,
+                      size: 28,
+                      color: "991b1b",
+                    }),
+                    new TextRun({
+                      text: "   •   fts24.ru   •   sales@fts24.ru   •   8 800 10 10 350",
+                      size: 20,
+                      color: "666666",
+                    }),
+                  ],
+                  border: {
+                    bottom: {
+                      color: "991b1b",
+                      space: 1,
+                      style: BorderStyle.SINGLE,
+                      size: 6,
+                    },
+                  },
+                  spacing: { after: 200 },
+                }),
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: "Разработчик отечественного программного обеспечения с 2005 года",
+                      size: 18,
+                      italics: true,
+                      color: "888888",
+                    }),
+                  ],
+                  spacing: { after: 400 },
+                }),
+              ],
+            }),
+          },
+          footers: {
+            default: new Footer({
+              children: [
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: "ООО «ФТС»",
+                      bold: true,
+                      size: 18,
+                      color: "991b1b",
+                    }),
+                    new TextRun({
+                      text: "  •  5-й проезд Марьиной Рощи, д. 15А, Москва  •  ИНН: 7715563903  •  +7 (495) 10-10-350",
+                      size: 18,
+                      color: "888888",
+                    }),
+                  ],
+                  border: {
+                    top: {
+                      color: "e5e7eb",
+                      space: 1,
+                      style: BorderStyle.SINGLE,
+                      size: 6,
+                    },
+                  },
+                  spacing: { before: 200 },
+                }),
+              ],
+            }),
+          },
+          children: [
+            new Paragraph({
+              children: [new TextRun({ text: "Исх. № ________________  от «____» ____________ 20__ г.", size: 22 })],
+              spacing: { after: 200 },
+            }),
+            new Paragraph({
+              children: [
+                new TextRun({ text: "Кому: ", color: "666666", size: 22 }),
+                new TextRun({ text: "_".repeat(60), size: 22 }),
+              ],
+              spacing: { after: 600 },
+            }),
+            new Paragraph({
+              children: [new TextRun({ text: "[Текст письма]", italics: true, color: "999999", size: 22 })],
+              spacing: { after: 2400 },
+            }),
+            new Paragraph({
+              children: [new TextRun({ text: "С уважением,", size: 22 })],
+              spacing: { after: 600 },
+            }),
+            new Paragraph({
+              children: [
+                new TextRun({
+                  text: "Должность: _________________________    Подпись: ___________    Ф.И.О.: _________________________",
+                  size: 20,
+                }),
+              ],
+              spacing: { after: 200 },
+            }),
+            new Paragraph({
+              children: [],
+              spacing: { after: 200 },
+              alignment: AlignmentType.RIGHT,
+            }),
+            new Paragraph({
+              children: [new TextRun({ text: "М.П.", size: 18, color: "999999" })],
+              alignment: AlignmentType.RIGHT,
+            }),
+          ],
+        },
+      ],
+    })
+
+    // Generate and download
+    const blob = await Packer.toBlob(doc)
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement("a")
+    a.href = url
+    a.download = `blank-fts-${selectedVariant}.docx`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
   }
 
   return (
     <div className="min-h-screen bg-muted/30">
-      <div className="max-w-7xl mx-auto py-8 px-4 print:hidden">
+      <div className="max-w-7xl mx-auto py-8 px-4">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground mb-2">Фирменные бланки ООО «ФТС»</h1>
           <p className="text-muted-foreground">
-            Выберите вариант бланка и нажмите кнопку печати для сохранения в PDF или печати на принтере.
+            Выберите вариант бланка и нажмите кнопку печати для сохранения в PDF или скачайте в формате DOCX.
           </p>
         </div>
 
@@ -37,7 +519,7 @@ export default function LetterheadClient() {
             <h2 className="text-lg font-semibold text-foreground mb-4">Выберите вариант</h2>
 
             {/* Выбор варианта - вертикальный список */}
-            <div className="flex flex-col gap-3 mb-6">
+            <div className="flex flex-col gap-3 mb-6 max-h-[400px] overflow-y-auto pr-2">
               {variants.map((variant) => (
                 <button
                   key={variant.id}
@@ -78,6 +560,14 @@ export default function LetterheadClient() {
                 <Printer className="h-5 w-5" />
                 Печать / Сохранить PDF
               </button>
+              <button
+                onClick={handleDownloadDocx}
+                className="flex items-center justify-center gap-2 px-6 py-3 rounded-md font-medium transition-colors border-2"
+                style={{ borderColor: "#991b1b", color: "#991b1b" }}
+              >
+                <Download className="h-5 w-5" />
+                Скачать DOCX
+              </button>
             </div>
 
             <p className="text-sm text-muted-foreground mt-4">
@@ -95,307 +585,567 @@ export default function LetterheadClient() {
             >
               {/* Бланк письма - формат A4, масштабированный для превью */}
               <div
-                id="letterhead-print"
+                ref={printRef}
                 className="bg-white shadow-lg mx-auto origin-top-left"
                 style={{
                   width: "210mm",
                   minHeight: "297mm",
-                  padding: "15mm 20mm 20mm 20mm",
-                  boxSizing: "border-box",
-                  transform: "scale(0.6)",
+                  transform: "scale(0.5)",
                   transformOrigin: "top left",
                 }}
               >
-                {/* Вариант: Классический */}
-                {selectedVariant === "classic" && (
-                  <>
-                    <header className="relative mb-8">
+                <div
+                  className="letterhead"
+                  style={{
+                    padding: "15mm 20mm 20mm 20mm",
+                    minHeight: "297mm",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  {/* Вариант: Классический */}
+                  {selectedVariant === "classic" && (
+                    <header style={{ marginBottom: "20px" }}>
                       <div
-                        className="absolute top-0 left-0 right-0 h-1 -mt-4"
+                        className="header-gradient"
                         style={{
+                          height: "4px",
                           background: "linear-gradient(90deg, #991b1b 0%, #991b1b 40%, #1e3a5f 100%)",
+                          marginBottom: "15px",
                         }}
                       />
-                      <div className="flex items-start justify-between pt-2">
-                        <div className="flex items-center gap-4">
-                          <Image
+                      <div
+                        className="logo-section"
+                        style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}
+                      >
+                        <div className="logo-left" style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+                          <img
                             src="/images/logo-fts.jpg"
                             alt="ФТС"
-                            width={70}
-                            height={70}
-                            className="object-contain"
+                            style={{ width: "70px", height: "70px", objectFit: "contain" }}
                           />
                           <div>
-                            <h1 className="text-2xl font-bold" style={{ color: "#991b1b" }}>
+                            <div
+                              className="company-name"
+                              style={{ fontSize: "24px", fontWeight: "bold", color: "#991b1b" }}
+                            >
                               ООО «ФТС»
-                            </h1>
-                            <p className="text-sm text-gray-600 mt-1">
+                            </div>
+                            <div
+                              className="company-desc"
+                              style={{ fontSize: "12px", color: "#6b7280", marginTop: "4px" }}
+                            >
                               Разработка программного обеспечения
                               <br />и системная интеграция
-                            </p>
+                            </div>
                           </div>
                         </div>
-                        <div className="text-right">
-                          <div
-                            className="text-xs leading-relaxed px-3 py-2 rounded border-l-2"
-                            style={{
-                              color: "#1e3a5f",
-                              backgroundColor: "#f8fafc",
-                              borderColor: "#991b1b",
-                            }}
-                          >
-                            <p className="font-medium">Разработчик отечественного ПО с 2005 г.</p>
-                            <p>ПО включено в реестр российского ПО</p>
-                            <p>Минцифры России</p>
-                          </div>
+                        <div
+                          className="status-box"
+                          style={{
+                            textAlign: "right",
+                            fontSize: "11px",
+                            color: "#1e3a5f",
+                            background: "#f8fafc",
+                            padding: "8px 12px",
+                            borderRadius: "4px",
+                            borderLeft: "2px solid #991b1b",
+                          }}
+                        >
+                          <p style={{ fontWeight: "500" }}>Разработчик отечественного ПО с 2005 г.</p>
+                          <p>ПО включено в реестр российского ПО</p>
+                          <p>Минцифры России</p>
                         </div>
                       </div>
-                      <div className="mt-6 h-px" style={{ backgroundColor: "#e5e7eb" }} />
+                      <div
+                        className="header-thin"
+                        style={{ height: "1px", background: "#e5e7eb", marginTop: "15px" }}
+                      />
                     </header>
-                  </>
-                )}
+                  )}
 
-                {/* Вариант: Минималистичный */}
-                {selectedVariant === "minimal" && (
-                  <header className="relative mb-8">
-                    <div className="flex items-center gap-3 mb-6">
-                      <Image src="/images/logo-fts.jpg" alt="ФТС" width={50} height={50} className="object-contain" />
-                      <div>
-                        <h1 className="text-xl font-semibold" style={{ color: "#1f2937" }}>
-                          ООО «ФТС»
-                        </h1>
-                        <p className="text-xs text-gray-500">fts24.ru • sales@fts24.ru • 8 800 10 10 350</p>
+                  {/* Вариант: Минималистичный */}
+                  {selectedVariant === "minimal" && (
+                    <header style={{ marginBottom: "20px" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "15px" }}>
+                        <img
+                          src="/images/logo-fts.jpg"
+                          alt="ФТС"
+                          style={{ width: "50px", height: "50px", objectFit: "contain" }}
+                        />
+                        <div>
+                          <div style={{ fontSize: "20px", fontWeight: "600", color: "#1f2937" }}>ООО «ФТС»</div>
+                          <div style={{ fontSize: "11px", color: "#6b7280" }}>
+                            fts24.ru • sales@fts24.ru • 8 800 10 10 350
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                    <div className="h-px" style={{ backgroundColor: "#e5e7eb" }} />
-                  </header>
-                )}
+                      <div style={{ height: "1px", background: "#e5e7eb" }} />
+                    </header>
+                  )}
 
-                {/* Вариант: Современный */}
-                {selectedVariant === "modern" && (
-                  <header className="relative mb-8">
-                    <div className="flex items-start justify-between">
-                      <div className="flex items-center gap-4">
-                        <div className="relative">
-                          <div
-                            className="absolute -left-3 -top-3 w-20 h-20 rounded-lg opacity-10"
-                            style={{ backgroundColor: "#991b1b" }}
-                          />
-                          <Image
+                  {/* Вариант: Современный */}
+                  {selectedVariant === "modern" && (
+                    <header style={{ marginBottom: "20px" }}>
+                      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+                          <div style={{ position: "relative" }}>
+                            <div
+                              style={{
+                                position: "absolute",
+                                left: "-12px",
+                                top: "-12px",
+                                width: "80px",
+                                height: "80px",
+                                background: "rgba(153, 27, 27, 0.1)",
+                                borderRadius: "8px",
+                              }}
+                            />
+                            <img
+                              src="/images/logo-fts.jpg"
+                              alt="ФТС"
+                              style={{ position: "relative", width: "60px", height: "60px", objectFit: "contain" }}
+                            />
+                          </div>
+                          <div>
+                            <div
+                              style={{
+                                fontSize: "24px",
+                                fontWeight: "bold",
+                                letterSpacing: "-0.5px",
+                                color: "#111827",
+                              }}
+                            >
+                              ООО «ФТС»
+                            </div>
+                            <div style={{ fontSize: "12px", fontWeight: "500", color: "#991b1b" }}>
+                              FUTURE TECHNOLOGY SOLUTIONS
+                            </div>
+                          </div>
+                        </div>
+                        <div style={{ textAlign: "right", fontSize: "11px", color: "#6b7280" }}>
+                          <p>fts24.ru</p>
+                          <p>sales@fts24.ru</p>
+                          <p style={{ fontWeight: "500", color: "#991b1b" }}>8 800 10 10 350</p>
+                        </div>
+                      </div>
+                      <div style={{ display: "flex", alignItems: "center", gap: "8px", marginTop: "20px" }}>
+                        <div style={{ height: "4px", width: "48px", background: "#991b1b" }} />
+                        <div style={{ height: "4px", flex: 1, background: "#e5e7eb" }} />
+                      </div>
+                    </header>
+                  )}
+
+                  {/* Вариант: Корпоративный */}
+                  {selectedVariant === "corporate" && (
+                    <header style={{ marginBottom: "20px" }}>
+                      <div
+                        style={{
+                          height: "8px",
+                          background: "#991b1b",
+                          margin: "-15mm -20mm 15px -20mm",
+                          width: "calc(100% + 40mm)",
+                        }}
+                      />
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          justifyContent: "space-between",
+                          paddingBottom: "15px",
+                          borderBottom: "2px solid #1e3a5f",
+                        }}
+                      >
+                        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+                          <img
                             src="/images/logo-fts.jpg"
                             alt="ФТС"
-                            width={60}
-                            height={60}
-                            className="relative object-contain"
+                            style={{ width: "80px", height: "80px", objectFit: "contain" }}
                           />
+                          <div>
+                            <div style={{ fontSize: "28px", fontWeight: "bold", color: "#1e3a5f" }}>ООО «ФТС»</div>
+                            <div style={{ fontSize: "12px", color: "#6b7280", marginTop: "4px" }}>
+                              Разработка программного обеспечения и системная интеграция
+                            </div>
+                            <div style={{ fontSize: "11px", color: "#991b1b", marginTop: "8px" }}>
+                              Разработчик отечественного ПО • Реестр Минцифры России
+                            </div>
+                          </div>
                         </div>
-                        <div>
-                          <h1 className="text-2xl font-bold tracking-tight" style={{ color: "#111827" }}>
-                            ООО «ФТС»
-                          </h1>
-                          <p className="text-sm font-medium" style={{ color: "#991b1b" }}>
-                            FUTURE TECHNOLOGY SOLUTIONS
-                          </p>
+                        <div style={{ textAlign: "right", fontSize: "13px" }}>
+                          <p style={{ fontWeight: "500", color: "#1e3a5f" }}>8 800 10 10 350</p>
+                          <p style={{ color: "#6b7280" }}>+7 (495) 10-10-350</p>
+                          <p style={{ color: "#6b7280" }}>sales@fts24.ru</p>
+                          <p style={{ color: "#9ca3af", fontSize: "11px", marginTop: "4px" }}>fts24.ru</p>
                         </div>
                       </div>
-                      <div className="text-right text-xs text-gray-500">
-                        <p>fts24.ru</p>
-                        <p>sales@fts24.ru</p>
-                        <p className="font-medium" style={{ color: "#991b1b" }}>
-                          8 800 10 10 350
-                        </p>
-                      </div>
-                    </div>
-                    <div className="mt-6 flex items-center gap-2">
-                      <div className="h-1 w-12" style={{ backgroundColor: "#991b1b" }} />
-                      <div className="h-1 flex-1" style={{ backgroundColor: "#e5e7eb" }} />
-                    </div>
-                  </header>
-                )}
+                    </header>
+                  )}
 
-                {/* Вариант: Корпоративный */}
-                {selectedVariant === "corporate" && (
-                  <header className="relative mb-8">
-                    <div className="absolute top-0 left-0 right-0 h-2 -mt-4" style={{ backgroundColor: "#991b1b" }} />
-                    <div
-                      className="flex items-start justify-between pt-4 pb-4 border-b-2"
-                      style={{ borderColor: "#1e3a5f" }}
+                  {/* Вариант: Элегантный */}
+                  {selectedVariant === "elegant" && (
+                    <header
+                      style={{
+                        marginBottom: "20px",
+                        textAlign: "center",
+                        paddingBottom: "20px",
+                        borderBottom: "1px solid #d1d5db",
+                      }}
                     >
-                      <div className="flex items-center gap-5">
-                        <Image src="/images/logo-fts.jpg" alt="ФТС" width={80} height={80} className="object-contain" />
-                        <div>
-                          <h1 className="text-3xl font-bold" style={{ color: "#1e3a5f" }}>
-                            ООО «ФТС»
-                          </h1>
-                          <p className="text-sm text-gray-600 mt-1">
-                            Разработка программного обеспечения и системная интеграция
-                          </p>
-                          <p className="text-xs mt-2" style={{ color: "#991b1b" }}>
-                            Разработчик отечественного ПО • Реестр Минцифры России
-                          </p>
-                        </div>
-                      </div>
-                      <div className="text-right text-sm">
-                        <p className="font-medium" style={{ color: "#1e3a5f" }}>
-                          8 800 10 10 350
-                        </p>
-                        <p className="text-gray-600">+7 (495) 10-10-350</p>
-                        <p className="text-gray-600">sales@fts24.ru</p>
-                        <p className="text-gray-500 text-xs mt-1">fts24.ru</p>
-                      </div>
-                    </div>
-                  </header>
-                )}
-
-                {/* Вариант: Элегантный */}
-                {selectedVariant === "elegant" && (
-                  <header className="relative mb-8">
-                    <div className="text-center pb-6 border-b" style={{ borderColor: "#d1d5db" }}>
-                      <Image
+                      <img
                         src="/images/logo-fts.jpg"
                         alt="ФТС"
-                        width={60}
-                        height={60}
-                        className="mx-auto object-contain mb-3"
+                        style={{ width: "60px", height: "60px", objectFit: "contain", margin: "0 auto 12px" }}
                       />
-                      <h1 className="text-2xl font-light tracking-widest uppercase" style={{ color: "#374151" }}>
+                      <div
+                        style={{
+                          fontSize: "24px",
+                          fontWeight: "300",
+                          letterSpacing: "4px",
+                          textTransform: "uppercase",
+                          color: "#374151",
+                        }}
+                      >
                         ООО «ФТС»
-                      </h1>
-                      <div className="flex items-center justify-center gap-4 mt-2 text-xs text-gray-500">
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          gap: "15px",
+                          marginTop: "8px",
+                          fontSize: "11px",
+                          color: "#6b7280",
+                        }}
+                      >
                         <span>fts24.ru</span>
                         <span style={{ color: "#991b1b" }}>•</span>
                         <span>sales@fts24.ru</span>
                         <span style={{ color: "#991b1b" }}>•</span>
                         <span>8 800 10 10 350</span>
                       </div>
-                      <p className="text-xs text-gray-400 mt-2 italic">
+                      <div style={{ fontSize: "11px", color: "#9ca3af", fontStyle: "italic", marginTop: "8px" }}>
                         Разработка программного обеспечения и системная интеграция с 2005 года
-                      </p>
-                    </div>
-                  </header>
-                )}
+                      </div>
+                    </header>
+                  )}
 
-                {/* Реквизиты письма - общие для всех вариантов */}
-                <div className="mb-8 text-sm" style={{ color: "#374151" }}>
-                  <div className="flex gap-12">
-                    <div>
-                      <p className="mb-2">
-                        <span className="text-gray-500">Исх. №</span>{" "}
-                        <span className="border-b border-gray-300 inline-block min-w-32">________________</span>
-                      </p>
-                      <p>
-                        <span className="text-gray-500">от</span>{" "}
-                        <span className="border-b border-gray-300 inline-block min-w-32">
-                          «____» ____________ 20__ г.
-                        </span>
-                      </p>
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-gray-500 mb-1">Кому:</p>
-                      <div className="border-b border-gray-300 min-h-12"></div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Основная область письма */}
-                <main className="flex-1" style={{ minHeight: "140mm" }}>
-                  <div className="text-sm leading-relaxed" style={{ color: "#1f2937" }}>
-                    <p className="text-gray-400 italic print:text-transparent">[Текст письма]</p>
-                  </div>
-                </main>
-
-                {/* Подпись */}
-                <div className="mt-12 mb-16 text-sm" style={{ color: "#374151" }}>
-                  <div className="flex justify-between items-end">
-                    <div>
-                      <p className="mb-8">С уважением,</p>
-                      <div className="flex gap-8">
-                        <div>
-                          <p className="text-gray-500 text-xs mb-1">Должность</p>
-                          <div className="border-b border-gray-300 min-w-40 h-5"></div>
-                        </div>
-                        <div>
-                          <p className="text-gray-500 text-xs mb-1">Подпись</p>
-                          <div className="border-b border-gray-300 min-w-24 h-5"></div>
-                        </div>
-                        <div>
-                          <p className="text-gray-500 text-xs mb-1">Ф.И.О.</p>
-                          <div className="border-b border-gray-300 min-w-40 h-5"></div>
+                  {/* Вариант: Технологичный (с изображением) */}
+                  {selectedVariant === "tech" && (
+                    <header style={{ marginBottom: "20px" }}>
+                      <div
+                        style={{
+                          position: "relative",
+                          margin: "-15mm -20mm 15px -20mm",
+                          height: "25mm",
+                          overflow: "hidden",
+                        }}
+                      >
+                        <img
+                          src="/abstract-digital-technology-circuit-board-pattern-.jpg"
+                          alt=""
+                          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                        />
+                        <div
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            background: "linear-gradient(to right, rgba(153, 27, 27, 0.9), rgba(30, 58, 95, 0.7))",
+                          }}
+                        />
+                        <div
+                          style={{
+                            position: "absolute",
+                            left: "20mm",
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "15px",
+                          }}
+                        >
+                          <img
+                            src="/images/logo-fts.jpg"
+                            alt="ФТС"
+                            style={{
+                              width: "50px",
+                              height: "50px",
+                              objectFit: "contain",
+                              borderRadius: "8px",
+                              background: "white",
+                              padding: "4px",
+                            }}
+                          />
+                          <div style={{ color: "white" }}>
+                            <div style={{ fontSize: "22px", fontWeight: "bold" }}>ООО «ФТС»</div>
+                            <div style={{ fontSize: "11px", opacity: "0.9" }}>Инновационные IT-решения для бизнеса</div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="text-right text-xs text-gray-400">М.П.</div>
-                  </div>
-                </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          fontSize: "11px",
+                          color: "#6b7280",
+                        }}
+                      >
+                        <span>Разработчик отечественного ПО • Реестр Минцифры России</span>
+                        <span>fts24.ru • sales@fts24.ru • 8 800 10 10 350</span>
+                      </div>
+                      <div style={{ height: "1px", background: "#e5e7eb", marginTop: "10px" }} />
+                    </header>
+                  )}
 
-                {/* Нижний колонтитул */}
-                <footer className="mt-auto pt-4 border-t" style={{ borderColor: "#e5e7eb" }}>
-                  <div className="flex items-center justify-between text-xs" style={{ color: "#6b7280" }}>
-                    <div className="flex items-center gap-2">
-                      <span style={{ color: "#991b1b", fontWeight: 600 }}>ООО «ФТС»</span>
-                      <span>•</span>
-                      <span style={{ color: "#1e3a5f" }}>fts24.ru</span>
-                      <span>•</span>
-                      <span>sales@fts24.ru</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span>8 800 10 10 350</span>
-                      <span>•</span>
-                      <span>+7 (495) 10-10-350</span>
+                  {/* Вариант: Градиентный (с изображением) */}
+                  {selectedVariant === "gradient" && (
+                    <header style={{ marginBottom: "20px" }}>
+                      <div
+                        style={{
+                          position: "relative",
+                          margin: "-15mm -20mm 15px -20mm",
+                          height: "30mm",
+                          overflow: "hidden",
+                        }}
+                      >
+                        <img
+                          src="/abstract-gradient-mesh-red-dark-blue-smooth-backgr.jpg"
+                          alt=""
+                          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                        />
+                        <div
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            background: "linear-gradient(135deg, rgba(153, 27, 27, 0.85), rgba(30, 58, 95, 0.85))",
+                          }}
+                        />
+                        <div
+                          style={{
+                            position: "absolute",
+                            left: "20mm",
+                            bottom: "5mm",
+                            display: "flex",
+                            alignItems: "flex-end",
+                            gap: "20px",
+                          }}
+                        >
+                          <img
+                            src="/images/logo-fts.jpg"
+                            alt="ФТС"
+                            style={{
+                              width: "60px",
+                              height: "60px",
+                              objectFit: "contain",
+                              borderRadius: "8px",
+                              background: "white",
+                              padding: "5px",
+                              boxShadow: "0 4px 6px rgba(0,0,0,0.2)",
+                            }}
+                          />
+                          <div style={{ color: "white", marginBottom: "5px" }}>
+                            <div
+                              style={{ fontSize: "26px", fontWeight: "bold", textShadow: "0 2px 4px rgba(0,0,0,0.2)" }}
+                            >
+                              ООО «ФТС»
+                            </div>
+                            <div style={{ fontSize: "12px", opacity: "0.95" }}>
+                              Разработка программного обеспечения и системная интеграция
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          style={{
+                            position: "absolute",
+                            right: "20mm",
+                            bottom: "5mm",
+                            color: "white",
+                            textAlign: "right",
+                            fontSize: "11px",
+                          }}
+                        >
+                          <p>8 800 10 10 350</p>
+                          <p style={{ opacity: "0.8" }}>sales@fts24.ru • fts24.ru</p>
+                        </div>
+                      </div>
+                    </header>
+                  )}
+
+                  {/* Вариант: Волновой (с изображением) */}
+                  {selectedVariant === "wave" && (
+                    <header style={{ marginBottom: "20px" }}>
+                      <div
+                        style={{
+                          position: "relative",
+                          margin: "-15mm -20mm 15px -20mm",
+                          height: "28mm",
+                          overflow: "hidden",
+                        }}
+                      >
+                        <img
+                          src="/abstract-wave-lines-pattern-red-flowing-curves-dar.jpg"
+                          alt=""
+                          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                        />
+                        <div
+                          style={{
+                            position: "absolute",
+                            inset: 0,
+                            background:
+                              "linear-gradient(to right, rgba(17, 24, 39, 0.95), rgba(17, 24, 39, 0.7), transparent)",
+                          }}
+                        />
+                        <div
+                          style={{
+                            position: "absolute",
+                            left: "20mm",
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "15px",
+                          }}
+                        >
+                          <img
+                            src="/images/logo-fts.jpg"
+                            alt="ФТС"
+                            style={{ width: "55px", height: "55px", objectFit: "contain" }}
+                          />
+                          <div>
+                            <div style={{ fontSize: "24px", fontWeight: "bold", color: "white" }}>ООО «ФТС»</div>
+                            <div style={{ fontSize: "11px", color: "#991b1b", fontWeight: "500" }}>
+                              FUTURE TECHNOLOGY SOLUTIONS
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          style={{
+                            position: "absolute",
+                            right: "20mm",
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            color: "white",
+                            textAlign: "right",
+                            fontSize: "11px",
+                          }}
+                        >
+                          <p style={{ fontWeight: "500" }}>8 800 10 10 350</p>
+                          <p style={{ opacity: "0.7" }}>+7 (495) 10-10-350</p>
+                          <p style={{ opacity: "0.7" }}>sales@fts24.ru</p>
+                        </div>
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          gap: "20px",
+                          fontSize: "11px",
+                          color: "#6b7280",
+                        }}
+                      >
+                        <span>Разработчик отечественного ПО</span>
+                        <span style={{ color: "#991b1b" }}>•</span>
+                        <span>Реестр Минцифры России</span>
+                        <span style={{ color: "#991b1b" }}>•</span>
+                        <span>fts24.ru</span>
+                      </div>
+                    </header>
+                  )}
+
+                  {/* Реквизиты письма - общие для всех вариантов */}
+                  <div style={{ marginBottom: "25px", fontSize: "13px", color: "#374151" }}>
+                    <div style={{ display: "flex", gap: "50px" }}>
+                      <div>
+                        <p style={{ marginBottom: "8px" }}>
+                          <span style={{ color: "#6b7280" }}>Исх. №</span>{" "}
+                          <span
+                            style={{ borderBottom: "1px solid #d1d5db", display: "inline-block", minWidth: "120px" }}
+                          >
+                            ________________
+                          </span>
+                        </p>
+                        <p>
+                          <span style={{ color: "#6b7280" }}>от</span>{" "}
+                          <span
+                            style={{ borderBottom: "1px solid #d1d5db", display: "inline-block", minWidth: "120px" }}
+                          >
+                            «____» ____________ 20__ г.
+                          </span>
+                        </p>
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <p style={{ color: "#6b7280", marginBottom: "4px" }}>Кому:</p>
+                        <div style={{ borderBottom: "1px solid #d1d5db", minHeight: "45px" }}></div>
+                      </div>
                     </div>
                   </div>
-                  <div className="text-xs mt-1" style={{ color: "#9ca3af" }}>
-                    5-й проезд Марьиной Рощи, д. 15А, Москва • ИНН: 7715563903
+
+                  {/* Основная область письма */}
+                  <div style={{ flex: 1, minHeight: "140mm" }}>
+                    <div style={{ fontSize: "13px", lineHeight: "1.6", color: "#1f2937" }}>
+                      <p style={{ color: "#9ca3af", fontStyle: "italic" }}>[Текст письма]</p>
+                    </div>
                   </div>
-                </footer>
+
+                  {/* Подпись */}
+                  <div style={{ marginTop: "40px", marginBottom: "50px", fontSize: "13px", color: "#374151" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+                      <div>
+                        <p style={{ marginBottom: "30px" }}>С уважением,</p>
+                        <div style={{ display: "flex", gap: "30px" }}>
+                          <div>
+                            <p style={{ color: "#6b7280", fontSize: "11px", marginBottom: "4px" }}>Должность</p>
+                            <div style={{ borderBottom: "1px solid #d1d5db", minWidth: "150px", height: "20px" }}></div>
+                          </div>
+                          <div>
+                            <p style={{ color: "#6b7280", fontSize: "11px", marginBottom: "4px" }}>Подпись</p>
+                            <div style={{ borderBottom: "1px solid #d1d5db", minWidth: "100px", height: "20px" }}></div>
+                          </div>
+                          <div>
+                            <p style={{ color: "#6b7280", fontSize: "11px", marginBottom: "4px" }}>Ф.И.О.</p>
+                            <div style={{ borderBottom: "1px solid #d1d5db", minWidth: "150px", height: "20px" }}></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ textAlign: "right", fontSize: "11px", color: "#9ca3af" }}>М.П.</div>
+                    </div>
+                  </div>
+
+                  {/* Нижний колонтитул */}
+                  <footer style={{ marginTop: "auto", paddingTop: "15px", borderTop: "1px solid #e5e7eb" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        fontSize: "11px",
+                        color: "#6b7280",
+                      }}
+                    >
+                      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                        <span style={{ color: "#991b1b", fontWeight: "600" }}>ООО «ФТС»</span>
+                        <span>•</span>
+                        <span style={{ color: "#1e3a5f" }}>fts24.ru</span>
+                        <span>•</span>
+                        <span>sales@fts24.ru</span>
+                      </div>
+                      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                        <span>8 800 10 10 350</span>
+                        <span>•</span>
+                        <span>+7 (495) 10-10-350</span>
+                      </div>
+                    </div>
+                    <div style={{ fontSize: "11px", marginTop: "4px", color: "#9ca3af" }}>
+                      5-й проезд Марьиной Рощи, д. 15А, Москва • ИНН: 7715563903
+                    </div>
+                  </footer>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Стили для печати */}
-      <style jsx global>{`
-        @media print {
-          @page {
-            size: A4;
-            margin: 0;
-          }
-          
-          body {
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-          }
-          
-          /* Скрываем всё кроме бланка */
-          body > * {
-            visibility: hidden;
-          }
-          
-          #letterhead-print,
-          #letterhead-print * {
-            visibility: visible;
-          }
-          
-          #letterhead-print {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 210mm !important;
-            min-height: 297mm !important;
-            transform: none !important;
-            box-shadow: none !important;
-          }
-          
-          /* Скрываем навигацию, футер и панель управления */
-          nav,
-          header:not(#letterhead-print header),
-          footer:not(#letterhead-print footer),
-          .print\\:hidden {
-            display: none !important;
-          }
-        }
-      `}</style>
     </div>
   )
 }
