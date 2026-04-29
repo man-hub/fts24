@@ -520,6 +520,56 @@ export default function VATSPage() {
       </section>
       */}
 
+      {/* Legal Information */}
+      <section className="border-b border-border bg-muted/30 py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl">
+            <div className="mb-8 text-center">
+              <h2 className="mb-3 text-2xl font-bold md:text-3xl text-balance">
+                Правообладатель и статус программного продукта
+              </h2>
+              <div
+                className="mx-auto h-1 w-20 bg-primary"
+                style={{ background: "rgb(190, 18, 18)" }}
+              ></div>
+            </div>
+            <Card>
+              <CardContent className="p-6 md:p-8 space-y-5">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Программа для ЭВМ «Виртуальная АТС» разработана ООО «ФТС» (Общество с ограниченной ответственностью
+                  «Фьюче Текнолоджи Солюшинс»).
+                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Исключительные права на программу принадлежат ООО «ФТС».
+                </p>
+                <div
+                  className="rounded-lg bg-muted/50 p-4"
+                  style={{ borderLeft: "3px solid rgb(190, 18, 18)" }}
+                >
+                  <p className="text-sm leading-relaxed">
+                    Программа включена в Единый реестр российских программ для электронных вычислительных машин и баз
+                    данных:{" "}
+                    <span className="font-semibold">реестровая запись № 8839 от 21.01.2021</span>.
+                  </p>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Предоставление прав использования осуществляется на основании лицензионного договора путём
+                  предоставления удалённого доступа через сеть Интернет.
+                </p>
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <Button asChild>
+                    <Link href="/docs">Подробнее об официальных сведениях</Link>
+                  </Button>
+                  <Button variant="outline" asChild>
+                    <Link href="/pricing">Смотреть тарифы</Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="bg-primary py-16 text-primary-foreground md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -169,6 +169,98 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Russian Software Developer */}
+      <section className="border-b border-border py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl">
+            <div className="mb-8 text-center">
+              <Badge className="mb-4" variant="secondary">
+                Российский разработчик ПО
+              </Badge>
+              <h2 className="mb-3 text-3xl font-bold md:text-4xl text-balance">
+                Российский разработчик программного обеспечения и правообладатель отечественных IT-решений
+              </h2>
+              <div
+                className="mx-auto mt-4 h-1 w-20 bg-primary"
+                style={{ background: "rgb(190, 18, 18)" }}
+              ></div>
+            </div>
+
+            <Card>
+              <CardContent className="p-6 md:p-8 space-y-5">
+                <p className="text-muted-foreground leading-relaxed">
+                  ООО «ФТС» с 2005 года осуществляет разработку, внедрение и сопровождение программных продуктов в
+                  области телекоммуникаций, корпоративных коммуникаций, биллинга, автоматизации расчётов и
+                  интеграционных сервисов.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Компания является правообладателем собственных программных решений, включённых в инфраструктуру
+                  российских корпоративных и операторских IT-систем, а также разработчиком программного обеспечения,
+                  включённого в Единый реестр российского ПО.
+                </p>
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <Button asChild>
+                    <Link href="/docs">Официальные сведения</Link>
+                  </Button>
+                  <Button variant="outline" asChild>
+                    <Link href="/pricing">Стоимость решений</Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Company Information */}
+      <section className="border-b border-border bg-muted/30 py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl">
+            <div className="mb-8 flex items-center gap-4">
+              <Building2 className="h-8 w-8 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
+              <h2 className="text-3xl font-bold">Сведения о компании</h2>
+            </div>
+
+            <Card className="mb-6">
+              <CardContent className="p-6 md:p-8">
+                <dl className="grid gap-4 sm:grid-cols-[220px_1fr]">
+                  <dt className="text-sm font-medium text-muted-foreground">Краткое наименование:</dt>
+                  <dd className="text-sm font-semibold">ООО «ФТС»</dd>
+
+                  <dt className="text-sm font-medium text-muted-foreground">Полное наименование:</dt>
+                  <dd className="text-sm">
+                    Общество с ограниченной ответственностью «Фьюче Текнолоджи Солюшинс»
+                  </dd>
+
+                  <dt className="text-sm font-medium text-muted-foreground">ИНН:</dt>
+                  <dd className="text-sm">7715563903</dd>
+
+                  <dt className="text-sm font-medium text-muted-foreground">ОКВЭД:</dt>
+                  <dd className="text-sm">62.01 — Разработка компьютерного программного обеспечения</dd>
+
+                  <dt className="text-sm font-medium text-muted-foreground">Юридический адрес:</dt>
+                  <dd className="text-sm">
+                    127018, г. Москва, вн.тер.г. муниципальный округ Марьина Роща, пр-д 3-й Марьиной Рощи, д. 40, стр.
+                    1, этаж 2, помещ. II, ком. 1, кабинет 3
+                  </dd>
+                </dl>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6 md:p-8">
+                <h3 className="mb-3 font-semibold text-lg">Сертификация и права</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Программное обеспечение «Виртуальная АТС» включено в Единый реестр российского ПО (реестровая запись
+                  № 8839 от 21.01.2021). Исключительные права принадлежат ООО «ФТС» — Обществу с ограниченной
+                  ответственностью «Фьюче Текнолоджи Солюшинс».
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="bg-primary py-16 text-primary-foreground md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

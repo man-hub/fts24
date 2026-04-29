@@ -16,11 +16,12 @@ export function Footer() {
             <p className="text-sm text-muted-foreground mb-4">
               Enterprise-решения для телеком-операторов и бизнеса с 2005 года
             </p>
-            <p className="text-xs text-muted-foreground">
-              ООО «ФТС»
-              <br />
-              ИНН: 7715563903
-            </p>
+            <div className="text-xs text-muted-foreground space-y-1">
+              <p className="font-medium text-foreground">ООО «ФТС»</p>
+              <p>Общество с ограниченной ответственностью «Фьюче Текнолоджи Солюшинс»</p>
+              <p>ИНН: 7715563903</p>
+              <p>ОКВЭД: 62.01</p>
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -75,6 +76,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/pricing" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Тарифы и стоимость
+                </Link>
+              </li>
+              <li>
                 <Link href="/docs" className="text-muted-foreground hover:text-foreground transition-colors">
                   Документы
                 </Link>
@@ -88,7 +94,10 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-0.5 text-muted-foreground shrink-0" />
-                <span className="text-muted-foreground">5-й проезд Марьиной Рощи, д. 15А, Москва</span>
+                <span className="text-muted-foreground">
+                  127018, г. Москва, вн.тер.г. муниципальный округ Марьина Роща, пр-д 3-й Марьиной Рощи, д. 40, стр. 1,
+                  этаж 2, помещ. II, ком. 1, кабинет 3
+                </span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-muted-foreground shrink-0" />
