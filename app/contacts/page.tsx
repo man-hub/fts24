@@ -23,8 +23,10 @@ export default function ContactsPage() {
     },
     {
       icon: MapPin,
-      title: "Адрес",
-      details: ["г. Москва, 5-й проезд Марьиной Рощи, д. 15А"],
+      title: "Юридический адрес",
+      details: [
+        "127018, г. Москва, вн.тер.г. муниципальный округ Марьина Роща, пр-д 3-й Марьиной Рощи, д. 40, стр. 1, этаж 2, помещ. II, ком. 1, кабинет 3",
+      ],
     },
     {
       icon: Clock,
@@ -89,6 +91,40 @@ export default function ContactsPage() {
               </p>
             </div>
             <ContactForm />
+          </div>
+        </div>
+      </section>
+
+      {/* Requisites Section */}
+      <section className="border-b border-border py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-3xl">
+            <h2 className="mb-8 text-center text-3xl font-bold">Реквизиты</h2>
+            <Card>
+              <CardContent className="p-6 md:p-8">
+                <dl className="grid gap-4 sm:grid-cols-[200px_1fr]">
+                  <dt className="text-sm font-medium text-muted-foreground">Краткое наименование:</dt>
+                  <dd className="text-sm font-semibold">ООО «ФТС»</dd>
+
+                  <dt className="text-sm font-medium text-muted-foreground">Полное наименование:</dt>
+                  <dd className="text-sm">
+                    Общество с ограниченной ответственностью «Фьюче Текнолоджи Солюшинс»
+                  </dd>
+
+                  <dt className="text-sm font-medium text-muted-foreground">ИНН:</dt>
+                  <dd className="text-sm">7715563903</dd>
+
+                  <dt className="text-sm font-medium text-muted-foreground">ОКВЭД:</dt>
+                  <dd className="text-sm">62.01 — Разработка компьютерного программного обеспечения</dd>
+
+                  <dt className="text-sm font-medium text-muted-foreground">Юридический адрес:</dt>
+                  <dd className="text-sm">
+                    127018, г. Москва, вн.тер.г. муниципальный округ Марьина Роща, пр-д 3-й Марьиной Рощи, д. 40, стр.
+                    1, этаж 2, помещ. II, ком. 1, кабинет 3
+                  </dd>
+                </dl>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
