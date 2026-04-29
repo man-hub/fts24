@@ -76,6 +76,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/pricing" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Тарифы и стоимость
+                </Link>
+              </li>
+              <li>
                 <Link href="/docs" className="text-muted-foreground hover:text-foreground transition-colors">
                   Документы
                 </Link>

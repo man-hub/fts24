@@ -521,38 +521,49 @@ export default function VATSPage() {
       */}
 
       {/* Legal Information */}
-      <section className="border-b border-border py-16 md:py-20">
+      <section className="border-b border-border bg-muted/30 py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl">
-            <h2 className="mb-8 text-center text-2xl font-bold md:text-3xl">Правовая информация</h2>
+            <div className="mb-8 text-center">
+              <h2 className="mb-3 text-2xl font-bold md:text-3xl text-balance">
+                Правообладатель и статус программного продукта
+              </h2>
+              <div
+                className="mx-auto h-1 w-20 bg-primary"
+                style={{ background: "rgb(190, 18, 18)" }}
+              ></div>
+            </div>
             <Card>
-              <CardContent className="p-6 md:p-8 space-y-4">
+              <CardContent className="p-6 md:p-8 space-y-5">
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Исключительные права на программу «Виртуальная АТС» принадлежат её разработчику — Обществу с
-                  ограниченной ответственностью «Фьюче Текнолоджи Солюшинс».
+                  Программа для ЭВМ «Виртуальная АТС» разработана ООО «ФТС» (Общество с ограниченной ответственностью
+                  «Фьюче Текнолоджи Солюшинс»).
                 </p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Предоставление прав использования программы «Виртуальная АТС» осуществляется через лицензионный
-                  договор путём предоставления удалённого доступа посредством информационно-телекоммуникационных
-                  сетей, включая сеть Интернет.
+                  Исключительные права на программу принадлежат ООО «ФТС».
                 </p>
+                <div
+                  className="rounded-lg bg-muted/50 p-4"
+                  style={{ borderLeft: "3px solid rgb(190, 18, 18)" }}
+                >
+                  <p className="text-sm leading-relaxed">
+                    Программа включена в Единый реестр российских программ для электронных вычислительных машин и баз
+                    данных:{" "}
+                    <span className="font-semibold">реестровая запись № 8839 от 21.01.2021</span>.
+                  </p>
+                </div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Программа «Виртуальная АТС» зарегистрирована в Едином реестре российских программ для электронных
-                  вычислительных машин и баз данных: реестровая запись № 8839 от 21.01.2021. Подробнее в разделе{" "}
-                  <Link href="/docs" className="font-medium text-primary hover:underline">
-                    Документы
-                  </Link>{" "}
-                  или на сайте{" "}
-                  <a
-                    href="https://reestr.digital.gov.ru/request/217932/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-medium text-primary hover:underline"
-                  >
-                    реестра
-                  </a>
-                  .
+                  Предоставление прав использования осуществляется на основании лицензионного договора путём
+                  предоставления удалённого доступа через сеть Интернет.
                 </p>
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <Button asChild>
+                    <Link href="/docs">Подробнее об официальных сведениях</Link>
+                  </Button>
+                  <Button variant="outline" asChild>
+                    <Link href="/pricing">Смотреть тарифы</Link>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </div>

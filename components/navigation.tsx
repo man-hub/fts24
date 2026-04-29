@@ -14,6 +14,7 @@ export function Navigation() {
     { href: "/solutions", label: "Решения" },
     { href: "/vats", label: "ВАТС" },
     { href: "/ai", label: "AI-решения" },
+    { href: "/pricing", label: "Тарифы" },
     { href: "/cases", label: "Кейсы" },
     { href: "/about", label: "О компании" },
     { href: "/contacts", label: "Контакты" },
