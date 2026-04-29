@@ -14,6 +14,7 @@ import {
   Network,
   Container,
   ArrowRight,
+  Briefcase,
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -428,7 +429,74 @@ export default function DocsPage() {
             </Card>
           </section>
 
-          {/* БЛОК 5. Технологический стек */}
+          {/* БЛОК 5. Виды деятельности */}
+          <section>
+            <div className="mb-8 flex items-start gap-4">
+              <div
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10"
+                style={{ background: "rgba(190, 18, 18, 0.1)" }}
+              >
+                <Briefcase className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold md:text-3xl">
+                  Осуществляемые виды деятельности в области информационных технологий
+                </h2>
+                <div className="mt-2 h-1 w-20 bg-primary" style={{ background: "rgb(190, 18, 18)" }}></div>
+              </div>
+            </div>
+
+            <Card>
+              <CardContent className="p-6 md:p-8">
+                <p className="mb-6 text-muted-foreground leading-relaxed">
+                  ООО «ФТС» осуществляет деятельность в области информационных технологий в соответствии с перечнем
+                  видов деятельности, утверждённым Приказом Минцифры России №449, включая:
+                </p>
+
+                <ul className="space-y-4">
+                  {[
+                    {
+                      code: "1.01",
+                      title: "Проектирование и разработка программ для ЭВМ, баз данных",
+                    },
+                    {
+                      code: "2.01",
+                      title: "Реализация программ для ЭВМ, баз данных собственного проектирования",
+                    },
+                    {
+                      code: "3.01",
+                      title:
+                        "Оказание услуг (выполнение работ) по внедрению, сопровождению, тестированию и технической поддержке программ для ЭВМ, баз данных",
+                    },
+                    {
+                      code: "8.01",
+                      title:
+                        "Оказание услуг по обработке информации, предоставлению вычислительной мощности, размещению информации в информационных системах, постоянно подключённых к сети Интернет",
+                    },
+                  ].map((activity, index) => (
+                    <li
+                      key={index}
+                      className="flex items-start gap-4 rounded-lg border border-border bg-muted/30 p-4"
+                      style={{ borderLeftWidth: "4px", borderLeftColor: "rgb(190, 18, 18)" }}
+                    >
+                      <div
+                        className="flex h-12 w-14 shrink-0 items-center justify-center rounded-md bg-primary/10 font-mono text-sm font-bold text-primary"
+                        style={{
+                          background: "rgba(190, 18, 18, 0.1)",
+                          color: "rgb(190, 18, 18)",
+                        }}
+                      >
+                        {activity.code}
+                      </div>
+                      <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">{activity.title}</p>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </section>
+
+          {/* БЛОК 6. Технологический стек */}
           <section>
             <div className="mb-8 flex items-start gap-4">
               <div
