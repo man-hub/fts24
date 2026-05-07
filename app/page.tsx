@@ -18,13 +18,13 @@ export default function HomePage() {
                 color: "#c41e1e",
               }}
             >
-              Enterprise-решения для вашего бизнеса
+              Корпоративные информационные системы для вашего бизнеса
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-balance">
-              Биллинг, ВАТС и AI-решения для операторов связи и бизнеса
+              Биллинг, ВАТС и решения на базе искусственного интеллекта (AI) для операторов связи и бизнеса
             </h1>
             <p className="text-xl lg:text-2xl text-secondary-foreground/80 mb-8 text-balance">
-              Разработка под ключ, глубокие интеграции и AI-аналитика для любых компаний
+              Разработка под ключ, глубокие интеграции и аналитика на базе искусственного интеллекта (AI) для любых компаний
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
@@ -74,7 +74,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Кастомная разработка</h3>
                 <p className="text-muted-foreground mb-4">
-                  Биллинговые системы, CRM, личные кабинеты, BSS/OSS-комплексы для телеком-операторов
+                  Биллинговые системы, системы управления взаимоотношениями с клиентами (CRM), личные кабинеты, системы поддержки бизнеса и операционной деятельности (BSS/OSS) для телеком-операторов
                 </p>
                 <Link
                   href="/services"
@@ -120,9 +120,9 @@ export default function HomePage() {
                 >
                   <Brain className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">AI-решения</h3>
+                <h3 className="text-xl font-semibold mb-3">Решения на основе искусственного интеллекта (AI)</h3>
                 <p className="text-muted-foreground mb-4">
-                  Речевая аналитика на базе AI: распознавание речи, транскрибация, оценка качества и рекомендации по
+                  Речевая аналитика на базе искусственного интеллекта: распознавание речи, транскрибация, оценка качества и рекомендации по
                   улучшению качества обслуживания и росту продаж
                 </p>
                 <Link
@@ -147,7 +147,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Системная интеграция</h3>
                 <p className="text-muted-foreground mb-4">
-                  Интеграции с CRM, ERP, операторами связи, платежными системами и государственными информационными
+                  Интеграции с CRM-системами, ERP (системами планирования ресурсов предприятия), операторами связи, платежными системами и государственными информационными
                   системами (Госуслуги, СМЭВ, Госключ и др.)
                 </p>
                 <Link
@@ -170,9 +170,9 @@ export default function HomePage() {
                 >
                   <Users className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">MVNO/MVNE платформы</h3>
+                <h3 className="text-xl font-semibold mb-3">MVNO/MVNE платформы (виртуальные операторы связи)</h3>
                 <p className="text-muted-foreground mb-4">
-                  Построение виртуальных операторов и управление партнёрской экосистемой
+                  Построение виртуальных операторов мобильной связи (MVNO) и управление партнёрской экосистемой
                 </p>
                 <Link
                   href="/solutions"

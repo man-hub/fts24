@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Mail, Phone, MapPin, FileText } from "lucide-react"
+import { Mail, Phone, MapPin, FileCheck } from "lucide-react"
 import Image from "next/image"
 
 export function Footer() {
@@ -11,10 +11,10 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Image src="/images/logo-fts.jpg" alt="ФТС Logo" width={40} height={40} className="h-10 w-10" />
-              <span className="font-semibold">FTS</span>
+              <span className="font-semibold">ООО «ФТС»</span>
             </div>
             <p className="text-sm text-muted-foreground mb-4">
-              Enterprise-решения для телеком-операторов и бизнеса с 2005 года
+              Корпоративные информационные системы для телеком-операторов и бизнеса с 2005 года
             </p>
             <div className="text-xs text-muted-foreground space-y-1">
               <p className="font-medium text-foreground">ООО «ФТС»</p>
@@ -62,7 +62,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/ai" className="text-muted-foreground hover:text-foreground transition-colors">
-                  AI-решения
+                  Решения на основе искусственного интеллекта (AI)
                 </Link>
               </li>
               <li>
@@ -73,16 +73,6 @@ export function Footer() {
               <li>
                 <Link href="/integration" className="text-muted-foreground hover:text-foreground transition-colors">
                   Интеграции
-                </Link>
-              </li>
-              <li>
-                <Link href="/pricing" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Тарифы и стоимость
-                </Link>
-              </li>
-              <li>
-                <Link href="/docs" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Документы
                 </Link>
               </li>
             </ul>
@@ -130,19 +120,63 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Disclosure Section */}
         <div className="mt-12 pt-8 border-t border-border">
+          <div className="mb-8">
+            <div className="flex items-center gap-2 mb-4">
+              <FileCheck className="h-5 w-5 text-muted-foreground" />
+              <h3 className="font-semibold">Раскрытие информации</h3>
+            </div>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/docs" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Раскрытие информации в соответствии с требованиями к российским разработчикам программного обеспечения
+                </Link>
+              </li>
+              <li>
+                <Link href="/docs#documents" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Документы
+                </Link>
+              </li>
+              <li>
+                <Link href="/pricing" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Тарифы и стоимость
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Cookie Notice */}
+        <div className="mt-8 pt-6 border-t border-border">
+          <div className="rounded-lg bg-muted/50 p-4 text-xs text-muted-foreground leading-relaxed">
+            <p className="mb-2">
+              Сайт обрабатывает файлы Cookies и другие пользовательские данные в соответствии с{" "}
+              <a
+                href="https://fts24.ru/files/docs/personal-politics.docx"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                Политикой в отношении обработки персональных данных
+              </a>
+              .
+            </p>
+            <p className="mb-2">
+              Если вы не хотите, чтобы мы собирали ваши данные с помощью cookie-файлов, вы можете отключить их сбор в
+              настройках своего браузера. Это может повлиять на работу некоторых функций сайта.
+            </p>
+            <p>Если вы не хотите, чтобы ваши данные обрабатывались, покиньте сайт.</p>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="mt-6 pt-6 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} ООО «ФТС». Все права защищены.</p>
             <div className="flex gap-6 text-sm">
-              <Link
-                href="/letterhead"
-                className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
-              >
-                <FileText className="h-4 w-4" />
-                Фирменные бланки
-              </Link>
               <Link href="/docs" className="text-muted-foreground hover:text-foreground transition-colors">
-                Документы
+                Официальные сведения
               </Link>
             </div>
           </div>
