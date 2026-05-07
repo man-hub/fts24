@@ -8,7 +8,7 @@ import { Server, Network, Brain, Phone, Headphones, Users, ArrowRight } from "lu
 export const metadata: Metadata = {
   title: "Услуги — ООО «ФТС»",
   description:
-    "Разработка ПО под ключ, системная интеграция, виртуальная АТС, AI-решения и профессиональные услуги для телеком-операторов",
+    "Разработка ПО под ключ, системная интеграция, виртуальная АТС, решения на основе искусственного интеллекта (AI) и профессиональные услуги для телеком-операторов",
 }
 
 export default function ServicesPage() {
@@ -39,7 +39,7 @@ export default function ServicesPage() {
             <div>
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">Разработка ПО под ключ</h2>
               <p className="text-xl text-muted-foreground">
-                Enterprise-системы для телеком-операторов и компаний с партнёрскими сетями
+                Корпоративные информационные системы (Enterprise-системы) для телеком-операторов и компаний с партнёрскими сетями
               </p>
             </div>
           </div>

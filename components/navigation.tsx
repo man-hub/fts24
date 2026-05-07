@@ -17,6 +17,7 @@ export function Navigation() {
     { href: "/pricing", label: "Тарифы" },
     { href: "/cases", label: "Кейсы" },
     { href: "/about", label: "О компании" },
+    { href: "/docs", label: "Документы" },
     { href: "/contacts", label: "Контакты" },
   ]
 

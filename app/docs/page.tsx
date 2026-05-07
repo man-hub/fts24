@@ -15,6 +15,9 @@ import {
   Container,
   ArrowRight,
   Briefcase,
+  Award,
+  Download,
+  FolderOpen,
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -24,33 +27,39 @@ export const metadata: Metadata = {
 }
 
 export default function DocsPage() {
-  const documents = [
+  // Раздел 1: Документы ООО «ФТС»
+  const companyDocuments = [
+    {
+      title: "Политика в отношении обработки персональных данных",
+      description: "Сведения о реализуемых требованиях к защите персональных данных в ООО «ФТС»",
+      url: "https://fts24.ru/files/docs/personal-politics.docx",
+    },
+    {
+      title: "Согласие на обработку персональных данных",
+      description: "Форма согласия субъекта персональных данных",
+      url: "https://fts24.ru/files/docs/personal-politics.docx",
+    },
     {
       title: "Лицензионное соглашение «Виртуальная АТС»",
-      version: "актуальная версия — от 24.12.2020",
+      description: "Актуальная версия от 24.12.2020",
       url: "https://fts24.ru/files/docs/license-agreement-vatsfts-24122020.pdf",
     },
     {
       title: "Лицензионное соглашение «Виртуальная АТС»",
-      version: "версия от 31.03.2020",
+      description: "Версия от 31.03.2020",
       url: "https://fts24.ru/files/docs/license-agreement-vatsfts-31032020.pdf",
     },
     {
       title: "Лицензионное соглашение «Виртуальная АТС»",
-      version: "версия от 06.06.2019",
+      description: "Версия от 06.06.2019",
       url: "https://fts24.ru/files/docs/license-agreement-vatsfts-06062019.pdf",
-    },
-    {
-      title:
-        "Политика в отношении обработки персональных данных и сведения о реализуемых требованиях к защите персональных данных в ООО «ФТС»",
-      version: null,
-      url: "https://fts24.ru/files/docs/personal-politics.docx",
     },
   ]
 
+  // Раздел 2: Сертификаты
   const certificates = [
     {
-      title: "Сертификат соответствия на АСР (Автоматизированную систему расчетов)",
+      title: "Сертификат соответствия на АСР (Автоматизированную систему расчётов)",
       description: "Система сертификации в области связи",
       number: "ОС-6-СТ-0803",
       url: "https://fts24.ru/files/docs/certificate-billing.pdf",
@@ -63,84 +72,30 @@ export default function DocsPage() {
     },
   ]
 
-  const otherdocs = [
+  // Раздел 3: Другие документы
+  const otherDocuments = [
     {
       title: "Сводная ведомость результатов проведения специальной оценки условий труда (2025)",
       description: "Система менеджмента качества",
       url: "https://fts24.ru/files/docs/sout-ooo-fts-2025.pdf",
     },
+    {
+      title: "Инструкция пользователя «Виртуальная АТС»",
+      description: "Справочные материалы по работе с системой",
+      url: "https://fts24.ru/files/docs/vats-user-manual.pdf",
+    },
   ]
 
   const products = [
-    "программа «Виртуальная АТС»",
+    "программа для ЭВМ «Виртуальная АТС»",
     "биллинговые и автоматизированные системы расчётов (АСР)",
     "программно-аппаратные комплексы центра обработки вызовов (ЦОВ)",
-    "BSS/OSS-платформы для операторов связи",
+    "системы поддержки бизнеса и операционной деятельности операторов связи (BSS/OSS)",
     "системы взаиморасчётов с дилерами, агентами и партнёрами",
-    "CRM, клиентские и партнёрские порталы",
-    "AI-модули речевой аналитики",
+    "системы управления взаимоотношениями с клиентами (CRM), клиентские и партнёрские порталы",
+    "модули речевой аналитики на основе искусственного интеллекта (AI)",
     "интеграционные шлюзы и сервисы обмена данными",
     "услуги внедрения, сопровождения, интеграции и технической поддержки программных решений",
-  ]
-
-  const pricingBlocks = [
-    {
-      title: "Виртуальная АТС",
-      tiers: [
-        {
-          name: "Базовый",
-          price: "от 900 ₽/мес",
-          features: ["до 3 сотрудников", "1 городской номер", "базовая маршрутизация", "статистика вызовов"],
-        },
-        {
-          name: "Бизнес",
-          price: "от 2 490 ₽/мес",
-          features: ["до 15 сотрудников", "IVR", "запись разговоров", "распределение вызовов", "CRM-интеграции"],
-        },
-        {
-          name: "Корпоративный",
-          price: "от 4 900 ₽/мес",
-          features: [
-            "неограниченное количество сотрудников",
-            "SIP / SIM / 8-800",
-            "API",
-            "расширенные интеграции",
-            "речевая аналитика (опционально)",
-          ],
-        },
-      ],
-      addons: [
-        { name: "Дополнительный городской номер", price: "от 400 ₽/мес" },
-        { name: "Номер 8-800", price: "от 950 ₽/мес" },
-        { name: "AI-расшифровка и речевая аналитика", price: "от 990 ₽/мес" },
-      ],
-    },
-  ]
-
-  const otherPricing = [
-    {
-      title: "AI-решения",
-      items: [
-        { name: "Речевая аналитика", price: "от 5 900 ₽/мес" },
-        { name: "Индивидуальные AI-модули", price: "от 250 000 ₽" },
-      ],
-    },
-    {
-      title: "Enterprise-разработка",
-      items: [
-        {
-          name: "Биллинговые системы, BSS/OSS, MVNO, CRM, интеграционные решения",
-          price: "от 350 000 ₽",
-        },
-      ],
-    },
-    {
-      title: "Системная интеграция",
-      items: [
-        { name: "Типовые интеграции", price: "от 50 000 ₽" },
-        { name: "Сложные многосистемные интеграции", price: "от 150 000 ₽" },
-      ],
-    },
   ]
 
   const techStack = [
@@ -171,8 +126,8 @@ export default function DocsPage() {
     },
     {
       icon: Container,
-      title: "Средства контейнеризации и DevOps",
-      items: ["Docker", "Git", "CI/CD pipelines", "Linux-based monitoring and logging systems"],
+      title: "Средства контейнеризации и автоматизации развёртывания (DevOps)",
+      items: ["Docker", "Git", "CI/CD (непрерывная интеграция и доставка)", "Средства мониторинга и логирования на базе Linux"],
     },
   ]
 
@@ -192,10 +147,199 @@ export default function DocsPage() {
         </div>
       </section>
 
+      {/* Anchor Navigation */}
+      <section className="border-b border-border bg-muted/20 py-4 sticky top-16 z-40">
+        <div className="container mx-auto px-4">
+          <nav className="flex flex-wrap justify-center gap-2 md:gap-4 text-sm">
+            <a href="#documents" className="px-3 py-1.5 rounded-md hover:bg-muted transition-colors text-muted-foreground hover:text-foreground">
+              Документы
+            </a>
+            <a href="#certificates" className="px-3 py-1.5 rounded-md hover:bg-muted transition-colors text-muted-foreground hover:text-foreground">
+              Сертификаты
+            </a>
+            <a href="#products" className="px-3 py-1.5 rounded-md hover:bg-muted transition-colors text-muted-foreground hover:text-foreground">
+              Продукты
+            </a>
+            <a href="#pricing" className="px-3 py-1.5 rounded-md hover:bg-muted transition-colors text-muted-foreground hover:text-foreground">
+              Стоимость
+            </a>
+            <a href="#rights" className="px-3 py-1.5 rounded-md hover:bg-muted transition-colors text-muted-foreground hover:text-foreground">
+              Права
+            </a>
+            <a href="#registry" className="px-3 py-1.5 rounded-md hover:bg-muted transition-colors text-muted-foreground hover:text-foreground">
+              Реестр ПО
+            </a>
+            <a href="#activities" className="px-3 py-1.5 rounded-md hover:bg-muted transition-colors text-muted-foreground hover:text-foreground">
+              Виды деятельности
+            </a>
+            <a href="#tech" className="px-3 py-1.5 rounded-md hover:bg-muted transition-colors text-muted-foreground hover:text-foreground">
+              Технологии
+            </a>
+          </nav>
+        </div>
+      </section>
+
       <div className="container mx-auto px-4 py-16 md:py-20">
         <div className="mx-auto max-w-5xl space-y-20">
-          {/* БЛОК 1. Программные продукты */}
+
+          {/* РАЗДЕЛ 1. Документы ООО «ФТС» */}
+          <section id="documents">
+            <div className="mb-8 flex items-start gap-4">
+              <div
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10"
+                style={{ background: "rgba(190, 18, 18, 0.1)" }}
+              >
+                <FileText className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold md:text-3xl">Раздел 1. Документы ООО «ФТС»</h2>
+                <p className="mt-2 text-muted-foreground">
+                  Политика обработки персональных данных, реквизиты, сведения об организации
+                </p>
+                <div className="mt-3 h-1 w-20 bg-primary" style={{ background: "rgb(190, 18, 18)" }}></div>
+              </div>
+            </div>
+
+            {/* Сведения об организации */}
+            <Card className="mb-6">
+              <CardContent className="p-6 md:p-8">
+                <h3 className="mb-4 text-lg font-semibold">Сведения об организации и реквизиты</h3>
+                <dl className="grid gap-3 sm:grid-cols-[200px_1fr] text-sm">
+                  <dt className="font-medium text-muted-foreground">Краткое наименование:</dt>
+                  <dd className="font-semibold">ООО «ФТС»</dd>
+
+                  <dt className="font-medium text-muted-foreground">Полное наименование:</dt>
+                  <dd>Общество с ограниченной ответственностью «Фьюче Текнолоджи Солюшинс»</dd>
+
+                  <dt className="font-medium text-muted-foreground">ИНН:</dt>
+                  <dd>7715563903</dd>
+
+                  <dt className="font-medium text-muted-foreground">ОКВЭД:</dt>
+                  <dd>62.01 — Разработка компьютерного программного обеспечения</dd>
+
+                  <dt className="font-medium text-muted-foreground">Юридический адрес:</dt>
+                  <dd>
+                    127018, г. Москва, вн.тер.г. муниципальный округ Марьина Роща, пр-д 3-й Марьиной Рощи, д. 40, стр.
+                    1, этаж 2, помещ. II, ком. 1, кабинет 3
+                  </dd>
+                </dl>
+              </CardContent>
+            </Card>
+
+            {/* Документы */}
+            <div className="grid gap-4 md:grid-cols-2">
+              {companyDocuments.map((doc, index) => (
+                <Card key={index} className="hover:shadow-md transition-shadow">
+                  <CardContent className="p-5">
+                    <div className="flex items-start gap-3">
+                      <Download className="h-5 w-5 shrink-0 text-primary mt-0.5" style={{ color: "rgb(190, 18, 18)" }} />
+                      <div className="flex-1">
+                        <a
+                          href={doc.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium hover:text-primary transition-colors"
+                        >
+                          {doc.title}
+                        </a>
+                        <p className="mt-1 text-sm text-muted-foreground">{doc.description}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          {/* РАЗДЕЛ 2. Сертификаты */}
+          <section id="certificates">
+            <div className="mb-8 flex items-start gap-4">
+              <div
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10"
+                style={{ background: "rgba(190, 18, 18, 0.1)" }}
+              >
+                <Award className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold md:text-3xl">Раздел 2. Сертификаты</h2>
+                <p className="mt-2 text-muted-foreground">Сертификаты соответствия на программные продукты</p>
+                <div className="mt-3 h-1 w-20 bg-primary" style={{ background: "rgb(190, 18, 18)" }}></div>
+              </div>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              {certificates.map((cert, index) => (
+                <Card key={index} className="hover:shadow-md transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-3">
+                      <Award className="h-6 w-6 shrink-0 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
+                      <div className="flex-1">
+                        <a
+                          href={cert.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-semibold hover:text-primary transition-colors"
+                        >
+                          {cert.title}
+                        </a>
+                        <p className="mt-1 text-sm text-muted-foreground">{cert.description}</p>
+                        <p className="mt-2 text-sm font-medium">Номер: {cert.number}</p>
+                        <Button variant="outline" size="sm" className="mt-3" asChild>
+                          <a href={cert.url} target="_blank" rel="noopener noreferrer">
+                            <Download className="mr-2 h-4 w-4" />
+                            Скачать PDF
+                          </a>
+                        </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          {/* РАЗДЕЛ 3. Другие документы */}
           <section>
+            <div className="mb-8 flex items-start gap-4">
+              <div
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10"
+                style={{ background: "rgba(190, 18, 18, 0.1)" }}
+              >
+                <FolderOpen className="h-6 w-6 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold md:text-3xl">Раздел 3. Другие документы</h2>
+                <p className="mt-2 text-muted-foreground">Инструкции, справочные материалы и иные документы</p>
+                <div className="mt-3 h-1 w-20 bg-primary" style={{ background: "rgb(190, 18, 18)" }}></div>
+              </div>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              {otherDocuments.map((doc, index) => (
+                <Card key={index} className="hover:shadow-md transition-shadow">
+                  <CardContent className="p-5">
+                    <div className="flex items-start gap-3">
+                      <Download className="h-5 w-5 shrink-0 text-primary mt-0.5" style={{ color: "rgb(190, 18, 18)" }} />
+                      <div className="flex-1">
+                        <a
+                          href={doc.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium hover:text-primary transition-colors"
+                        >
+                          {doc.title}
+                        </a>
+                        <p className="mt-1 text-sm text-muted-foreground">{doc.description}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          {/* БЛОК 4. Программные продукты */}
+          <section id="products">
             <div className="mb-8 flex items-start gap-4">
               <div
                 className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10"
@@ -246,8 +390,8 @@ export default function DocsPage() {
             </Card>
           </section>
 
-          {/* БЛОК 2. Стоимость */}
-          <section>
+          {/* БЛОК 5. Стоимость */}
+          <section id="pricing">
             <div className="mb-8 flex items-start gap-4">
               <div
                 className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10"
@@ -262,91 +406,119 @@ export default function DocsPage() {
             </div>
 
             {/* VATS Pricing */}
-            {pricingBlocks.map((block, blockIndex) => (
-              <div key={blockIndex} className="mb-8">
-                <h3 className="mb-4 text-xl font-semibold">{block.title}</h3>
-                <div className="grid gap-4 lg:grid-cols-3">
-                  {block.tiers.map((tier, tierIndex) => (
-                    <Card key={tierIndex}>
-                      <CardContent className="p-6">
-                        <div className="mb-4">
-                          <div className="text-sm font-medium text-muted-foreground">{tier.name}</div>
-                          <div className="mt-1 text-2xl font-bold">{tier.price}</div>
-                        </div>
-                        <ul className="space-y-2">
-                          {tier.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
-                              <span
-                                className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary"
-                                style={{ background: "rgb(190, 18, 18)" }}
-                              />
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </CardContent>
-                    </Card>
+            <div className="mb-8">
+              <h3 className="mb-4 text-xl font-semibold">Виртуальная АТС</h3>
+              <div className="grid gap-4 lg:grid-cols-3">
+                {[
+                  {
+                    name: "Базовый",
+                    price: "900 ₽/мес",
+                    features: ["до 3 сотрудников", "1 городской номер", "базовая маршрутизация", "статистика вызовов"],
+                  },
+                  {
+                    name: "Бизнес",
+                    price: "2 490 ₽/мес",
+                    features: [
+                      "до 15 сотрудников",
+                      "голосовое меню (IVR)",
+                      "запись разговоров",
+                      "распределение вызовов",
+                      "интеграция с CRM-системами",
+                    ],
+                  },
+                  {
+                    name: "Корпоративный",
+                    price: "4 900 ₽/мес",
+                    features: [
+                      "неограниченное количество сотрудников",
+                      "SIP / SIM / 8-800",
+                      "программный интерфейс (API)",
+                      "расширенные интеграции",
+                    ],
+                  },
+                ].map((tier, tierIndex) => (
+                  <Card key={tierIndex}>
+                    <CardContent className="p-6">
+                      <div className="mb-4">
+                        <div className="text-sm font-medium text-muted-foreground">{tier.name}</div>
+                        <div className="mt-1 text-2xl font-bold">{tier.price}</div>
+                      </div>
+                      <ul className="space-y-2">
+                        {tier.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
+                            <span
+                              className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary"
+                              style={{ background: "rgb(190, 18, 18)" }}
+                            />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              <div className="mt-6">
+                <h4 className="mb-3 text-sm font-semibold text-muted-foreground">Дополнительные услуги:</h4>
+                <div className="grid gap-3 md:grid-cols-4">
+                  {[
+                    { name: "Дополнительный городской номер", price: "400 ₽/мес" },
+                    { name: "Номер 8-800", price: "950 ₽/мес" },
+                    { name: "Расшифровка разговоров на базе AI", price: "990 ₽/мес" },
+                    { name: "Расширенное хранение записей", price: "300 ₽/мес" },
+                  ].map((addon, idx) => (
+                    <div key={idx} className="rounded-lg border border-border bg-muted/30 p-4">
+                      <div className="text-sm text-muted-foreground">{addon.name}</div>
+                      <div className="mt-1 font-semibold">{addon.price}</div>
+                    </div>
                   ))}
                 </div>
-
-                <div className="mt-6">
-                  <h4 className="mb-3 text-sm font-semibold text-muted-foreground">Дополнительные опции:</h4>
-                  <div className="grid gap-3 md:grid-cols-3">
-                    {block.addons.map((addon, idx) => (
-                      <div key={idx} className="rounded-lg border border-border bg-muted/30 p-4">
-                        <div className="text-sm text-muted-foreground">{addon.name}</div>
-                        <div className="mt-1 font-semibold">{addon.price}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
-            ))}
-
-            {/* Other services */}
-            <div className="grid gap-4 md:grid-cols-3">
-              {otherPricing.map((block, index) => (
-                <Card key={index}>
-                  <CardContent className="p-6">
-                    <h3 className="mb-4 font-semibold text-lg">{block.title}</h3>
-                    <ul className="space-y-3">
-                      {block.items.map((item, idx) => (
-                        <li
-                          key={idx}
-                          className="border-l-2 pl-3"
-                          style={{ borderColor: "rgb(190, 18, 18)" }}
-                        >
-                          <div className="text-sm text-muted-foreground">{item.name}</div>
-                          <div className="mt-1 font-semibold">{item.price}</div>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              ))}
             </div>
 
-            <div
-              className="mt-8 rounded-lg border border-border bg-muted/30 p-5"
-              style={{ borderLeftWidth: "4px", borderLeftColor: "rgb(190, 18, 18)" }}
-            >
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Финальная стоимость зависит от состава функционала, количества интеграций и требований к архитектуре
-                решения.
-              </p>
-              <div className="mt-4 flex flex-wrap gap-3">
-                <Button asChild>
-                  <Link href="/pricing">Перейти к тарифам</Link>
-                </Button>
-                <Button variant="outline" asChild>
-                  <Link href="/contacts#request-form">Получить расчёт</Link>
-                </Button>
-              </div>
+            {/* Enterprise */}
+            <Card className="mb-6">
+              <CardContent className="p-6 md:p-8">
+                <h3 className="mb-4 text-lg font-semibold">
+                  Корпоративные информационные системы (Enterprise-разработка)
+                </h3>
+                <p className="mb-4 text-muted-foreground leading-relaxed">
+                  Стоимость разработки и внедрения корпоративных информационных систем определяется индивидуально в
+                  зависимости от состава функционала, количества интеграций и требований к архитектуре решения.
+                </p>
+                <p className="mb-3 font-medium">Примеры типовых проектов:</p>
+                <ul className="space-y-2 mb-6">
+                  {[
+                    { name: "Системы управления взаимоотношениями с клиентами (CRM) и интеграционные решения", price: "350 000 ₽" },
+                    { name: "Модули на основе искусственного интеллекта (AI) и аналитика", price: "150 000 ₽" },
+                    { name: "Сложные многосистемные интеграции", price: "150 000 ₽" },
+                  ].map((item, idx) => (
+                    <li
+                      key={idx}
+                      className="flex items-center justify-between gap-4 rounded-lg border border-border bg-muted/30 p-4"
+                      style={{ borderLeftWidth: "4px", borderLeftColor: "rgb(190, 18, 18)" }}
+                    >
+                      <span className="text-sm text-muted-foreground">{item.name}</span>
+                      <span className="font-semibold whitespace-nowrap">{item.price}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+
+            <div className="flex flex-wrap gap-3">
+              <Button asChild>
+                <Link href="/pricing">Перейти к тарифам</Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/contacts#request-form">Получить расчёт</Link>
+              </Button>
             </div>
           </section>
 
-          {/* БЛОК 3. Исключительные права */}
-          <section>
+          {/* БЛОК 6. Исключительные права */}
+          <section id="rights">
             <div className="mb-8 flex items-start gap-4">
               <div
                 className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10"
@@ -378,8 +550,8 @@ export default function DocsPage() {
             </Card>
           </section>
 
-          {/* БЛОК 4. Реестр российского ПО */}
-          <section>
+          {/* БЛОК 7. Реестр российского ПО */}
+          <section id="registry">
             <div className="mb-8 flex items-start gap-4">
               <div
                 className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10"
@@ -429,8 +601,8 @@ export default function DocsPage() {
             </Card>
           </section>
 
-          {/* БЛОК 5. Виды деятельности */}
-          <section>
+          {/* БЛОК 8. Виды деятельности */}
+          <section id="activities">
             <div className="mb-8 flex items-start gap-4">
               <div
                 className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10"
@@ -496,8 +668,8 @@ export default function DocsPage() {
             </Card>
           </section>
 
-          {/* БЛОК 6. Технологический стек */}
-          <section>
+          {/* БЛОК 9. Технологический стек */}
+          <section id="tech">
             <div className="mb-8 flex items-start gap-4">
               <div
                 className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10"
@@ -513,246 +685,53 @@ export default function DocsPage() {
               </div>
             </div>
 
-            <Card className="mb-6">
+            <Card>
               <CardContent className="p-6 md:p-8">
-                <p className="text-muted-foreground leading-relaxed">
-                  ООО «ФТС» осуществляет разработку, внедрение и сопровождение собственных и заказных программных
-                  решений с использованием импортонезависимого технологического стека, соответствующего требованиям к
-                  российскому программному обеспечению.
+                <p className="mb-6 text-muted-foreground leading-relaxed">
+                  При разработке, внедрении и сопровождении программных продуктов компания использует импортонезависимый
+                  технологический стек, соответствующий требованиям к отечественному программному обеспечению:
                 </p>
-              </CardContent>
-            </Card>
 
-            <p className="mb-4 font-medium">
-              При создании и эксплуатации программных продуктов компании используются:
-            </p>
-
-            <div className="grid gap-4 md:grid-cols-2">
-              {techStack.map((category, index) => (
-                <Card key={index}>
-                  <CardContent className="p-6">
-                    <div className="mb-4 flex items-center gap-3">
-                      <div
-                        className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10"
-                        style={{ background: "rgba(190, 18, 18, 0.1)" }}
-                      >
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {techStack.map((category, index) => (
+                    <div
+                      key={index}
+                      className="rounded-lg border border-border bg-muted/20 p-5"
+                      style={{ borderTopWidth: "3px", borderTopColor: "rgb(190, 18, 18)" }}
+                    >
+                      <div className="mb-3 flex items-center gap-3">
                         <category.icon
                           className="h-5 w-5 text-primary"
                           style={{ color: "rgb(190, 18, 18)" }}
                         />
+                        <h4 className="font-semibold text-sm">{category.title}</h4>
                       </div>
-                      <h3 className="font-semibold text-sm">{category.title}</h3>
+                      <ul className="space-y-1.5">
+                        {category.items.map((item, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
+                            <span
+                              className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary/60"
+                              style={{ background: "rgba(190, 18, 18, 0.6)" }}
+                            />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <ul className="space-y-2">
-                      {category.items.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          <span
-                            className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary"
-                            style={{ background: "rgb(190, 18, 18)" }}
-                          />
-                          <span className="text-sm text-muted-foreground">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                  ))}
+                </div>
 
-            <Card className="mt-6">
-              <CardContent className="p-6 md:p-8">
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Применяемый технологический стек обеспечивает разработку высоконагруженных отказоустойчивых
-                  программных комплексов, интеграцию с внешними информационными системами и технологическую
-                  независимость программных продуктов компании при эксплуатации на территории Российской Федерации.
-                </p>
+                <div
+                  className="mt-8 rounded-lg border border-border bg-muted/30 p-5"
+                  style={{ borderLeftWidth: "4px", borderLeftColor: "rgb(190, 18, 18)" }}
+                >
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Используемые технологии не имеют ограничений по лицензированию, не требуют приобретения иностранного
+                    программного обеспечения и обеспечивают полный контроль над исходным кодом и данными.
+                  </p>
+                </div>
               </CardContent>
             </Card>
-          </section>
-
-          {/* Documents */}
-          <section>
-            <div className="mb-8">
-              <h2 className="mb-3 text-2xl font-bold md:text-3xl">Список документов ООО «ФТС»</h2>
-              <div
-                className="h-1 w-20 bg-primary"
-                style={{ background: "rgb(190, 18, 18)" }}
-              ></div>
-            </div>
-
-            <div className="space-y-4">
-              {documents.map((doc, index) => (
-                <a
-                  key={index}
-                  href={doc.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-start gap-4 rounded-lg border border-border bg-card p-6 transition-all hover:border-primary hover:shadow-lg"
-                >
-                  <div className="flex-shrink-0">
-                    <div
-                      className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary"
-                      style={{ background: "rgba(190, 18, 18, 0.1)", color: "rgb(190, 18, 18)" }}
-                    >
-                      <FileText className="h-6 w-6" />
-                    </div>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="mb-1 font-semibold text-foreground group-hover:text-primary transition-colors">
-                      {doc.title}
-                      {doc.version && ` (${doc.version})`}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {doc.url.endsWith(".pdf") ? "PDF документ" : "DOCX документ"}
-                    </p>
-                  </div>
-                  <div className="flex-shrink-0">
-                    <ExternalLink className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                  </div>
-                </a>
-              ))}
-            </div>
-          </section>
-
-          {/* Organization Information */}
-          <section>
-            <div className="mb-8">
-              <h2 className="mb-3 text-2xl font-bold md:text-3xl">Сведения об организации</h2>
-              <div
-                className="h-1 w-20 bg-primary"
-                style={{ background: "rgb(190, 18, 18)" }}
-              ></div>
-            </div>
-            <div className="rounded-lg border border-border bg-card p-6 md:p-8">
-              <dl className="grid gap-4 sm:grid-cols-[220px_1fr]">
-                <dt className="text-sm font-medium text-muted-foreground">Краткое наименование:</dt>
-                <dd className="text-sm font-semibold">ООО «ФТС»</dd>
-
-                <dt className="text-sm font-medium text-muted-foreground">Полное наименование:</dt>
-                <dd className="text-sm">
-                  Общество с ограниченной ответственностью «Фьюче Текнолоджи Солюшинс»
-                </dd>
-
-                <dt className="text-sm font-medium text-muted-foreground">ИНН:</dt>
-                <dd className="text-sm">7715563903</dd>
-
-                <dt className="text-sm font-medium text-muted-foreground">ОКВЭД:</dt>
-                <dd className="text-sm">62.01 — Разработка компьютерного программного обеспечения</dd>
-
-                <dt className="text-sm font-medium text-muted-foreground">Юридический адрес:</dt>
-                <dd className="text-sm">
-                  127018, г. Москва, вн.тер.г. муниципальный округ Марьина Роща, пр-д 3-й Марьиной Рощи, д. 40, стр. 1,
-                  этаж 2, помещ. II, ком. 1, кабинет 3
-                </dd>
-
-                <dt className="text-sm font-medium text-muted-foreground">E-mail:</dt>
-                <dd className="text-sm">
-                  <a href="mailto:sales@fts24.ru" className="text-primary hover:underline">
-                    sales@fts24.ru
-                  </a>
-                </dd>
-
-                <dt className="text-sm font-medium text-muted-foreground">Телефоны:</dt>
-                <dd className="text-sm space-y-1">
-                  <div>
-                    <a href="tel:88001010350" className="hover:text-primary">
-                      8 800 10 10 350
-                    </a>
-                  </div>
-                  <div>
-                    <a href="tel:+74951010350" className="hover:text-primary">
-                      +7 495 10 10 350
-                    </a>
-                  </div>
-                  <div>
-                    <a href="tel:+74953080455" className="hover:text-primary">
-                      +7 495 308 04 55
-                    </a>
-                  </div>
-                </dd>
-              </dl>
-            </div>
-          </section>
-
-          {/* Certificates */}
-          <section>
-            <div className="mb-8">
-              <h2 className="mb-3 text-2xl font-bold md:text-3xl">Сертификаты ООО «ФТС»</h2>
-              <div
-                className="h-1 w-20 bg-primary"
-                style={{ background: "rgb(190, 18, 18)" }}
-              ></div>
-            </div>
-            <div className="space-y-4">
-              {certificates.map((cert, index) => (
-                <a
-                  key={index}
-                  href={cert.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-start gap-4 rounded-lg border border-border bg-card p-6 transition-all hover:border-primary hover:shadow-lg"
-                >
-                  <div className="flex-shrink-0">
-                    <div
-                      className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary"
-                      style={{ background: "rgba(190, 18, 18, 0.1)", color: "rgb(190, 18, 18)" }}
-                    >
-                      <FileText className="h-6 w-6" />
-                    </div>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="mb-1 font-semibold text-foreground group-hover:text-primary transition-colors">
-                      {cert.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-1">{cert.description}</p>
-                    <p className="text-xs text-muted-foreground font-mono">{cert.number}</p>
-                  </div>
-                  <div className="flex-shrink-0">
-                    <ExternalLink className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                  </div>
-                </a>
-              ))}
-            </div>
-          </section>
-
-          {/* Other Documents */}
-          <section>
-            <div className="mb-8">
-              <h2 className="mb-3 text-2xl font-bold md:text-3xl">Другие документы</h2>
-              <div
-                className="h-1 w-20 bg-primary"
-                style={{ background: "rgb(190, 18, 18)" }}
-              ></div>
-            </div>
-            <div className="space-y-4">
-              {otherdocs.map((otherdoc, index) => (
-                <a
-                  key={index}
-                  href={otherdoc.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-start gap-4 rounded-lg border border-border bg-card p-6 transition-all hover:border-primary hover:shadow-lg"
-                >
-                  <div className="flex-shrink-0">
-                    <div
-                      className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary"
-                      style={{ background: "rgba(190, 18, 18, 0.1)", color: "rgb(190, 18, 18)" }}
-                    >
-                      <FileText className="h-6 w-6" />
-                    </div>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="mb-1 font-semibold text-foreground group-hover:text-primary transition-colors">
-                      {otherdoc.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-1">{otherdoc.description}</p>
-                  </div>
-                  <div className="flex-shrink-0">
-                    <ExternalLink className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                  </div>
-                </a>
-              ))}
-            </div>
           </section>
         </div>
       </div>

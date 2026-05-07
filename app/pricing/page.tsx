@@ -8,64 +8,76 @@ import { Check, Phone, Brain, Server, Workflow, ArrowRight, Info } from "lucide-
 export const metadata: Metadata = {
   title: "Стоимость решений и услуг | ООО «ФТС»",
   description:
-    "Официальный раздел стоимости программных решений и услуг ООО «ФТС»: Виртуальная АТС, AI-решения, enterprise-разработка, системная интеграция.",
+    "Официальный раздел стоимости программных решений и услуг ООО «ФТС»: Виртуальная АТС, решения на основе искусственного интеллекта (AI), корпоративные информационные системы, системная интеграция.",
 }
 
 export default function PricingPage() {
   const vatsPlans = [
     {
       name: "Базовый",
-      price: "от 900 ₽",
+      price: "900 ₽",
       period: "в месяц",
-      features: ["До 3 сотрудников", "1 городской номер", "Базовая маршрутизация", "Статистика вызовов"],
+      features: [
+        "До 3 сотрудников",
+        "1 городской номер",
+        "Базовая маршрутизация",
+        "Статистика вызовов",
+      ],
       popular: false,
     },
     {
       name: "Бизнес",
-      price: "от 2 490 ₽",
+      price: "2 490 ₽",
       period: "в месяц",
-      features: ["До 15 сотрудников", "IVR", "Запись разговоров", "Распределение вызовов", "CRM-интеграции"],
+      features: [
+        "До 15 сотрудников",
+        "Голосовое меню (IVR)",
+        "Запись разговоров",
+        "Распределение вызовов",
+        "Интеграция с CRM-системами",
+      ],
       popular: true,
     },
     {
       name: "Корпоративный",
-      price: "от 4 900 ₽",
+      price: "4 900 ₽",
       period: "в месяц",
       features: [
         "Неограниченное количество сотрудников",
         "SIP / SIM / 8-800",
-        "API",
+        "Программный интерфейс (API)",
         "Расширенные интеграции",
-        "Речевая аналитика (опционально)",
       ],
       popular: false,
     },
   ]
 
   const vatsAddons = [
-    { name: "Дополнительный городской номер", price: "от 400 ₽/мес" },
-    { name: "Номер 8-800", price: "от 950 ₽/мес" },
-    { name: "AI-расшифровка и речевая аналитика", price: "от 990 ₽/мес" },
+    { name: "Дополнительный городской номер", price: "400 ₽/мес" },
+    { name: "Номер 8-800", price: "950 ₽/мес" },
+    { name: "Расшифровка разговоров на базе AI", price: "990 ₽/мес" },
+    { name: "Расширенное хранение записей", price: "300 ₽/мес" },
   ]
 
   const otherServices = [
     {
       icon: Brain,
-      title: "AI-решения",
+      title: "Решения на основе искусственного интеллекта (AI)",
       items: [
-        { name: "Речевая аналитика", price: "от 5 900 ₽/мес" },
-        { name: "Индивидуальные AI-модули", price: "от 250 000 ₽" },
+        { name: "Речевая аналитика", price: "5 900 ₽/мес" },
+        { name: "Индивидуальные AI-модули", price: "250 000 ₽" },
       ],
       href: "/ai",
     },
     {
       icon: Server,
-      title: "Enterprise-разработка",
-      items: [
-        {
-          name: "Биллинговые системы, BSS/OSS, MVNO, CRM, интеграционные решения",
-          price: "от 350 000 ₽",
-        },
+      title: "Корпоративные информационные системы",
+      description:
+        "Стоимость разработки и внедрения определяется индивидуально в зависимости от состава функционала, количества интеграций и требований к архитектуре решения.",
+      examples: [
+        { name: "CRM и интеграционные решения", price: "350 000 ₽" },
+        { name: "AI-модули и аналитика", price: "150 000 ₽" },
+        { name: "Сложные многосистемные интеграции", price: "150 000 ₽" },
       ],
       href: "/solutions",
     },
@@ -73,8 +85,8 @@ export default function PricingPage() {
       icon: Workflow,
       title: "Системная интеграция",
       items: [
-        { name: "Типовые интеграции", price: "от 50 000 ₽" },
-        { name: "Сложные многосистемные интеграции", price: "от 150 000 ₽" },
+        { name: "Типовые интеграции", price: "50 000 ₽" },
+        { name: "Сложные многосистемные интеграции", price: "150 000 ₽" },
       ],
       href: "/integration",
     },
@@ -93,8 +105,8 @@ export default function PricingPage() {
               Стоимость решений и услуг ООО «ФТС»
             </h1>
             <p className="text-lg text-muted-foreground md:text-xl text-pretty">
-              Прозрачные стартовые цены на программные продукты, AI-решения, enterprise-разработку и системную
-              интеграцию.
+              Фиксированные цены на программные продукты, решения на основе искусственного интеллекта (AI),
+              корпоративные информационные системы и системную интеграцию.
             </p>
           </div>
         </div>
@@ -145,13 +157,11 @@ export default function PricingPage() {
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-4">
+                    <p className="text-sm font-medium text-muted-foreground">Включено:</p>
                     <ul className="space-y-3">
                       {plan.features.map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-2">
-                          <Check
-                            className="h-5 w-5 shrink-0 text-primary"
-                            style={{ color: "rgb(190, 18, 18)" }}
-                          />
+                          <Check className="h-5 w-5 shrink-0 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                           <span className="text-sm">{feature}</span>
                         </li>
                       ))}
@@ -166,8 +176,8 @@ export default function PricingPage() {
 
             {/* Addons */}
             <div className="mt-12">
-              <h3 className="mb-6 text-xl font-semibold">Дополнительные опции</h3>
-              <div className="grid gap-4 md:grid-cols-3">
+              <h3 className="mb-6 text-xl font-semibold">Дополнительные услуги</h3>
+              <div className="grid gap-4 md:grid-cols-4">
                 {vatsAddons.map((addon, index) => (
                   <div
                     key={index}
@@ -190,45 +200,119 @@ export default function PricingPage() {
             <div className="mb-12 text-center">
               <h2 className="mb-4 text-3xl font-bold md:text-4xl">Остальные направления</h2>
               <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-                AI-решения, enterprise-разработка и системная интеграция
+                Решения на основе искусственного интеллекта (AI), корпоративные информационные системы и системная
+                интеграция
               </p>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-3">
-              {otherServices.map((service, index) => (
-                <Card key={index} className="flex flex-col">
-                  <CardHeader>
-                    <div className="mb-4 flex items-center gap-3">
-                      <div
-                        className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10"
-                        style={{ background: "rgba(190, 18, 18, 0.1)" }}
-                      >
-                        <service.icon
-                          className="h-5 w-5 text-primary"
-                          style={{ color: "rgb(190, 18, 18)" }}
-                        />
-                      </div>
-                      <CardTitle className="text-xl">{service.title}</CardTitle>
+            <div className="space-y-6">
+              {/* AI Solutions */}
+              <Card>
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10"
+                      style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                    >
+                      <Brain className="h-5 w-5 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
                     </div>
-                  </CardHeader>
-                  <CardContent className="flex flex-1 flex-col gap-4">
-                    <ul className="flex-1 space-y-3">
-                      {service.items.map((item, idx) => (
-                        <li key={idx} className="border-l-2 border-primary/40 pl-3">
-                          <div className="text-sm text-muted-foreground">{item.name}</div>
-                          <div className="font-semibold">{item.price}</div>
-                        </li>
-                      ))}
-                    </ul>
-                    <Button variant="outline" asChild className="w-full bg-transparent">
-                      <Link href={service.href}>
-                        Подробнее
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+                    <CardTitle className="text-xl">Решения на основе искусственного интеллекта (AI)</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div className="rounded-lg border border-border bg-muted/30 p-4">
+                      <div className="text-sm text-muted-foreground">Речевая аналитика</div>
+                      <div className="mt-1 text-xl font-semibold">5 900 ₽/мес</div>
+                    </div>
+                    <div className="rounded-lg border border-border bg-muted/30 p-4">
+                      <div className="text-sm text-muted-foreground">Индивидуальные AI-модули</div>
+                      <div className="mt-1 text-xl font-semibold">250 000 ₽</div>
+                    </div>
+                  </div>
+                  <Button variant="outline" asChild className="mt-4">
+                    <Link href="/ai">
+                      Подробнее
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              {/* Enterprise */}
+              <Card>
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10"
+                      style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                    >
+                      <Server className="h-5 w-5 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
+                    </div>
+                    <CardTitle className="text-xl">Корпоративные информационные системы (Enterprise-разработка)</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="mb-4 text-muted-foreground">
+                    Стоимость разработки и внедрения корпоративных информационных систем определяется индивидуально в
+                    зависимости от состава функционала, количества интеграций и требований к архитектуре решения.
+                  </p>
+                  <p className="mb-3 font-medium">Примеры типовых проектов:</p>
+                  <div className="grid gap-4 md:grid-cols-3">
+                    <div className="rounded-lg border border-border bg-muted/30 p-4">
+                      <div className="text-sm text-muted-foreground">CRM и интеграционные решения</div>
+                      <div className="mt-1 text-xl font-semibold">350 000 ₽</div>
+                    </div>
+                    <div className="rounded-lg border border-border bg-muted/30 p-4">
+                      <div className="text-sm text-muted-foreground">AI-модули и аналитика</div>
+                      <div className="mt-1 text-xl font-semibold">150 000 ₽</div>
+                    </div>
+                    <div className="rounded-lg border border-border bg-muted/30 p-4">
+                      <div className="text-sm text-muted-foreground">Сложные многосистемные интеграции</div>
+                      <div className="mt-1 text-xl font-semibold">150 000 ₽</div>
+                    </div>
+                  </div>
+                  <Button variant="outline" asChild className="mt-4">
+                    <Link href="/solutions">
+                      Подробнее
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              {/* Integration */}
+              <Card>
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10"
+                      style={{ background: "rgba(190, 18, 18, 0.1)" }}
+                    >
+                      <Workflow className="h-5 w-5 text-primary" style={{ color: "rgb(190, 18, 18)" }} />
+                    </div>
+                    <CardTitle className="text-xl">Системная интеграция</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <div className="rounded-lg border border-border bg-muted/30 p-4">
+                      <div className="text-sm text-muted-foreground">Типовые интеграции</div>
+                      <div className="mt-1 text-xl font-semibold">50 000 ₽</div>
+                    </div>
+                    <div className="rounded-lg border border-border bg-muted/30 p-4">
+                      <div className="text-sm text-muted-foreground">Сложные многосистемные интеграции</div>
+                      <div className="mt-1 text-xl font-semibold">150 000 ₽</div>
+                    </div>
+                  </div>
+                  <Button variant="outline" asChild className="mt-4">
+                    <Link href="/integration">
+                      Подробнее
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
@@ -242,15 +326,12 @@ export default function PricingPage() {
               className="flex items-start gap-4 rounded-lg border border-border bg-card p-6 md:p-8"
               style={{ borderLeftWidth: "4px", borderLeftColor: "rgb(190, 18, 18)" }}
             >
-              <Info
-                className="h-6 w-6 shrink-0 text-primary mt-0.5"
-                style={{ color: "rgb(190, 18, 18)" }}
-              />
+              <Info className="h-6 w-6 shrink-0 text-primary mt-0.5" style={{ color: "rgb(190, 18, 18)" }} />
               <div className="space-y-2">
-                <p className="font-semibold">Финальная стоимость</p>
+                <p className="font-semibold">Индивидуальный расчёт</p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Финальная стоимость зависит от состава функционала, количества интеграций и требований к архитектуре
-                  решения. Для расчёта индивидуального коммерческого предложения свяжитесь с нашими специалистами.
+                  Для расчёта индивидуального коммерческого предложения с учётом специфики вашего проекта свяжитесь с
+                  нашими специалистами. Мы подготовим детальную смету с фиксированной стоимостью.
                 </p>
                 <div className="flex flex-wrap gap-3 pt-2">
                   <Button asChild>
@@ -270,9 +351,7 @@ export default function PricingPage() {
       <section className="bg-primary py-16 text-primary-foreground md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-6 text-3xl font-bold md:text-4xl text-balance">
-              Готовы обсудить ваш проект?
-            </h2>
+            <h2 className="mb-6 text-3xl font-bold md:text-4xl text-balance">Готовы обсудить ваш проект?</h2>
             <p className="mb-8 text-lg opacity-90 text-pretty">
               Расскажите о задаче — подберём оптимальное решение и зафиксируем стоимость в коммерческом предложении.
             </p>
